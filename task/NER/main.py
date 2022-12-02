@@ -17,6 +17,7 @@ import argparse
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--ds", type=str, help="WORKSPACE folder", default="site-1")
+    parser.add_argument("--workspace", type=str, help="WORKSPACE folder", default="site-1")
     args = parser.parse_args()
     return args
 
@@ -30,6 +31,7 @@ if __name__ == "__main__":
 
     args = vars(parse_args())
     dataset_name = args['ds']
+    saved_dir = os.path.join(args['workspace'], args['ds'])
     root_dir = "/home/le/cancerbert_ner/data/"
 
     df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
@@ -50,7 +52,7 @@ if __name__ == "__main__":
 
     train_args = {
         "LEARNING_RATE": 5e-3,
-        "EPOCHS": 10,
+        "EPOCHS": 50,
         "device": device
     }
-    train_loop(model, train_dataloader, val_dataloader, saved_dir=dataset_name, **train_args)
+    train_loop(model, train_dataloader, val_dataloader, saved_dir=saved_dir, **train_args)
