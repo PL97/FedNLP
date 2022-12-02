@@ -9,5 +9,5 @@ mkdir $workspace/
 mkdir $workspace/site-$1
 CUDA_VISIBLE_DEVICES=$2 python main.py \
     --ds site-$1 \
-    --workspace $workspace
+    --workspace $workspace \
     > $workspace/site-$1/log.txt
