@@ -18,7 +18,7 @@ import argparse
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--saved_dir", type=str, help="saved_dir", default="site-1")
+    parser.add_argument("--workspace", type=str, help="WORKSPACE folder", default="site-1")
     args = parser.parse_args()
     return args
 
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     np.random.seed(seed)
     random.seed(seed)
     args = vars(parse_args())
-    saved_dir = args['saved_dir']
+    saved_dir = args['workspace']
 
 
     dls = defaultdict(lambda: {})
@@ -50,7 +50,7 @@ if __name__ == "__main__":
                 dls=dls,
                 client_weights = [0.5, 0.5], 
                 lrs = [5e-3, 5e-3], 
-                max_epoches=20, 
+                max_epoches=100, 
                 aggregation_freq=1,
                 device=device, 
                 saved_dir = saved_dir
