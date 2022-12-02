@@ -1,6 +1,7 @@
 import torch
 from transformers import BertTokenizerFast
 from torch.utils.data import DataLoader
+from torch.utils.data.distributed import DistributedSampler
 
 
 def align_label(texts, labels, tokenizer, labels_to_ids, label_all_tokens=True):
@@ -33,7 +34,19 @@ def align_label(texts, labels, tokenizer, labels_to_ids, label_all_tokens=True):
 
 class DataSequence(torch.utils.data.Dataset):
 
-    def __init__(self, df, tokenizer, labels_to_ids):
+    def __init__(self, df):
+        
+        labels = [i.split() for i in df['labels'].values.tolist()]
+        unique_labels = set()
+        # from collections import Counter
+        # print(labels)
+        # print(Counter([ll for l in labels for ll in l]))
+        
+        for lb in labels:
+            [unique_labels.add(i) for i in lb if i not in unique_labels]
+        tokenizer = BertTokenizerFast.from_pretrained('bert-base-cased')
+        labels_to_ids = {k: v for v, k in enumerate(sorted(unique_labels))}
+        self.ids_to_labels = {v: k for v, k in enumerate(sorted(unique_labels))}
 
         lb = [i.split() for i in df['labels'].values.tolist()]
         txt = df['text'].values.tolist()
