@@ -5,10 +5,10 @@ def parse_summary(str):
     str = str.strip()
     str = re.sub("\n+", "\t", str)
     tmp_list = str.split("\t")
-    print(tmp_list)
+    # print(tmp_list)
     
     new_list = [re.split(r"  +", str.strip()) for str in tmp_list][1:]
-    print(new_list)
+    # print(new_list)
     
     ret_dict = {}
     for l in new_list:

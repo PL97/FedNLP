@@ -1,22 +1,13 @@
 import pandas as pd
-
-
-from tqdm import tqdm
 import os
 import torch
 from torch.utils.data import DataLoader
-from torch.optim import SGD
-from torch.nn.parallel import DistributedDataParallel as DDP
-import torch.multiprocessing as mp
 
-from torch.nn import DataParallel
 os.environ["TOKENIZERS_PARALLELISM"] = "False"
-import torch.distributed as dist
 
-from BERT import BertModel
-from dataset import align_label
-from dataset import DataSequence
-from trainer import train_loop
+from models.BERT import BertModel
+from datasets.dataset import DataSequence
+from trainer.trainer import train_loop
 import random
 import numpy as np
 
@@ -29,50 +20,37 @@ def parse_args():
     args = parser.parse_args()
     return args
 
-def setup(rank, world_size):
-    os.environ['MASTER_ADDR'] = 'localhost'
-    os.environ['MASTER_PORT'] = '12355'
 
-    # initialize the process group
-    dist.init_process_group("gloo", rank=rank, world_size=world_size)
-
-def cleanup():
-    dist.destroy_process_group()
+if __name__ == "__main__":
+    seed = 0
+    torch.manual_seed(seed)
+    np.random.seed(seed)
+    random.seed(seed)
 
 
-seed = 0
-torch.manual_seed(seed)
-np.random.seed(seed)
-random.seed(seed)
+    args = vars(parse_args())
+    dataset_name = args['ds']
+    root_dir = "/home/le/cancerbert_ner/data/"
+
+    df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
+    df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
 
 
-# rank = 4
-# setup(rank=rank, world_size=4)
-args = vars(parse_args())
-dataset_name = args['ds']
-root_dir = "/home/le/cancerbert_ner/data/"
+    print("prepare model")
 
-## get data statistics
-# df = pd.read_csv(os.path.join(root_dir, "ner.csv"))
-# train_dataset = DataSequence(df)
+    model = BertModel(num_labels = 17)
+    train_dataset = DataSequence(df_train)
+    val_dataset = DataSequence(df_val)
+    train_dataloader = DataLoader(train_dataset, num_workers=4, batch_size=16, shuffle=True)
+    val_dataloader = DataLoader(val_dataset, num_workers=4, batch_size=16)
 
-df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv")).sample(1000)
-df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv")).sample(50)
+    device = torch.device("cuda")
 
+    print("get model ready")
 
-print("prepare model")
-
-model = BertModel(num_labels = 17)
-# model = DDP(BertModel(num_labels=17), device_ids=[rank], output_device=rank, find_unused_parameters=True)
-train_dataset = DataSequence(df_train)
-val_dataset = DataSequence(df_val)
-
-print("get model ready")
-
-train_args = {
-    "LEARNING_RATE": 5e-3,
-    "EPOCHS": 10,
-    "BATCH_SIZE": 16
-}
-train_loop(model, train_dataset, val_dataset, saved_dir=dataset_name, **train_args)
-# cleanup()
+    train_args = {
+        "LEARNING_RATE": 5e-3,
+        "EPOCHS": 10,
+        "device": device
+    }
+    train_loop(model, train_dataloader, val_dataloader, saved_dir=dataset_name, **train_args)
