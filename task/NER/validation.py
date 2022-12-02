@@ -64,5 +64,5 @@ if __name__ == "__main__":
     result_json['test'] = validate(model, test_dataloader, device, label_map)
 
     json_object = json.dumps(result_json, indent=4)
-    with open("metric.json", "w") as outfile:
+    with open(f"{workspace}/metric.json", "w") as outfile:
         outfile.write(json_object)
