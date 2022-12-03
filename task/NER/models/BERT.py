@@ -10,6 +10,7 @@ class BertModel(torch.nn.Module):
 
         # self.bert = BertForTokenClassification.from_pretrained('bert-large-cased', num_labels=num_labels)
         self.bert = BertForTokenClassification.from_pretrained('bert-base-cased', num_labels=num_labels)
+        # self.bert = BertForTokenClassification.from_pretrained('bert-small-cased', num_labels=num_labels)
 
     def forward(self, input_id, mask, label):
 
