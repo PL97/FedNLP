@@ -52,7 +52,7 @@ if __name__ == "__main__":
 
     train_args = {
         "LEARNING_RATE": 5e-3,
-        "EPOCHS": 50,
+        "EPOCHS": 100,
         "device": device
     }
     train_loop(model, train_dataloader, val_dataloader, saved_dir=saved_dir, **train_args)
