@@ -6,7 +6,7 @@ from torch.utils.data.distributed import DistributedSampler
 
 def align_label(texts, labels, tokenizer, labels_to_ids, label_all_tokens=True):
     
-    tokenized_inputs = tokenizer(texts, padding='max_length', max_length=512, truncation=True)
+    tokenized_inputs = tokenizer(texts, padding='max_length', max_length=150, truncation=True)
 
     word_ids = tokenized_inputs.word_ids()
 
