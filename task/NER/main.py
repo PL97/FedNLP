@@ -43,8 +43,8 @@ if __name__ == "__main__":
     model = BertModel(num_labels = 19)
     train_dataset = DataSequence(df_train)
     val_dataset = DataSequence(df_val)
-    train_dataloader = DataLoader(train_dataset, num_workers=4, batch_size=16, shuffle=True)
-    val_dataloader = DataLoader(val_dataset, num_workers=4, batch_size=16)
+    train_dataloader = DataLoader(train_dataset, num_workers=4, batch_size=32, shuffle=True)
+    val_dataloader = DataLoader(val_dataset, num_workers=4, batch_size=32)
 
     device = torch.device("cuda")
 

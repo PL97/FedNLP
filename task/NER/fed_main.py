@@ -39,8 +39,8 @@ if __name__ == "__main__":
         df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
         train_dataset = DataSequence(df_train)
         val_dataset = DataSequence(df_val)
-        dls[idx]['train'] = DataLoader(train_dataset, num_workers=4, batch_size=16, shuffle=True)
-        dls[idx]['validation'] = DataLoader(val_dataset, num_workers=4, batch_size=16)
+        dls[idx]['train'] = DataLoader(train_dataset, num_workers=4, batch_size=32, shuffle=True)
+        dls[idx]['validation'] = DataLoader(val_dataset, num_workers=4, batch_size=32)
 
     device = torch.device("cuda")
 
