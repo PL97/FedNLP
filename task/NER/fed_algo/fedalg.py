@@ -28,7 +28,10 @@ class FedAlg():
         ## setup models and training configs
         self.server_model = self.generate_models().to(device)
         self.client_models = [copy.deepcopy(self.server_model).to(device) for i in range(self.client_num)]
-        self.optimizers = [SGD(params=self.client_models[idx].parameters(), lr=self.lrs[idx]) for idx in range(self.client_num)]
+        self.optimizers = [AdamW(params=self.client_models[idx].parameters(), lr=self.lrs[idx]) for idx in range(self.client_num)]
+        self.scheduler = [get_linear_schedule_with_warmup(self.optimizers[idx], 
+                                            num_warmup_steps = 0,
+                                            num_training_steps = self.max_epoches*len(dls[idx]['train'])) for idx in range(self.client_idx)]
         # self.optimizers = [AdamW(params=client_models[idx].parameters(), lr=lrs[i], weight_decay=1e-5) for idx in range(client_num)]
     
     def generate_models(self):

@@ -49,8 +49,8 @@ if __name__ == "__main__":
     fed_model = NER_FedAvg(
                 dls=dls,
                 client_weights = [0.5, 0.5], 
-                lrs = [5e-3, 5e-3], 
-                max_epoches=100, 
+                lrs = [5e-5, 5e-5], 
+                max_epoches=50, 
                 aggregation_freq=1,
                 device=device, 
                 saved_dir = saved_dir
