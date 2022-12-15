@@ -51,8 +51,8 @@ if __name__ == "__main__":
     print("get model ready")
 
     train_args = {
-        "LEARNING_RATE": 5e-3,
-        "EPOCHS": 100,
+        "LEARNING_RATE": 5e-5,
+        "EPOCHS": 50,
         "device": device
     }
     train_loop(model, train_dataloader, val_dataloader, saved_dir=saved_dir, **train_args)

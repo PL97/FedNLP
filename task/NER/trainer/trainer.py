@@ -1,4 +1,5 @@
-from torch.optim import SGD
+from torch.optim import SGD, AdamW
+from transformers import get_linear_schedule_with_warmup
 from torch.utils.data import Dataset, DataLoader
 import torch
 from tqdm import tqdm
@@ -13,7 +14,7 @@ from fed_algo.fedalg import FedAlg
 from models.BERT import BertModel
 from collections import defaultdict
 
-def train_by_epoch(model, dl, optimizer, device):
+def train_by_epoch(model, dl, optimizer, device, scheduler):
     model = model.to(device)
     model.train()
 
@@ -26,8 +27,11 @@ def train_by_epoch(model, dl, optimizer, device):
         optimizer.zero_grad()
         loss, _ = model(input_id, mask, train_label)
 
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
+
         loss.backward()
         optimizer.step()
+        scheduler.step()
     
     return model
 
@@ -78,7 +82,10 @@ def train_loop(model, train_dataloader, val_dataloader, saved_dir, **args):
     EPOCHS = args['EPOCHS']
     device = args['device']
 
-    optimizer = SGD(model.parameters(), lr=LEARNING_RATE)
+    optimizer = AdamW(model.parameters(), lr=LEARNING_RATE)
+    scheduler = get_linear_schedule_with_warmup(optimizer, 
+                                            num_warmup_steps = 0,
+                                            num_training_steps = EPOCHS*len(train_dataloader))
 
     model = model.to(device)
 
@@ -88,7 +95,7 @@ def train_loop(model, train_dataloader, val_dataloader, saved_dir, **args):
         label_map = train_dataloader.dataset.ids_to_labels
         
         ## train the model and validate the performance
-        train_by_epoch(model, train_dataloader, optimizer, device)
+        train_by_epoch(model, train_dataloader, optimizer, device, scheduler)
         train_metrics = validate(model, train_dataloader, device, label_map)
         val_metrics = validate(model, val_dataloader, device, label_map)
         
@@ -120,7 +127,7 @@ class NER_FedAvg(FedAlg):
     def local_train(self, idx):
         ## access trainloader self.dls[idx]['train']
         ## access model self.client_models[idx]
-        train_by_epoch(self.client_models[idx], self.dls[idx]['train'], self.optimizers[idx], self.device)
+        train_by_epoch(self.client_models[idx], self.dls[idx]['train'], self.optimizers[idx], self.device, self.scheduler)
     
     def local_validate(self, idx):
         ## access trainloader self.dls[idx]['validation']
