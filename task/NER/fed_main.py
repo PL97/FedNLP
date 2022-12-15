@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
 
     dls = defaultdict(lambda: {})
-    root_dir = "/home/le/cancerbert_ner/data/"
+    root_dir = "./data/2018_Track_2_ADE_and_medication_extraction_challenge/"
     for idx, dataset_name in enumerate(["site-1", "site-2"]):
         df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
         df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
@@ -55,12 +55,4 @@ if __name__ == "__main__":
                 device=device, 
                 saved_dir = saved_dir
                 )
-    # fed_model = NER_FedAvg(
-    #             dls=[dls[1]],
-    #             client_weights = [1.0], 
-    #             lrs = [5e-3], 
-    #             max_epoches=5, 
-    #             device=device, 
-    #             saved_dir = "fedavg"
-    #             )
     fed_model.fit()

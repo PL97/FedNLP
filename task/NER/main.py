@@ -32,7 +32,7 @@ if __name__ == "__main__":
     args = vars(parse_args())
     dataset_name = args['ds']
     saved_dir = os.path.join(args['workspace'], args['ds'])
-    root_dir = "/home/le/cancerbert_ner/data/"
+    root_dir = "./data/2018_Track_2_ADE_and_medication_extraction_challenge/"
 
     df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
     df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
@@ -40,7 +40,7 @@ if __name__ == "__main__":
 
     print("prepare model")
 
-    model = BertModel(num_labels = 17)
+    model = BertModel(num_labels = 19)
     train_dataset = DataSequence(df_train)
     val_dataset = DataSequence(df_val)
     train_dataloader = DataLoader(train_dataset, num_workers=4, batch_size=16, shuffle=True)
