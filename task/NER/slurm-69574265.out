@@ -1,0 +1,29 @@
+mkdir: cannot create directory 'workspace_split1/': File exists
+/home/jusun/peng0347/miniconda3/lib/python3.9/site-packages/scipy/__init__.py:146: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.23.4
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion}"
+Some weights of the model checkpoint at bert-base-cased were not used when initializing BertForTokenClassification: ['cls.predictions.decoder.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.seq_relationship.weight']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-cased and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Traceback (most recent call last):
+  File "/panfs/jay/groups/15/jusun/peng0347/NLPer/task/NER/fed_main.py", line 49, in <module>
+    fed_model = NER_FedAvg(
+  File "/panfs/jay/groups/15/jusun/peng0347/NLPer/task/NER/fed_algo/fedalg.py", line 29, in __init__
+    self.server_model = self.generate_models().to(device)
+  File "/home/jusun/peng0347/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 899, in to
+    return self._apply(convert)
+  File "/home/jusun/peng0347/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 570, in _apply
+    module._apply(fn)
+  File "/home/jusun/peng0347/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 570, in _apply
+    module._apply(fn)
+  File "/home/jusun/peng0347/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 570, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/home/jusun/peng0347/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 593, in _apply
+    param_applied = fn(param)
+  File "/home/jusun/peng0347/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 897, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+  File "/home/jusun/peng0347/miniconda3/lib/python3.9/site-packages/torch/cuda/__init__.py", line 214, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: No CUDA GPUs are available
