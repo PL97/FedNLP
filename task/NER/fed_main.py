@@ -33,12 +33,13 @@ if __name__ == "__main__":
 
 
     dls = defaultdict(lambda: {})
+    model_name='bert-base-uncased'
     root_dir = "./data/2018_Track_2_ADE_and_medication_extraction_challenge/"
     for idx, dataset_name in enumerate(["site-1", "site-2"]):
         df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
         df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
-        train_dataset = DataSequence(df_train)
-        val_dataset = DataSequence(df_val)
+        train_dataset = DataSequence(df_train, model_name=model_name)
+        val_dataset = DataSequence(df_val, model_name=model_name)
         dls[idx]['train'] = DataLoader(train_dataset, num_workers=4, batch_size=32, shuffle=True)
         dls[idx]['validation'] = DataLoader(val_dataset, num_workers=4, batch_size=32)
 
@@ -53,6 +54,7 @@ if __name__ == "__main__":
                 max_epoches=30, 
                 aggregation_freq=1,
                 device=device, 
-                saved_dir = saved_dir
+                saved_dir = saved_dir,
+                model_name=model_name
                 )
     fed_model.fit()
