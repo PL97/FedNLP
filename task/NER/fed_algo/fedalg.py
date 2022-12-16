@@ -13,7 +13,7 @@ from collections import defaultdict
 
 
 class FedAlg():
-    def __init__(self, dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir):
+    def __init__(self, dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name):
         self.saved_dir = saved_dir
         self.dls = dls
         self.client_weights = client_weights
@@ -24,6 +24,7 @@ class FedAlg():
         self.client_num = len(client_weights)
         self.defining_metric = "f1-score"
         self.eval_metrics = ['loss', 'acc', 'f1-score']
+        self.model_name=model_name
         
         
         ## setup models and training configs

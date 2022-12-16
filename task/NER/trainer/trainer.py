@@ -121,7 +121,7 @@ def train_loop(model, train_dataloader, val_dataloader, saved_dir, **args):
 
 class NER_FedAvg(FedAlg):
     def generate_models(self):
-        return BertModel(num_labels = 19)
+        return BertModel(num_labels = 19, model_name=self.model_name)
     
     def local_train(self, idx):
         ## access trainloader self.dls[idx]['train']
