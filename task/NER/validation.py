@@ -31,23 +31,23 @@ if __name__ == "__main__":
     args = vars(parse_args())
     dataset_name = args['ds']
     workspace = args['workspace']
-    root_dir = "/home/le/cancerbert_ner/data/"
+    root_dir = "./data/2018_Track_2_ADE_and_medication_extraction_challenge/"
 
     df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
     df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
-    df_test = pd.read_csv(os.path.join(root_dir, dataset_name+"_test.csv"))
+    df_test = pd.read_csv(os.path.join(root_dir, "test.csv"))
 
 
     print("prepare model")
 
-    model = BertModel(num_labels = 17)
+    model = BertModel(num_labels = 19)
     model.load_state_dict(torch.load(f"{workspace}/best.pt"))
     
     train_dataset = DataSequence(df_train)
     val_dataset = DataSequence(df_val)
     test_dataset = DataSequence(df_test)
 
-    BATCH_SIZE = 8
+    BATCH_SIZE = 32
     device = torch.device("cuda")
     label_map = train_dataset.ids_to_labels
     
