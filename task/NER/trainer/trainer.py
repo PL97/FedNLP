@@ -27,9 +27,8 @@ def train_by_epoch(model, dl, optimizer, device, scheduler):
         optimizer.zero_grad()
         loss, _ = model(input_id, mask, train_label)
 
-        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
-
         loss.backward()
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
         optimizer.step()
         scheduler.step()
     
@@ -127,7 +126,7 @@ class NER_FedAvg(FedAlg):
     def local_train(self, idx):
         ## access trainloader self.dls[idx]['train']
         ## access model self.client_models[idx]
-        train_by_epoch(self.client_models[idx], self.dls[idx]['train'], self.optimizers[idx], self.device, self.scheduler)
+        train_by_epoch(self.client_models[idx], self.dls[idx]['train'], self.optimizers[idx], self.device, self.schedulers[idx])
     
     def local_validate(self, idx):
         ## access trainloader self.dls[idx]['validation']

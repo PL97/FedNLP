@@ -2,7 +2,7 @@
 
 # CUDA_VISIBLE_DEVICES=0 python main.py --ds site-$1 > site-2/log.txt
 #python main.py --ds site-$1 > site-$1/log.txt
-workspace="workspace_medical_2018_challenge"
+workspace="workspace_medical_2018_challenge_debug"
 
 rm -rf $workspace/site-$1
 mkdir $workspace/
