@@ -39,10 +39,10 @@ if __name__ == "__main__":
 
 
     print("prepare model")
-
-    model = BertModel(num_labels = 19)
-    train_dataset = DataSequence(df_train)
-    val_dataset = DataSequence(df_val)
+    model_name='bert-base-uncased'
+    model = BertModel(num_labels = 19, model_name=model_name)
+    train_dataset = DataSequence(df_train, model_name=model_name)
+    val_dataset = DataSequence(df_val, model_name=model_name)
     train_dataloader = DataLoader(train_dataset, num_workers=4, batch_size=32, shuffle=True)
     val_dataloader = DataLoader(val_dataset, num_workers=4, batch_size=32)
 
@@ -52,7 +52,7 @@ if __name__ == "__main__":
 
     train_args = {
         "LEARNING_RATE": 5e-5,
-        "EPOCHS": 50,
+        "EPOCHS": 30,
         "device": device
     }
     train_loop(model, train_dataloader, val_dataloader, saved_dir=saved_dir, **train_args)

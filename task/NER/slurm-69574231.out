@@ -1,7 +1,0 @@
-mkdir: cannot create directory 'workspace_split1/': File exists
-Traceback (most recent call last):
-  File "/panfs/jay/groups/15/jusun/peng0347/NLPer/task/NER/main.py", line 8, in <module>
-    from models.BERT import BertModel
-  File "/panfs/jay/groups/15/jusun/peng0347/NLPer/task/NER/models/BERT.py", line 2, in <module>
-    from transformers import BertForTokenClassification
-ModuleNotFoundError: No module named 'transformers'

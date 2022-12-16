@@ -50,7 +50,7 @@ if __name__ == "__main__":
                 dls=dls,
                 client_weights = [0.5, 0.5], 
                 lrs = [5e-5, 5e-5], 
-                max_epoches=50, 
+                max_epoches=30, 
                 aggregation_freq=1,
                 device=device, 
                 saved_dir = saved_dir
