@@ -33,9 +33,11 @@ if __name__ == "__main__":
 
 
     dls = defaultdict(lambda: {})
+    num_client = 10
     model_name='bert-base-uncased'
-    root_dir = "./data/2018_Track_2_ADE_and_medication_extraction_challenge/"
-    for idx, dataset_name in enumerate(["site-1", "site-2"]):
+    root_dir = f"./data/2018_Track_2_ADE_and_medication_extraction_challenge/{num_client}_split"
+    for idx in range(num_client):
+        dataset_name = f"site-{idx+1}"
         df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
         df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
         train_dataset = DataSequence(df_train, model_name=model_name)
@@ -49,8 +51,8 @@ if __name__ == "__main__":
 
     fed_model = NER_FedAvg(
                 dls=dls,
-                client_weights = [0.5, 0.5], 
-                lrs = [5e-5, 5e-5], 
+                client_weights = [1/num_client]*num_client, 
+                lrs = [5e-5]*num_client, 
                 max_epoches=30, 
                 aggregation_freq=1,
                 device=device, 

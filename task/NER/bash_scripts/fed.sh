@@ -2,7 +2,7 @@
 
 
 # CUDA_LAUNCH_BLOCKING=1 CUDA_VISIBLE_DEVICES=$2 python fed_main.py saved_dir $1
-workspace="workspace_medical_2018_challenge"
+workspace="workspace_medical_2018_challenge_10_split_test"
 rm -rf $workspace/$1
 mkdir $workspace/
 mkdir $workspace/$1
