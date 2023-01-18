@@ -95,7 +95,9 @@ def train_loop(model, train_dataloader, val_dataloader, saved_dir, **args):
         
         ## train the model and validate the performance
         train_by_epoch(model, train_dataloader, optimizer, device, scheduler)
+        print(f"{epoch_num}/{EPOCHS}:========================== Train ========================")
         train_metrics = validate(model, train_dataloader, device, label_map)
+        print(f"{epoch_num}/{EPOCHS}:========================== Validation ========================")
         val_metrics = validate(model, val_dataloader, device, label_map)
         
         ## write metric to tensorboard
