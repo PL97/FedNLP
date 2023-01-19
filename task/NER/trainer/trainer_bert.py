@@ -8,6 +8,8 @@ from seqeval.metrics import classification_report, f1_score
 from utils.parse_metric_summary import parse_summary
 import os
 
+from models.BERT import BertModel
+
 def _shared_train_step(model, trainloader, optimizer, device, scheduler):
     model.train()
     for train_data, train_label in tqdm(trainloader):
@@ -99,6 +101,9 @@ class trainer_bert(trainer_base):
     
 
 class NER_FedAvg_bert(NER_FedAvg_base):
+    def generate_models(self):
+        return BertModel(num_labels = 19, model_name=self.model_name)
+    
     def train_by_epoch(self, client_idx):
         model = self.client_models[client_idx]
         trainloader = self.dls[client_idx]['train']
@@ -120,11 +125,13 @@ class NER_FedAvg_bert(NER_FedAvg_base):
         ret_dict['train'] =_shared_validate(model=model, \
                                             dataloader=trainloader, \
                                             ids_to_labels=ids_to_labels, \
+                                            prefix='train', \
                                             device=self.device)
         
         ret_dict['val'] =_shared_validate(model=model, \
                                                  dataloader=valloader, \
                                                  ids_to_labels=ids_to_labels, \
+                                                 prefix='val', \
                                                  device=self.device)
         return ret_dict
         

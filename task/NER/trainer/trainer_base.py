@@ -49,7 +49,7 @@ class trainer_base:
             for metric in ['loss', 'precision', 'recall', 'f1-score']:
                 self.writer.add_scalars(f'{metric}', {
                     "train": train_metrics['macro avg'][metric],
-                    "validation":  val_metrics['macro avg'][metric],
+                    "val":  val_metrics['macro avg'][metric],
                     }, epoch_num)
                 
                 
@@ -68,12 +68,12 @@ class trainer_base:
 
 class NER_FedAvg_base(FedAlg):
     def generate_models(self):
-        return BertModel(num_labels = 19, model_name=self.model_name)
+        pass
     
     def train_by_epoch(self):
         pass
     
-    def validate(self):
+    def validate(self, model, idx):
         pass
     
     def local_train(self, idx):
@@ -85,19 +85,19 @@ class NER_FedAvg_base(FedAlg):
         ## access trainloader self.dls[idx]['validation']
         ## access local model self.client_models[idx]
         ## access global model self.server_model[idx]
-        return self.validate(idx)
+        model = self.client_models[idx]
+        return self.validate(model, idx)
     
     def global_validate(self):
         ## access trainloader self.dls[idx]['validation']
         label_map = self.dls[0]['train'].dataset.ids_to_labels
         ret_dict = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: 0)))
         for client_idx in range(self.client_num):
-            tmp_train = self.validate(self.server_model, self.dls[client_idx]['train'], self.device, label_map)
-            tmp_validation = self.validate(self.server_model, self.dls[client_idx]['validation'], self.device, label_map)
-            for k, v in tmp_train.items():
+            global_metrics = self.validate(self.server_model, client_idx)
+            for k, v in global_metrics['train'].items():
                 for kk, vv in v.items():
-                    ret_dict['train'][k][kk] += tmp_train[k][kk]
-                    ret_dict['validation'][k][kk] += tmp_validation[k][kk]
+                    ret_dict['train'][k][kk] += global_metrics['train'][k][kk]
+                    ret_dict['val'][k][kk] += global_metrics['val'][k][kk]
                     
 
         ## aggregate results
@@ -105,7 +105,7 @@ class NER_FedAvg_base(FedAlg):
         for k, v, in ret_dict['train'].items():
             for kk, vv in v.items():
                 ret_dict['train'][k][kk] /= self.client_num
-                ret_dict['validation'][k][kk] /= self.client_num
+                ret_dict['val'][k][kk] /= self.client_num
                 
         return ret_dict
     

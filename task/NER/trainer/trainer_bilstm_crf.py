@@ -8,6 +8,7 @@ from seqeval.metrics import classification_report, f1_score
 from utils.parse_metric_summary import parse_summary
 import os
 import torch
+from models.BILSTM_CRF import BIRNN_CRF
 
 def _shared_train_step(model, trainloader, optimizer, device, scheduler):
     model.train()
@@ -95,6 +96,15 @@ class trainer_bilstm_crf(trainer_base):
     
 
 class NER_FedAvg_bilstm_crf(NER_FedAvg_base):
+        
+    def generate_models(self):
+        return BIRNN_CRF(vocab_size=self.args['vocab_size'], \
+                          tagset_size = len(self.args['ids_to_labels'])-2, \
+                          embedding_dim=200, \
+                          num_rnn_layers=1, \
+                          hidden_dim=256, device=self.device)
+    
+    
     def train_by_epoch(self, client_idx):
         model = self.client_models[client_idx]
         trainloader = self.dls[client_idx]['train']
@@ -107,20 +117,21 @@ class NER_FedAvg_bilstm_crf(NER_FedAvg_base):
                            scheduler=scheduler, \
                            device=self.device)
         
-    def validate(self, client_idx):
-        model = self.client_models[client_idx]
+    def validate(self, model, client_idx):
         trainloader = self.dls[client_idx]['train']
-        ids_to_labels = self.dls[client_idx]['train'].dataset.ids_to_labels
+        ids_to_labels = self.args['ids_to_labels']
         valloader = self.dls[client_idx]['val']
         ret_dict = {}
         ret_dict['train'] =_shared_validate(model=model, \
                                             dataloader=trainloader, \
                                             ids_to_labels=ids_to_labels, \
+                                            prefix='train', \
                                             device=self.device)
         
         ret_dict['val'] =_shared_validate(model=model, \
                                                  dataloader=valloader, \
                                                  ids_to_labels=ids_to_labels, \
+                                                 prefix='val', \
                                                  device=self.device)
         return ret_dict
         
