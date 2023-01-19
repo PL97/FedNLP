@@ -116,8 +116,7 @@ class NER_FedAvg_bert(NER_FedAvg_base):
                            scheduler=scheduler, \
                            device=self.device)
         
-    def validate(self, client_idx):
-        model = self.client_models[client_idx]
+    def validate(self, model, client_idx):
         trainloader = self.dls[client_idx]['train']
         ids_to_labels = self.dls[client_idx]['train'].dataset.ids_to_labels
         valloader = self.dls[client_idx]['val']
