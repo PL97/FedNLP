@@ -13,7 +13,7 @@ from collections import defaultdict
 
 
 class FedAlg():
-    def __init__(self, dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name):
+    def __init__(self, dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, **args):
         self.saved_dir = saved_dir
         self.dls = dls
         self.client_weights = client_weights
@@ -23,8 +23,9 @@ class FedAlg():
         self.device = device
         self.client_num = len(client_weights)
         self.defining_metric = "f1-score"
-        self.eval_metrics = ['loss', 'acc', 'f1-score']
+        self.eval_metrics = ['loss', 'precision', 'recall', 'f1-score']
         self.model_name=model_name
+        self.args = args
         
         
         ## setup models and training configs
@@ -110,26 +111,27 @@ class FedAlg():
                 val_metrics = defaultdict(lambda: {})
                 
                 for client_idx in range(self.client_num):
+                    print(f"{epoch}/{self.max_epoches}:========================== local validation client {client_idx} ========================")
                     val_metrics[f"site-{client_idx+1}"] = self.local_validate(client_idx)
-                
+                print(f"{epoch}/{self.max_epoches}:========================== global validation ========================")
                 val_metrics['global'] = self.global_validate()
                 
                 for metric in self.eval_metrics:
                     tmp_dict_train, tmp_dict_validation = {}, {}
                     for client_idx in range(self.client_num):
                         tmp_dict_train[f"site-{client_idx+1}"] = val_metrics[f"site-{client_idx+1}"]['train']['macro avg'][metric]
-                        tmp_dict_validation[f"site-{client_idx+1}"] = val_metrics[f"site-{client_idx+1}"]['validation']['macro avg'][metric]
+                        tmp_dict_validation[f"site-{client_idx+1}"] = val_metrics[f"site-{client_idx+1}"]['val']['macro avg'][metric]
                 
                     writer.add_scalars(f'{metric}/train', tmp_dict_train, epoch)
-                    writer.add_scalars(f'{metric}/validation', tmp_dict_validation, epoch)
+                    writer.add_scalars(f'{metric}/val', tmp_dict_validation, epoch)
                     
                 if not (epoch % self.aggregation_freq):
                     self.server_model, self.client_models = self.communication(self.server_model, self.client_models)
                 
                 
             ## checkpoint the best performance based on macro avg f1-score
-            if val_metrics['global']['validation']['macro avg'][self.defining_metric] > best_score:
-                best_score = val_metrics['global']['validation']['macro avg'][self.defining_metric]
+            if val_metrics['global']['val']['macro avg'][self.defining_metric] > best_score:
+                best_score = val_metrics['global']['val']['macro avg'][self.defining_metric]
                 print("update best model")
                 self.save_models(file_name="best.pt")
     
