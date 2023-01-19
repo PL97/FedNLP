@@ -57,7 +57,7 @@ if __name__ == "__main__":
                             ids_to_labels=stats['ids_to_labels'], \
                             lr=5e-5, \
                             epochs=15, \
-                            saved_dir=args['workspace'], \
+                            saved_dir=saved_dir, \
                             device=device)
         trainer.fit()
     
@@ -74,7 +74,7 @@ if __name__ == "__main__":
                             ids_to_labels=stats['ids_to_labels'], \
                             lr=1e-3, \
                             epochs=50, \
-                            saved_dir=args['workspace'], \
+                            saved_dir=saved_dir, \
                             device=device)
         trainer.fit()
         
