@@ -40,7 +40,7 @@ if __name__ == "__main__":
 
 
     dls = defaultdict(lambda: {})
-    num_client = 2
+    num_client = args['n_split']
     root_dir = f"./data/2018_Track_2_ADE_and_medication_extraction_challenge/{num_client}_split"
     
     if args['model'] == 'bert-base-uncased':
@@ -56,7 +56,7 @@ if __name__ == "__main__":
                     dls=dls,
                     client_weights = [1/num_client]*num_client, 
                     lrs = [5e-5]*num_client, 
-                    max_epoches=30, 
+                    max_epoches=50, 
                     aggregation_freq=1,
                     device=device, 
                     saved_dir = saved_dir,
@@ -77,7 +77,7 @@ if __name__ == "__main__":
                     dls=dls,
                     client_weights = [1/num_client]*num_client, 
                     lrs = [1e-3]*num_client, 
-                    max_epoches=30, 
+                    max_epoches=100, 
                     aggregation_freq=1,
                     device=device, 
                     saved_dir = saved_dir,
