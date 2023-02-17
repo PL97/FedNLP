@@ -4,7 +4,7 @@
 #python main.py --ds site-$1 > site-$1/log.txt
 workspace="workspace_medical_2018_challenge_baseline_$3"
 
-rm -rf $workspace/
+rm -rf $workspace/site-$1
 mkdir $workspace/
 mkdir $workspace/site-$1
 CUDA_VISIBLE_DEVICES=$2 python main.py \

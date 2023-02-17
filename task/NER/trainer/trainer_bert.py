@@ -19,7 +19,6 @@ def _shared_train_step(model, trainloader, optimizer, device, scheduler):
 
         optimizer.zero_grad()
         loss, _ = model(input_id, mask, train_label)
-
         loss.backward()
         nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
         optimizer.step()

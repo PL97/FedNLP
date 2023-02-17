@@ -50,14 +50,13 @@ def align_label(tokenized_inputs, origional_text, labels, labels_to_ids, label_a
 
 class DataSequence(torch.utils.data.Dataset):
 
-    def __init__(self, df, max_length=150, model_name='bert-base-uncased'):
+    def __init__(self, df, tokenizer, max_length=150):
         
         labels = [i.split() for i in df['labels'].values.tolist()]
         unique_labels = set()
         
         for lb in labels:
             [unique_labels.add(i) for i in lb if i not in unique_labels]
-        tokenizer = BertTokenizerFast.from_pretrained(model_name)
         labels_to_ids = {k: v for v, k in enumerate(sorted(unique_labels))}
         self.ids_to_labels = {v: k for v, k in enumerate(sorted(unique_labels))}
 
@@ -94,10 +93,10 @@ class DataSequence(torch.utils.data.Dataset):
         return batch_data, batch_labels
     
 
-def get_data(df_train, df_val, bs, model_name):
+def get_data(df_train, df_val, bs, tokenizer):
     dls, stats = {}, {}
-    train_dataset = DataSequence(df_train, model_name=model_name)
-    val_dataset = DataSequence(df_val, model_name=model_name)
+    train_dataset = DataSequence(df_train, tokenizer=tokenizer)
+    val_dataset = DataSequence(df_val, tokenizer=tokenizer)
     dls['train'] = DataLoader(train_dataset, num_workers=4, batch_size=bs, shuffle=True)
     dls['val'] = DataLoader(val_dataset, num_workers=4, batch_size=bs)
     stats['ids_to_labels'] = train_dataset.ids_to_labels

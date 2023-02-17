@@ -45,12 +45,13 @@ if __name__ == "__main__":
     df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
 
 
-
-    ## prepare model
-    if args['model'] == "bert-base-uncased":
-        ## prepare dataloader
-        dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], model_name=args['model'])
+    
+    if "bert" in args['model'].lower():
+        ## prepare model
         model = BertModel(num_labels = 19, model_name=args['model'])
+        ## prepare dataloader
+        dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=model.tokenizer)
+        
     
         trainer = trainer_bert(model=model, \
                             dls=dls, \
