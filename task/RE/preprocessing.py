@@ -13,7 +13,8 @@ from copy import deepcopy
 
 
 
-file = "re-training-data.corp"
+file = "data/test.corp"
+sanity_check = False
 sentences_orig = []
 sentences = []
 labels = []
@@ -49,8 +50,10 @@ with open(file, 'r') as doc:
                 
                 labels.append(line_parse[2].upper())
                 ## need to modify the sentence at the same time
-                sentences[-1][int(line_parse[0])] = entity_map[int(line_parse[0])]
-                sentences[-1][int(line_parse[1])] = entity_map[int(line_parse[1])]
+                # sentences[-1][int(line_parse[0])] = entity_map[int(line_parse[0])]
+                # sentences[-1][int(line_parse[1])] = entity_map[int(line_parse[1])]
+                sentences[-1][int(line_parse[0])] = f"[E1] " + sentences[-1][int(line_parse[0])] + " [E1/]"
+                sentences[-1][int(line_parse[1])] = f"[E2] " + sentences[-1][int(line_parse[1])] + " [E2/]"
                 
                 
                 ## check the correctness of alignment
@@ -71,7 +74,7 @@ while len(labels) < len(sentences):
     labels.append("No relation")
   
 
-## convert list of words to sentence
+# ## convert list of words to sentence
 sentences = [" ".join(x) for x in sentences]
 sentences_orig = [" ".join(x) for x in sentences_orig]
 
@@ -82,6 +85,4 @@ df = pd.DataFrame({"text": sentences, "relation": labels, "orig_text": sentences
 df.to_csv(f"{file}.csv")
   
 
-# for x, y in zip(sentences, labels):
-#     print(" ".join(x), y)
             

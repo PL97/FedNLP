@@ -37,7 +37,7 @@ if __name__ == "__main__":
     args = vars(parse_args())
     dataset_name = args['ds']
     saved_dir = os.path.join(args['workspace'], args['ds'])
-    num_client = 1
+    num_client = 10
     root_dir = f"./data/{num_client}_split"
 
     df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
@@ -45,16 +45,18 @@ if __name__ == "__main__":
 
 
 
-    ## prepare model
-    if "bert" in args['model']:
-        ## prepare dataloader
-        dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], model_name=args['model'])
+   
+    if "bert" in args['model'].lower():
+        ## prepare model
         model = BertModel(num_labels = 9, model_name=args['model'])
+        ## prepare dataloader
+        dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=model.tokenizer)
+        
         trainer = trainer_bert(model=model, \
                             dls=dls, \
                             ids_to_labels=stats['ids_to_labels'], \
                             lr=5e-5, \
-                            epochs=50, \
-                            saved_dir=args['workspace'], \
+                            epochs=15, \
+                            saved_dir=saved_dir, \
                             device=device)
         trainer.fit()

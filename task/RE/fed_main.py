@@ -39,23 +39,25 @@ if __name__ == "__main__":
 
 
     dls = defaultdict(lambda: {})
-    num_client = 2
+    num_client = args['n_split']
     root_dir = f"./data/{num_client}_split"
     
-    if 'bert' in args['model']:
+    if 'bert' in args['model'].lower():
+        ## need to define tokenizer here
+        tokenizer = BertModel(num_labels = 9, model_name=args['model']).tokenizer
         
         for idx in range(num_client):
             dataset_name = f"site-{idx+1}"
             df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
             df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
             ## for debugging
-            dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], model_name=args['model'])
+            dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=tokenizer)
 
         fed_model = RE_FedAvg_bert(
                     dls=dls,
                     client_weights = [1/num_client]*num_client, 
                     lrs = [5e-5]*num_client, 
-                    max_epoches=100, 
+                    max_epoches=50, 
                     aggregation_freq=1,
                     device=device, 
                     saved_dir = saved_dir,

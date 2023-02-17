@@ -10,3 +10,5 @@ CUDA_VISIBLE_DEVICES=$2 python fed_main.py \
     --workspace $workspace/$1 \
     --n_split $3 \
     --model $4 > $workspace/$1/log.txt
+
+#sbatch simulate_fed.slurm fedavg 10 bluebert

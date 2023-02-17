@@ -1,17 +1,9 @@
 #!/usr/bin/env bash
 
-workspace="workspace_medical_2018_challenge"
 CUDA_VISIBLE_DEVICES=0 python validation.py \
-    --ds site-1 \
-    --workspace $workspace/fedavg/site-1 \
-    > $workspace/fedavg/site-1/metrics.txt
+    --ds site-$2 \
+    --workspace $1\
+    --model $3
 
-CUDA_VISIBLE_DEVICES=0 python validation.py \
-    --ds site-2 \
-    --workspace $workspace/fedavg/site-2 \
-    > $workspace/fedavg/site-2/metrics.txt
-
-CUDA_VISIBLE_DEVICES=0 python validation.py \
-    --ds fedavg \
-    --workspace $workspace/fedavg/global \
-    > $workspace/fedavg/global/metrics.txt
+# ./bash_scripts/eval_fed.sh workspace_medical_2018_challenge_10_split_bert-base-uncased/fedavg/global/ 0 bert-base-uncased
+./bash_scripts/eval_fed.sh workspace_medical_2018_challenge_10_split_BILSTM_CRF/fedavg/global/ 0 BILSTM_CRF
