@@ -11,8 +11,8 @@
 ##SBATCH --gres=gpu:v100:1
 
 #SBATCH --gres=gpu:a100:1
-##SBATCH -p a100-8
-#SBATCH -p apollo_agate
+#SBATCH -p a100-8
+##SBATCH -p apollo_agate
 
 module load parallel
 

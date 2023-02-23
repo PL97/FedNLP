@@ -84,11 +84,11 @@ def preprocessing(train_df):
     return labels_to_ids, ids_to_labels, word_to_ids, unique_labels
 
 
-def get_data(df_train, df_val, bs):
+def get_data(df_train, df_val, bs, combined_df):
     
     dls, stats = {}, {}
-    df = pd.read_csv("./data/2018_Track_2_ADE_and_medication_extraction_challenge/ner.csv")
-    labels_to_ids, ids_to_labels, word_to_ids, unique_labels = preprocessing(train_df=df)
+    # df = pd.read_csv("./data/2018_Track_2_ADE_and_medication_extraction_challenge/ner.csv")
+    labels_to_ids, ids_to_labels, word_to_ids, unique_labels = preprocessing(train_df=combined_df)
     dls['train'] = torch.utils.data.DataLoader(
                         DataSequence(df_train, max_length=75, \
                         labels_to_ids=labels_to_ids, ids_to_labels=ids_to_labels, \
@@ -104,13 +104,14 @@ def get_data(df_train, df_val, bs):
     return dls, stats
 
 if __name__ == "__main__":
-    import pandas as pd
-    df = pd.read_csv("../data/2018_Track_2_ADE_and_medication_extraction_challenge/2_split/site-1_train.csv")
-    labels_to_ids, ids_to_labels, word_to_ids, unique_labels = preprocessing(train_df=df)
-    train_loader = torch.utils.data.DataLoader(
-                            DataSequence(df, max_length=10, \
-                            labels_to_ids=labels_to_ids, ids_to_labels=ids_to_labels, \
-                            word_to_ids=word_to_ids), \
-                        batch_size=10, shuffle=True, num_workers=8)
-    for x, y in train_loader:
-        print(x.shape)
+    pass
+    # import pandas as pd
+    # df = pd.read_csv("../data/2018_Track_2_ADE_and_medication_extraction_challenge/2_split/site-1_train.csv")
+    # labels_to_ids, ids_to_labels, word_to_ids, unique_labels = preprocessing(train_df=df)
+    # train_loader = torch.utils.data.DataLoader(
+    #                         DataSequence(df, max_length=10, \
+    #                         labels_to_ids=labels_to_ids, ids_to_labels=ids_to_labels, \
+    #                         word_to_ids=word_to_ids), \
+    #                     batch_size=10, shuffle=True, num_workers=8)
+    # for x, y in train_loader:
+    #     print(x.shape)

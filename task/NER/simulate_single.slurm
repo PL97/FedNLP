@@ -19,8 +19,8 @@ module load parallel
 cd /home/jusun/peng0347/NLPer/task/NER/
 export PATH=/home/jusun/peng0347/miniconda3/bin:$PATH
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/jusun/peng0347/miniconda3/lib/
-sh ./bash_scripts/run.sh $1 0 $2
+sh ./bash_scripts/run.sh $1 $2 $3
 
 
 # conda env create -f environment.yml
-# sbatch simulate_single.slurm 0 bert-base-uncased
+# sbatch simulate_single.slurm site-0 BC2GM bluebert # ! arg1: split, arg2: dataset, arg3: model
