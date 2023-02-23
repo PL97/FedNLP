@@ -1,44 +1,51 @@
 import pandas as pd
 import numpy as np
-
-seed = 1997
-df = pd.read_csv("ner.csv")
-
-df = df.sample(frac=1, random_state=seed)
-df.reset_index(drop=True, inplace=True)
-df_site1, df_site2, df_test = np.split(df,
-                            [int(.4 * len(df)), int(.8 * len(df))])
-
-print(df_site1.shape, df_site2.shape, df_test.shape)
-df_site1.reset_index(drop=True, inplace=True)
-df_site2.reset_index(drop=True, inplace=True)
-df_test.reset_index(drop=True, inplace=True)
-
-## split train test val
-df_site1 = df_site1.sample(frac=1, random_state=seed)
-df_site1.reset_index(drop=True, inplace=True)
-df_site1_train, df_site1_val, df_site1_test = np.split(df_site1,
-                            [int(.8 * len(df_site1)), int(.9 * len(df_site1))])
-
-df_site2 = df_site2.sample(frac=1, random_state=seed)
-df_site2.reset_index(drop=True, inplace=True)
-df_site2_train, df_site2_val, df_site2_test = np.split(df_site2,
-                            [int(.8 * len(df_site2)), int(.9 * len(df_site2))])
-
-df_site1_train.reset_index(drop=True, inplace=True)
-df_site1_val.reset_index(drop=True, inplace=True)
-df_site1_test.reset_index(drop=True, inplace=True)
-
-df_site2_train.reset_index(drop=True, inplace=True)
-df_site2_val.reset_index(drop=True, inplace=True)
-df_site2_test.reset_index(drop=True, inplace=True)
+import os
 
 
-df_site1_train.to_csv("site-1_train.csv")
-df_site1_val.to_csv("site-1_val.csv")
-df_site1_test.to_csv("site-1_test.csv")
+def split_df_by_ratio(df, ratio=0.8):
+    df_len = df.shape[0]
+    df_1_len = int(ratio*df_len)
+    idx = list(range(df_len))
+    np.random.shuffle(idx)
+    df_1 = df.iloc[idx[:df_1_len]]
+    df_2 = df.iloc[idx[df_1_len:]]
+    df_1.reset_index(drop=True, inplace=True)
+    df_2.reset_index(drop=True, inplace=True)
+    return df_1, df_2
 
-df_site2_train.to_csv("site-2_train.csv")
-df_site2_val.to_csv("site-2_val.csv")
-df_site2_test.to_csv("site-2_test.csv")
-df_test.to_csv("test.csv")
+def split_df_by_num(df, num=1):
+    df_len = df.shape[0]
+    df_1_len = num
+    idx = list(range(df_len))
+    np.random.shuffle(idx)
+    df_1 = df.iloc[idx[:df_1_len]]
+    df_2 = df.iloc[idx[df_1_len:]]
+    df_1.reset_index(drop=True, inplace=True)
+    df_2.reset_index(drop=True, inplace=True)
+    return df_1, df_2
+
+# TODO: make split the daasets in batch
+if __name__ == "__main__":
+    ds = "NCBI-disease"
+    mode = "devel" # ! train | devel
+    saved_name = "val" if mode == "devel" else mode
+    df = pd.read_csv(os.path.join(ds, mode+".tsv"))
+    # client_dfs, test_df = split_df(df, ratio=0.8)
+    num_clients = 10
+    client_size = int(df.shape[0]/num_clients)
+    os.makedirs(f"{ds}/{num_clients}_split", exist_ok=True)
+    for i in range(num_clients):
+        if i != num_clients-1:
+            client_df, df = split_df_by_num(df, client_size)
+        else:
+            client_df = df
+        print(df.shape, client_df.shape)
+        ## split into train, test, val
+        client_df.to_csv(f"{ds}/{num_clients}_split/site-{i+1}_{saved_name}.csv")
+    
+    
+    
+    
+    df = pd.read_csv(os.path.join(ds, mode+".tsv"))
+    df.to_csv(f"{ds}/{num_clients}_split/site-0_{saved_name}.csv")
