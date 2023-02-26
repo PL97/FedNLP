@@ -93,12 +93,15 @@ class DataSequence(torch.utils.data.Dataset):
         return batch_data, batch_labels
     
 
-def get_data(df_train, df_val, bs, tokenizer):
+def get_data(df_train, df_val, bs, tokenizer, df_test=None):
     dls, stats = {}, {}
     train_dataset = DataSequence(df_train, tokenizer=tokenizer)
     val_dataset = DataSequence(df_val, tokenizer=tokenizer)
     dls['train'] = DataLoader(train_dataset, num_workers=4, batch_size=bs, shuffle=True)
-    dls['val'] = DataLoader(val_dataset, num_workers=4, batch_size=bs)
+    dls['val'] = DataLoader(val_dataset, num_workers=4, batch_size=bs, shuffle=False)
+    if df_test is not None:
+        test_dataset = DataSequence(df_test, tokenizer=tokenizer)
+        dls['test'] = DataLoader(test_dataset, num_workers=4, batch_size=bs, shuffle=False)
     stats['ids_to_labels'] = train_dataset.ids_to_labels
     return dls, stats
     
