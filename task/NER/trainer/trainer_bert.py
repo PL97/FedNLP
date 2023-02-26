@@ -9,6 +9,7 @@ from utils.parse_metric_summary import parse_summary
 import os
 
 from models.BERT import BertModel
+from utils.nereval import classifcation_report as ner_classificaiton_report
 
 def _shared_train_step(model, trainloader, optimizer, device, scheduler):
     model.train()
@@ -59,6 +60,12 @@ def _shared_validate(model, dataloader, device, ids_to_labels, prefix):
     metric_dict = parse_summary(summary)
     metric_dict['macro avg']['loss'] = total_loss_val/val_total
     metric_dict['macro avg']['acc'] = total_acc_val/val_total
+    
+    lenient_metric = ner_classificaiton_report(tags_true=val_y_true, tags_pred=val_y_pred, mode='strict')
+    strict_metric = ner_classificaiton_report(tags_true=val_y_true, tags_pred=val_y_pred, mode='lenient')
+    
+    metric_dict['stric'] = strict_metric
+    metric_dict['lenient'] = lenient_metric
     return metric_dict
 
 
@@ -127,10 +134,10 @@ class NER_FedAvg_bert(NER_FedAvg_base):
                                             device=self.device)
         
         ret_dict['val'] =_shared_validate(model=model, \
-                                                 dataloader=valloader, \
-                                                 ids_to_labels=ids_to_labels, \
-                                                 prefix='val', \
-                                                 device=self.device)
+                                            dataloader=valloader, \
+                                            ids_to_labels=ids_to_labels, \
+                                            prefix='val', \
+                                            device=self.device)
         return ret_dict
         
         
