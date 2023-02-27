@@ -61,10 +61,19 @@ def _shared_validate(model, dataloader, device, ids_to_labels, prefix):
     metric_dict['macro avg']['loss'] = total_loss_val/val_total
     metric_dict['macro avg']['acc'] = total_acc_val/val_total
     
-    lenient_metric = ner_classificaiton_report(tags_true=val_y_true, tags_pred=val_y_pred, mode='strict')
-    strict_metric = ner_classificaiton_report(tags_true=val_y_true, tags_pred=val_y_pred, mode='lenient')
+    ## flatten the list
+    val_y_true = [item for sublist in val_y_true for item in sublist]
+    val_y_pred = [item for sublist in val_y_pred for item in sublist]
+    lenient_metric = ner_classificaiton_report(tags_true=val_y_true, tags_pred=val_y_pred, mode='lenient')
+    strict_metric = ner_classificaiton_report(tags_true=val_y_true, tags_pred=val_y_pred, mode='strict')
     
-    metric_dict['stric'] = strict_metric
+    ## save meta data
+    metric_dict['meta'] = {
+        "true": val_y_true,
+        "pred": val_y_pred
+    }
+    
+    metric_dict['strict'] = strict_metric
     metric_dict['lenient'] = lenient_metric
     return metric_dict
 
