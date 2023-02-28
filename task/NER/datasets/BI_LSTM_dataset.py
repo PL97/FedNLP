@@ -84,7 +84,7 @@ def preprocessing(train_df):
     return labels_to_ids, ids_to_labels, word_to_ids, unique_labels
 
 
-def get_data(df_train, df_val, bs, combined_df):
+def get_data(df_train, df_val, bs, combined_df, df_test=None):
     
     dls, stats = {}, {}
     # df = pd.read_csv("./data/2018_Track_2_ADE_and_medication_extraction_challenge/ner.csv")
@@ -99,6 +99,12 @@ def get_data(df_train, df_val, bs, combined_df):
                         labels_to_ids=labels_to_ids, ids_to_labels=ids_to_labels, \
                         word_to_ids=word_to_ids), \
                         batch_size=bs, shuffle=False, num_workers=4)
+    if df_test is not None:
+        dls['test'] = torch.utils.data.DataLoader(
+                    DataSequence(df_test, max_length=75, \
+                    labels_to_ids=labels_to_ids, ids_to_labels=ids_to_labels, \
+                    word_to_ids=word_to_ids), \
+                    batch_size=bs, shuffle=False, num_workers=4)
     stats['vocab_size'] = len(word_to_ids)
     stats['ids_to_labels'] = ids_to_labels
     return dls, stats

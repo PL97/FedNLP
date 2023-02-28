@@ -117,7 +117,7 @@ class trainer_bert(trainer_base):
 
 class NER_FedAvg_bert(NER_FedAvg_base):
     def generate_models(self):
-        return BertModel(num_labels = 19, model_name=self.model_name)
+        return BertModel(num_labels = self.num_labels, model_name=self.model_name)
     
     def train_by_epoch(self, client_idx):
         model = self.client_models[client_idx]
@@ -148,5 +148,8 @@ class NER_FedAvg_bert(NER_FedAvg_base):
                                             prefix='val', \
                                             device=self.device)
         return ret_dict
+    
+    def inference(self, dataloader, ids_to_labels, prefix):
+        return _shared_validate(self.server_model, dataloader, ids_to_labels=ids_to_labels, prefix=prefix, device=self.device)
         
         
