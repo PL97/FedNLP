@@ -20,10 +20,11 @@ import json
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--ds", type=str, help="WORKSPACE folder", default="site-1")
+    parser.add_argument("--ds", type=str, help="WORKSPACE folder", default="2018_n2c2")
+    parser.add_argument("--split", type=str, help="WORKSPACE folder", default="site-1")
     parser.add_argument("--workspace", type=str, help="WORKSPACE folder", default="site-1")
-    parser.add_argument("--model", type=str, help="specify which model to use: [bert-base-uncased/BI_LSTM_CRF]", default="bert-base-uncased")
-    parser.add_argument("--batch_size", type=str, help="batchsize of train/val/test loader", default=128)
+    parser.add_argument("--model", type=str, help="specify which model to use: [bert-base-uncased/BI_LSTM_CRF]", default="BI_LSTM_CRF")
+    parser.add_argument("--batch_size", type=str, help="batchsize of train/val/test loader", default=64)
     args = parser.parse_args()
     return args
 
@@ -37,13 +38,15 @@ if __name__ == "__main__":
     device = torch.device("cuda")
     args = vars(parse_args())
     dataset_name = args['ds']
-    saved_dir = os.path.join(args['workspace'], args['ds'])
+    saved_dir = os.path.join(args['workspace'], args['split'])
     num_client = 10
-    root_dir = f"./data/{num_client}_split"
+    root_dir = f"./data/{dataset_name}/{num_client}_split"
 
-    df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
-    df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
+    df_train = pd.read_csv(os.path.join(root_dir, args['split']+"_train.csv"))
+    df_val = pd.read_csv(os.path.join(root_dir, args['split']+"_val.csv"))
+    df_test = pd.read_csv(os.path.join(f"./data/{dataset_name}", "test.csv"))
 
+    
     df_combined = pd.read_csv(os.path.join(f"./data/{dataset_name}", "combined.csv"))
     num_labels = len(set(" ".join(df_combined.labels.tolist()).split(" ")))
 
