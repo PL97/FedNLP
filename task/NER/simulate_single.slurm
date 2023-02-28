@@ -23,4 +23,5 @@ sh ./bash_scripts/run.sh $1 $2 $3
 
 
 # conda env create -f environment.yml
-# sbatch simulate_single.slurm site-0 BC2GM bluebert # ! arg1: split, arg2: dataset, arg3: model
+# sbatch simulate_single.slurm site-0 BC2GM bluebert
+# ./bash_scripts/run.sh site-0 BC2GM bluebert

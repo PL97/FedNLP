@@ -19,9 +19,9 @@ module load parallel
 cd /home/jusun/peng0347/NLPer/task/NER/
 export PATH=/home/jusun/peng0347/miniconda3/bin:$PATH
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/jusun/peng0347/miniconda3/lib/
-sh ./bash_scripts/fed.sh $1 0 $2 $3
+sh ./bash_scripts/fed.sh $1 $2 $3 $4
 
 
 # conda env create -f environment.yml
-# sh bash_scripts/fed.sh fedavg 0 10 bert-base-uncased
-# sbatch simulate_fed.slurm fedavg 10 bluebert
+# ./bash_scripts/fed.sh fedavg BC2GM 10 bluebert
+#sbatch simulate_fed.slurm fedavg BC2GM 10 bluebert
