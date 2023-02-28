@@ -7,6 +7,7 @@ import torch.nn as nn
 from seqeval.metrics import classification_report, f1_score
 from utils.parse_metric_summary import parse_summary
 import os
+import torch
 
 from models.BERT import BertModel
 from utils.nereval import classifcation_report as ner_classificaiton_report
@@ -26,6 +27,7 @@ def _shared_train_step(model, trainloader, optimizer, device, scheduler):
         scheduler.step()
         
 
+@torch.no_grad()
 def _shared_validate(model, dataloader, device, ids_to_labels, prefix, return_meta=False):
     model.eval()
 
@@ -105,7 +107,6 @@ class trainer_bert(trainer_base):
                                   optimizer=self.optimizer, \
                                   device=self.device, \
                                   scheduler=self.scheduler)
-
 
     def validate(self, dataloader, prefix):
         return _shared_validate(model=self.model, \
