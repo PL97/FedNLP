@@ -112,7 +112,7 @@ class trainer_bert(trainer_base):
 
 class RE_FedAvg_bert(RE_FedAvg_base):
     def generate_models(self):
-        return BertModel(num_labels = 9, model_name=self.model_name)
+        return BertModel(num_labels = self.num_labels, model_name=self.model_name)
     
     def train_by_epoch(self, client_idx):
         model = self.client_models[client_idx]

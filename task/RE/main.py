@@ -43,12 +43,13 @@ if __name__ == "__main__":
     df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
     df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
 
-
+    df_combined = pd.read_csv(os.path.join(f"./data/{dataset_name}", "combined.csv"))
+    num_labels = len(set(" ".join(df_combined.labels.tolist()).split(" ")))
 
    
     if "bert" in args['model'].lower():
         ## prepare model
-        model = BertModel(num_labels = 9, model_name=args['model'])
+        model = BertModel(num_labels = num_labels, model_name=args['model'])
         ## prepare dataloader
         dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=model.tokenizer)
         
