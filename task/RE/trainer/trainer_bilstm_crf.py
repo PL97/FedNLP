@@ -24,7 +24,7 @@ def _shared_train_step(model, trainloader, optimizer, device, scheduler):
         scheduler.step()
         
 @torch.no_grad()
-def _shared_validate(model, dataloader, device, ids_to_labels, prefix):
+def _shared_validate(model, dataloader, device, ids_to_labels, prefix, return_meta=False):
     model.eval()
     preds, targets, pred_orig, target_orig = [], [], [], []
     total_loss_val, val_total = 0, 0
@@ -55,6 +55,13 @@ def _shared_validate(model, dataloader, device, ids_to_labels, prefix):
     print(f"{prefix}: ", summary)
     metric_dict = parse_summary(summary)
     metric_dict['macro avg']['loss'] = total_loss_val/val_total
+    
+    if return_meta:
+        metric_dict['meta'] = {
+            "true": target_orig,
+            "pred": pred_orig
+        }
+    
     return metric_dict
 
 
@@ -93,6 +100,14 @@ class trainer_bilstm_crf(trainer_base):
                                 device=self.device, \
                                 prefix=prefix, \
                                 ids_to_labels=self.ids_to_labels)
+
+    def inference(self, dataloader, prefix):
+        return _shared_validate(model=self.model, \
+                                dataloader=dataloader, \
+                                device=self.device, \
+                                prefix=prefix, \
+                                ids_to_labels=self.ids_to_labels, \
+                                return_meta=True)
     
 
 class NER_FedAvg_bilstm_crf(NER_FedAvg_base):
@@ -134,5 +149,14 @@ class NER_FedAvg_bilstm_crf(NER_FedAvg_base):
                                                  prefix='val', \
                                                  device=self.device)
         return ret_dict
+    
+
+    def inference(self, dataloader, ids_to_labels, prefix):
+        return _shared_validate(model=self.server_model, \
+                                dataloader=dataloader, \
+                                device=self.device, \
+                                prefix=prefix, \
+                                ids_to_labels=ids_to_labels, \
+                                return_meta=True)
         
         
