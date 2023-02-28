@@ -9,6 +9,7 @@ from utils.parse_metric_summary import parse_summary
 import os
 import torch
 from models.BILSTM_CRF import BIRNN_CRF
+from utils.nereval import classifcation_report as ner_classificaiton_report
 
 def _shared_train_step(model, trainloader, optimizer, device, scheduler):
     model.train()
@@ -24,7 +25,7 @@ def _shared_train_step(model, trainloader, optimizer, device, scheduler):
         scheduler.step()
         
 @torch.no_grad()
-def _shared_validate(model, dataloader, device, ids_to_labels, prefix):
+def _shared_validate(model, dataloader, device, ids_to_labels, prefix, return_meta=False):
     model.eval()
     preds, targets, pred_orig, target_orig = [], [], [], []
     total_loss_val, val_total = 0, 0
@@ -55,6 +56,19 @@ def _shared_validate(model, dataloader, device, ids_to_labels, prefix):
     print(f"{prefix}: ", summary)
     metric_dict = parse_summary(summary)
     metric_dict['macro avg']['loss'] = total_loss_val/val_total
+    
+    lenient_metric = ner_classificaiton_report(tags_true=target_orig, tags_pred=pred_orig, mode='lenient')
+    strict_metric = ner_classificaiton_report(tags_true=target_orig, tags_pred=pred_orig, mode='strict')
+    
+    if return_meta:
+        metric_dict['meta'] = {
+            "true": target_orig,
+            "pred": pred_orig
+        }
+    
+    metric_dict['strict'] = strict_metric
+    metric_dict['lenient'] = lenient_metric
+    
     return metric_dict
 
 
@@ -93,6 +107,14 @@ class trainer_bilstm_crf(trainer_base):
                                 device=self.device, \
                                 prefix=prefix, \
                                 ids_to_labels=self.ids_to_labels)
+
+    def inference(self, dataloader, prefix):
+        return _shared_validate(model=self.model, \
+                                dataloader=dataloader, \
+                                device=self.device, \
+                                prefix=prefix, \
+                                ids_to_labels=self.ids_to_labels, \
+                                return_meta=True)
     
 
 class NER_FedAvg_bilstm_crf(NER_FedAvg_base):
