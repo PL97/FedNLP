@@ -7,6 +7,7 @@ import torch.nn as nn
 from utils.parse_metric_summary import parse_summary
 import os
 from sklearn.metrics import classification_report
+import torch
 
 from models.BERT import BertModel
 
@@ -26,6 +27,7 @@ def _shared_train_step(model, trainloader, optimizer, device, scheduler):
         scheduler.step()
         
 
+@torch.no_grad()
 def _shared_validate(model, dataloader, device, ids_to_labels, prefix):
     model.eval()
 
@@ -90,6 +92,7 @@ class trainer_bert(trainer_base):
                                 device=self.device, \
                                 prefix=prefix, \
                                 ids_to_labels=self.ids_to_labels)
+        
     
 
 class RE_FedAvg_bert(RE_FedAvg_base):
