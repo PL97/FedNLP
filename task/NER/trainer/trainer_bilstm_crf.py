@@ -156,5 +156,13 @@ class NER_FedAvg_bilstm_crf(NER_FedAvg_base):
                                                  prefix='val', \
                                                  device=self.device)
         return ret_dict
+    
+    def inference(self, dataloader, ids_to_labels, prefix):
+        return _shared_validate(model=self.server_model, \
+                                dataloader=dataloader, \
+                                device=self.device, \
+                                prefix=prefix, \
+                                ids_to_labels=ids_to_labels, \
+                                return_meta=True)
         
         
