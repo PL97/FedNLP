@@ -78,7 +78,7 @@ if __name__ == "__main__":
             df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
             df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
             ## for debugging
-            dls[idx], stats = get_bilstm_crf_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], df_test=df_test)
+            dls[idx], stats = get_bilstm_crf_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], combined_df=df_combined, df_test=df_test)
 
         
 
@@ -86,7 +86,7 @@ if __name__ == "__main__":
                     dls=dls,
                     client_weights = [1/num_client]*num_client, 
                     lrs = [1e-3]*num_client, 
-                    max_epoches=100, 
+                    max_epoches=5, 
                     aggregation_freq=1,
                     device=device, 
                     saved_dir = saved_dir,
