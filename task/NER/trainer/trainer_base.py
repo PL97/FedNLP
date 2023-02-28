@@ -1,17 +1,10 @@
-from torch.utils.data import Dataset, DataLoader
 import torch
-
-import copy
 import os
-
-
-
-import sys
-
-from fed_algo.fedalg import FedAlg
-from models.BERT import BertModel
 from collections import defaultdict
 import numbers
+
+from fed_algo.fedalg import FedAlg
+
 
 
 class trainer_base:
@@ -78,14 +71,9 @@ class NER_FedAvg_base(FedAlg):
         pass
     
     def local_train(self, idx):
-        ## access trainloader self.dls[idx]['train']
-        ## access model self.client_models[idx]
         self.train_by_epoch(idx)
     
     def local_validate(self, idx):
-        ## access trainloader self.dls[idx]['validation']
-        ## access local model self.client_models[idx]
-        ## access global model self.server_model[idx]
         model = self.client_models[idx]
         return self.validate(model, idx)
     
