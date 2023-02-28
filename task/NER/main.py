@@ -102,13 +102,15 @@ if __name__ == "__main__":
         trainer.fit()
         
     
-    metrics = {split: trainer.validate(dls[split], prefix=split) for split in ['train', 'val', 'test']}
-    print(metrics)
+    metrics = {split: trainer.inference(dls[split], prefix=split) for split in ['train', 'val', 'test']}
+    for split in ['train', 'val', 'test']:
+        pd.DataFrame(metrics[split]['meta']).to_csv(f"{args['workspace']}/{args['split']}/{split}_prediction.csv")
+        metrics[split].pop('meta')        
+
     with open(f"{args['workspace']}/{args['split']}/evaluation.json", 'w') as f:
         json.dump(metrics, f)
     
-    for split in ['train', 'val', 'test']:
-        pd.DataFrame(metrics[split]['meta']).to_csv(f"{args['workspace']}/{args['split']}/{split}_prediction.csv")
+    
     
 
     
