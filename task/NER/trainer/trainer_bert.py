@@ -26,7 +26,7 @@ def _shared_train_step(model, trainloader, optimizer, device, scheduler):
         scheduler.step()
         
 
-def _shared_validate(model, dataloader, device, ids_to_labels, prefix):
+def _shared_validate(model, dataloader, device, ids_to_labels, prefix, return_meta=False):
     model.eval()
 
     total_acc_val, total_loss_val, val_total = 0, 0, 0
@@ -67,11 +67,11 @@ def _shared_validate(model, dataloader, device, ids_to_labels, prefix):
     lenient_metric = ner_classificaiton_report(tags_true=val_y_true, tags_pred=val_y_pred, mode='lenient')
     strict_metric = ner_classificaiton_report(tags_true=val_y_true, tags_pred=val_y_pred, mode='strict')
     
-    ## save meta data
-    metric_dict['meta'] = {
-        "true": val_y_true,
-        "pred": val_y_pred
-    }
+    if return_meta:
+        metric_dict['meta'] = {
+            "true": val_y_true,
+            "pred": val_y_pred
+        }
     
     metric_dict['strict'] = strict_metric
     metric_dict['lenient'] = lenient_metric
@@ -114,6 +114,14 @@ class trainer_bert(trainer_base):
                                 prefix=prefix, \
                                 ids_to_labels=self.ids_to_labels)
     
+    def inference(self, dataloader, prefix):
+        return _shared_validate(model=self.model, \
+                                dataloader=dataloader, \
+                                device=self.device, \
+                                prefix=prefix, \
+                                ids_to_labels=self.ids_to_labels,
+                                return_meta=True)
+    
 
 class NER_FedAvg_bert(NER_FedAvg_base):
     def generate_models(self):
@@ -150,6 +158,6 @@ class NER_FedAvg_bert(NER_FedAvg_base):
         return ret_dict
     
     def inference(self, dataloader, ids_to_labels, prefix):
-        return _shared_validate(self.server_model, dataloader, ids_to_labels=ids_to_labels, prefix=prefix, device=self.device)
+        return _shared_validate(self.server_model, dataloader, ids_to_labels=ids_to_labels, prefix=prefix, device=self.device, return_meta=True)
         
         
