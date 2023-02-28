@@ -11,6 +11,7 @@ from models.BILSTM_CRF import BIRNN_CRF
 from datasets.dataset import get_data as get_bert_data
 from datasets.BI_LSTM_dataset import get_data as get_bilstm_crf_data
 from trainer.trainer_bert import trainer_bert
+from trainer.trainer_gpt import trainer_gpt
 from trainer.trainer_bilstm_crf import trainer_bilstm_crf
 import random
 import numpy as np
@@ -74,7 +75,7 @@ if __name__ == "__main__":
         
         dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=model.tokenizer, df_test=df_test)
         
-        trainer = trainer_bert(model=model, \
+        trainer = trainer_gpt(model=model, \
                             dls=dls, \
                             ids_to_labels=stats['ids_to_labels'], \
                             lr=5e-5, \
