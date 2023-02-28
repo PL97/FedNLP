@@ -9,9 +9,7 @@ CUDA_VISIBLE_DEVICES=0 python fed_main.py \
     --ds $2 \
     --workspace $workspace/ \
     --n_split $3 \
-    --model $4 
-    # > $workspace/log.txt
+    --model $4 > $workspace/log.txt
 
 # ./bash_scripts/fed.sh fedavg BC2GM 10 bluebert
-
-#sbatch simulate_fed.slurm fedavg 10 bluebert
+# sbatch simulate_fed.slurm fedavg BC2GM 10 bluebert
