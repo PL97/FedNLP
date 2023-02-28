@@ -98,9 +98,12 @@ if __name__ == "__main__":
         fed_model.fit()
     
     metrics = {"split": fed_model.inference(dls[0][split], stats['ids_to_labels'], split) for split in ['test']}
+    for split in ['test']:
+        pd.DataFrame(metrics[split]['meta']).to_csv(f"{args['workspace']}/{split}_prediction.csv")
+        metrics[split].pop('meta')
+    
     with open(f"{args['workspace']}/evaluation.json", 'w') as f:
         json.dump(metrics, f)
     
-    for split in ['test']:
-        pd.DataFrame(metrics[split]['meta']).to_csv(f"{args['workspace']}/{split}_prediction.csv")
+    
      
