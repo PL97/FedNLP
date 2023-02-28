@@ -1,16 +1,9 @@
-from torch.utils.data import Dataset, DataLoader
 import torch
-
-import copy
 import os
-
-
-
-import sys
+from collections import defaultdict
 
 from fed_algo.fedalg import FedAlg
-from models.BERT import BertModel
-from collections import defaultdict
+
 
 
 class trainer_base:
