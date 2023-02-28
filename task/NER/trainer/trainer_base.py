@@ -11,6 +11,7 @@ import sys
 from fed_algo.fedalg import FedAlg
 from models.BERT import BertModel
 from collections import defaultdict
+import numbers
 
 
 class trainer_base:
@@ -96,8 +97,9 @@ class NER_FedAvg_base(FedAlg):
             global_metrics = self.validate(self.server_model, client_idx)
             for k, v in global_metrics['train'].items():
                 for kk, vv in v.items():
-                    ret_dict['train'][k][kk] += global_metrics['train'][k][kk]
-                    ret_dict['val'][k][kk] += global_metrics['val'][k][kk]
+                    if isinstance(global_metrics['train'][k][kk], numbers.Number): 
+                        ret_dict['train'][k][kk] += global_metrics['train'][k][kk]
+                        ret_dict['val'][k][kk] += global_metrics['val'][k][kk]
                     
 
         ## aggregate results

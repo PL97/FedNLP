@@ -13,6 +13,7 @@ from trainer.trainer_bilstm_crf import NER_FedAvg_bilstm_crf
 import random
 import numpy as np
 from collections import defaultdict
+import json
 
 
 
@@ -20,6 +21,7 @@ import argparse
 
 def parse_args():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--ds", type=str, help="WORKSPACE folder", default="2018_n2c2")
     parser.add_argument("--workspace", type=str, help="WORKSPACE folder", default="site-1")
     parser.add_argument("--n_split", type=int, help="WORKSPACE folder", default=2)
     parser.add_argument("--model", type=str, help="specify which model to use: [bert-base-uncased/BI_LSTM_CRF]", default="bert-base-uncased")
@@ -41,18 +43,20 @@ if __name__ == "__main__":
 
     dls = defaultdict(lambda: {})
     num_client = args['n_split']
-    root_dir = f"./data/2018_Track_2_ADE_and_medication_extraction_challenge/{num_client}_split"
-    
+    root_dir = f"./data/{args['ds']}/{num_client}_split"
+
+    df_combined = pd.read_csv(os.path.join(f"./data/{args['ds']}", "combined.csv"))
+    num_labels = len(set(" ".join(df_combined.labels.tolist()).split(" ")))
+    df_test = pd.read_csv(os.path.join(f"./data/{args['ds']}", "test.csv"))
     if "bert" in args['model'].lower():
         ## need to define tokenizer here
-        tokenizer = BertModel(num_labels = 19, model_name=args['model']).tokenizer
+        tokenizer = BertModel(num_labels = num_labels, model_name=args['model']).tokenizer
         
         for idx in range(num_client):    
-            ## prepare datasets
             dataset_name = f"site-{idx+1}"
             df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
             df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
-            dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=tokenizer)
+            dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=tokenizer, df_test=df_test)
             
         ## prepare models
         fed_model = NER_FedAvg_bert(
@@ -63,18 +67,18 @@ if __name__ == "__main__":
                 aggregation_freq=1,
                 device=device, 
                 saved_dir = saved_dir,
-                model_name=args['model'])
-
-
+                model_name=args['model'],
+                num_labels=num_labels)
                     
         fed_model.fit()
+        
     elif args['model'] == "BI_LSTM_CRF":
         for idx in range(num_client):
             dataset_name = f"site-{idx+1}"
             df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
             df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
             ## for debugging
-            dls[idx], stats = get_bilstm_crf_data(df_train=df_train, df_val=df_val, bs=args['batch_size'])
+            dls[idx], stats = get_bilstm_crf_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], df_test=df_test)
 
         
 
@@ -88,6 +92,15 @@ if __name__ == "__main__":
                     saved_dir = saved_dir,
                     model_name=args['model'],
                     vocab_size=stats['vocab_size'], 
-                    ids_to_labels=stats['ids_to_labels']
+                    ids_to_labels=stats['ids_to_labels'],
+                    num_labels=num_labels
                     )
         fed_model.fit()
+    
+    metrics = {"split": fed_model.inference(dls[0][split], stats['ids_to_labels'], split) for split in ['test']}
+    with open(f"{args['workspace']}/evaluation.json", 'w') as f:
+        json.dump(metrics, f)
+    
+    for split in ['test']:
+        pd.DataFrame(metrics[split]['meta']).to_csv(f"{args['workspace']}/{split}_prediction.csv")
+     
