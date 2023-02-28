@@ -13,6 +13,7 @@ from trainer.trainer_bert import trainer_bert
 import random
 import numpy as np
 import argparse
+import json
 
 
 
@@ -61,3 +62,11 @@ if __name__ == "__main__":
                             saved_dir=saved_dir, \
                             device=device)
         trainer.fit()
+
+    metrics = {split: trainer.inference(dls[split], prefix=split) for split in ['train', 'val', 'test']}
+    for split in ['train', 'val', 'test']:
+        pd.DataFrame(metrics[split]['meta']).to_csv(f"{args['workspace']}/{args['split']}/{split}_prediction.csv")
+        metrics[split].pop('meta')        
+
+    with open(f"{args['workspace']}/{args['split']}/evaluation.json", 'w') as f:
+        json.dump(metrics, f)
