@@ -13,7 +13,7 @@ from collections import defaultdict
 
 
 class FedAlg():
-    def __init__(self, dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, **args):
+    def __init__(self, dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, num_labels, **args):
         self.saved_dir = saved_dir
         self.dls = dls
         self.client_weights = client_weights
