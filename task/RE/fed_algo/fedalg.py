@@ -25,6 +25,7 @@ class FedAlg():
         self.defining_metric = "f1-score"
         self.eval_metrics = ['loss', 'precision', 'recall', 'f1-score']
         self.model_name=model_name
+        self.num_labels = num_labels
         self.args = args
         
         
