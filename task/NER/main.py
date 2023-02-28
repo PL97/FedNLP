@@ -15,6 +15,8 @@ from trainer.trainer_bilstm_crf import trainer_bilstm_crf
 import random
 import numpy as np
 import argparse
+import json
+import pandas as pd
 
 
 
@@ -45,44 +47,45 @@ if __name__ == "__main__":
 
     df_train = pd.read_csv(os.path.join(root_dir, args['split']+"_train.csv"))
     df_val = pd.read_csv(os.path.join(root_dir, args['split']+"_val.csv"))
+    df_test = pd.read_csv(os.path.join(f"./data/{dataset_name}", "test.csv"))
 
-
+    
+    df_combined = pd.read_csv(os.path.join(f"./data/{dataset_name}", "combined.csv"))
+    num_labels = len(set(" ".join(df_combined.labels.tolist()).split(" ")))
     
     if "bert" in args['model'].lower():
         ## prepare model
-        model = BertModel(num_labels = 19, model_name=args['model'])
+        model = BertModel(num_labels = num_labels, model_name=args['model'])
         ## prepare dataloader
-        dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=model.tokenizer)
-        
-    
+        dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=model.tokenizer, df_test=df_test)
         trainer = trainer_bert(model=model, \
                             dls=dls, \
                             ids_to_labels=stats['ids_to_labels'], \
                             lr=5e-5, \
-                            epochs=100, \
+                            epochs=50, \
                             saved_dir=saved_dir, \
                             device=device)
         trainer.fit()
     
     elif "gpt" in args['model'].lower():
         ## prepare model
-        model = GPTModel(num_labels = 19, model_name=args['model'])
+        model = GPTModel(num_labels = num_labels, model_name=args['model'])
         ## prepare dataloader
         
-        dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=model.tokenizer)
+        dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=model.tokenizer, df_test=df_test)
         
         trainer = trainer_bert(model=model, \
                             dls=dls, \
                             ids_to_labels=stats['ids_to_labels'], \
                             lr=5e-5, \
-                            epochs=15, \
+                            epochs=50, \
                             saved_dir=saved_dir, \
                             device=device)
         trainer.fit()
     
     elif args['model'] == "BI_LSTM_CRF":
         combined_df = pd.read_csv(os.path.join(f"./data/{dataset_name}", "combined.csv"))
-        dls, stats = get_bilstm_crf_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], combined_df=combined_df)
+        dls, stats = get_bilstm_crf_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], combined_df=combined_df, df_test=df_test)
         model = BIRNN_CRF(vocab_size=stats['vocab_size'], \
                           tagset_size = len(stats['ids_to_labels'])-2, \
                           embedding_dim=200, \
@@ -98,6 +101,14 @@ if __name__ == "__main__":
                             device=device)
         trainer.fit()
         
+    
+    metrics = {split: trainer.validate(dls[split], prefix=split) for split in ['train', 'val', 'test']}
+    print(metrics)
+    with open(f"{args['workspace']}/{args['split']}/evaluation.json", 'w') as f:
+        json.dump(metrics, f)
+    
+    for split in ['train', 'val', 'test']:
+        pd.DataFrame(metrics[split]['meta']).to_csv(f"{args['workspace']}/{args['split']}/{split}_prediction.csv")
     
 
     
