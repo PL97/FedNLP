@@ -20,7 +20,9 @@ class GPTModel(torch.nn.Module):
                         output_attentions = False, \
                         output_hidden_states = False)
             self.tokenizer = AutoTokenizer.from_pretrained("gpt2")
-            self.tokenizer.add_special_tokens({'pad_token': '[PAD]'})
+            self.tokenizer.pad_token = self.tokenizer.eos_token
+            
+            self.bert.config.pad_token_id = self.bert.config.eos_token_id
             self.bert.resize_token_embeddings(len(self.tokenizer))
         else:
             exit("model not found (source: GPT.py)")
