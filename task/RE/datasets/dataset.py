@@ -8,16 +8,10 @@ import json
 
 class DataSequence(torch.utils.data.Dataset):
 
-    def __init__(self, df, tokenizer, max_length=150):
+    def __init__(self, df, tokenizer, labels_to_ids, ids_to_labels, max_length=150):
         
-        labels = df['relation'].values.tolist()
-        unique_labels = set()
+        labels = df['labels'].values.tolist()
         
-        for lb in labels:
-            [unique_labels.add(i) for i in lb if i not in unique_labels]
-        labels_to_ids = {k: v for v, k in enumerate(sorted(unique_labels))}
-        self.ids_to_labels = {v: k for v, k in enumerate(sorted(unique_labels))}
-
         # df['text'] = [re.sub(" +", " ", re.sub("[^0-9a-zA-Z%/]", " ", x).strip()) for x in df['text']]
         df['text'] = [re.sub(" +", " ", x.strip()) for x in df['text']]
         txt = df['text'].values.tolist()
@@ -29,12 +23,11 @@ class DataSequence(torch.utils.data.Dataset):
                                return_attention_mask = True, \
                                return_tensors="pt") for i in txt]
         
-        ## read the data map and convert str into interge
-        label_map = dict(json.load(open("./data/label_map.json")))
+        # ## read the data map and convert str into interge
+        # label_map = dict(json.load(open("./data/label_map.json")))
         
-        self.labels = list(map(lambda x: label_map[x], labels))
+        self.labels = list(map(lambda x: labels_to_ids[x], labels))
         self.text = txt
-        self.ids_to_labels = dict(sorted({v:k for k, v in label_map.items()}.items(), key=lambda item: item[1]))
 
 
     def __len__(self):
@@ -55,17 +48,25 @@ class DataSequence(torch.utils.data.Dataset):
         batch_labels = self.get_batch_labels(idx)
         return batch_data, batch_labels
     
+def preprocess(df_combined):
+    labels = df_combined['labels'].values.tolist()
+    unique_labels = set(labels)
+    
+    labels_to_ids = {k: v for v, k in enumerate(sorted(unique_labels))}
+    ids_to_labels = {v: k for v, k in enumerate(sorted(unique_labels))}
+    return labels_to_ids, ids_to_labels
 
-def get_data(df_train, df_val, bs, tokenizer, df_test=None):
+def get_data(df_train, df_val, bs, tokenizer, df_test=None, df_combined=None):
     dls, stats = {}, {}
-    train_dataset = DataSequence(df_train, tokenizer)
-    val_dataset = DataSequence(df_val, tokenizer)
+    labels_to_ids, ids_to_labels = preprocess(df_combined) if df_combined is not None else df_train
+    train_dataset = DataSequence(df_train, tokenizer, labels_to_ids, ids_to_labels)
+    val_dataset = DataSequence(df_val, tokenizer, labels_to_ids, ids_to_labels)
     dls['train'] = DataLoader(train_dataset, num_workers=4, batch_size=bs, shuffle=True)
     dls['val'] = DataLoader(val_dataset, num_workers=4, batch_size=bs)
     if df_test is not None:
         test_dataset = DataSequence(df_test, tokenizer)
         dls['test'] = DataLoader(test_dataset, num_workers=4, batch_size=bs)
-    stats['ids_to_labels'] = train_dataset.ids_to_labels
+    stats['ids_to_labels'] = ids_to_labels
     return dls, stats
     
 
