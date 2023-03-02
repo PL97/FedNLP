@@ -128,6 +128,9 @@ if __name__ == "__main__":
                     )
         fed_model.fit()
     
+    else:
+        exit("cannot find the model (source: main.py)")
+    
     metrics = {split: fed_model.inference(dls[0][split], split) for split in ['test']}
     for split in ['test']:
         pd.DataFrame(metrics[split]['meta']).to_csv(f"{args['workspace']}/{split}_prediction.csv")
