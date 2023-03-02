@@ -28,7 +28,8 @@ def parse_args():
     parser.add_argument("--split", type=str, help="WORKSPACE folder", default="site-1")
     parser.add_argument("--workspace", type=str, help="WORKSPACE folder", default="site-1")
     parser.add_argument("--model", type=str, help="specify which model to use: [bert-base-uncased/BI_LSTM_CRF]", default="BI_LSTM_CRF")
-    parser.add_argument("--batch_size", type=str, help="batchsize of train/val/test loader", default=64)
+    parser.add_argument("--batch_size", type=str, help="batchsize of train/val/test loader", default=128)
+    parser.add_argument("--epochs", type=str, help="total training epochs", default=1)
     args = parser.parse_args()
     return args
 
@@ -63,7 +64,7 @@ if __name__ == "__main__":
                             dls=dls, \
                             ids_to_labels=stats['ids_to_labels'], \
                             lr=5e-5, \
-                            epochs=50, \
+                            epochs=args['epochs'], \
                             saved_dir=saved_dir, \
                             device=device)
         trainer.fit()
@@ -79,7 +80,7 @@ if __name__ == "__main__":
                             dls=dls, \
                             ids_to_labels=stats['ids_to_labels'], \
                             lr=5e-5, \
-                            epochs=50, \
+                            epochs=args['epochs'], \
                             saved_dir=saved_dir, \
                             device=device)
         trainer.fit()
@@ -96,10 +97,13 @@ if __name__ == "__main__":
                             dls=dls, \
                             ids_to_labels=stats['ids_to_labels'], \
                             lr=1e-3, \
-                            epochs=50, \
+                            epochs=args['epochs'], \
                             saved_dir=saved_dir, \
                             device=device)
         trainer.fit()
+    
+    else:
+        exit("cannot find the model (source: main.py)")
         
     
     metrics = {split: trainer.inference(dls[split], prefix=split) for split in ['train', 'val', 'test']}
