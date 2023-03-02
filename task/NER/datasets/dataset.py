@@ -50,7 +50,7 @@ def align_label(tokenized_inputs, origional_text, labels, labels_to_ids, label_a
 
 class DataSequence(torch.utils.data.Dataset):
 
-    def __init__(self, df, tokenizer, labels_to_ids, ids_to_labels, max_length=150):
+    def __init__(self, df, labels_to_ids, ids_to_labels, tokenizer, max_length=150):
         
         labels = [i.split() for i in df['labels'].values.tolist()]
 
@@ -87,7 +87,9 @@ class DataSequence(torch.utils.data.Dataset):
         return batch_data, batch_labels
     
 def preprocess(df_combined):
-    labels = df_combined['labels'].values.tolist()
+    labels = []
+    for x in df_combined['labels'].values:
+        labels.extend(x.split(" "))
     unique_labels = set(labels)
     
     labels_to_ids = {k: v for v, k in enumerate(sorted(unique_labels))}
