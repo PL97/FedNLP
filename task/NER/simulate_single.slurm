@@ -11,17 +11,17 @@
 ##SBATCH --gres=gpu:v100:1
 
 #SBATCH --gres=gpu:a100:1
-##SBATCH -p a100-8
-#SBATCH -p apollo_agate
+#SBATCH -p a100-4
+##SBATCH -p apollo_agate
 
 module load parallel
 
 cd /home/jusun/peng0347/NLPer/task/NER/
 export PATH=/home/jusun/peng0347/miniconda3/bin:$PATH
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/jusun/peng0347/miniconda3/lib/
-sh ./bash_scripts/run.sh $1 $2 $3
+sh ./bash_scripts/run.sh $1 $2 $3 $4
 
 
 # conda env create -f environment.yml
-# sbatch simulate_single.slurm site-0 BC2GM bluebert
-# ./bash_scripts/run.sh site-0 BC2GM bluebert
+# sbatch simulate_single.slurm site-0 BC2GM bluebert 50
+# ./bash_scripts/run.sh site-0 BC2GM bluebert 50
