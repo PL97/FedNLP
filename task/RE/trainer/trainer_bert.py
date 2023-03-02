@@ -48,10 +48,16 @@ def _shared_validate(model, dataloader, device, ids_to_labels, prefix, return_me
         
         
     ## prepare metric summary   
-    summary = classification_report(y_true=val_y_true, y_pred=val_y_pred, \
-                target_names=list(ids_to_labels.values()), zero_division=0)
-    print(f"{prefix}: ", summary)
-    metric_dict = parse_summary(summary)
+    target_names = [str(x) for x in ids_to_labels.values()]
+    try:
+        summary = classification_report(y_true=val_y_true, y_pred=val_y_pred, \
+                    target_names=target_names, zero_division=0)
+        print(f"{prefix}: ", summary)
+        metric_dict = parse_summary(summary)
+    except:
+        from collections import defaultdict
+        metric_dict = defaultdict(lambda: defaultdict(lambda: 0.))
+    
     metric_dict['macro avg']['loss'] = total_loss_val/val_total
     metric_dict['macro avg']['acc'] = total_acc_val/val_total
     
@@ -128,18 +134,17 @@ class RE_FedAvg_bert(RE_FedAvg_base):
         
     def validate(self, model, client_idx):
         trainloader = self.dls[client_idx]['train']
-        ids_to_labels = self.dls[client_idx]['train'].dataset.ids_to_labels
         valloader = self.dls[client_idx]['val']
         ret_dict = {}
         ret_dict['train'] =_shared_validate(model=model, \
                                             dataloader=trainloader, \
-                                            ids_to_labels=ids_to_labels, \
+                                            ids_to_labels=self.ids_to_labels, \
                                             prefix='train', \
                                             device=self.device)
         
         ret_dict['val'] =_shared_validate(model=model, \
                                                  dataloader=valloader, \
-                                                 ids_to_labels=ids_to_labels, \
+                                                 ids_to_labels=self.ids_to_labels, \
                                                  prefix='val', \
                                                  device=self.device)
         return ret_dict
