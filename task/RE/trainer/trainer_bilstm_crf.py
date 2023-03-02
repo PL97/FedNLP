@@ -1,4 +1,4 @@
-from trainer.trainer_base import trainer_base, NER_FedAvg_base
+from trainer.trainer_base import trainer_base, RE_FedAvg_base
 from transformers import get_linear_schedule_with_warmup
 from torch.optim import SGD, AdamW
 from torch.utils.tensorboard import SummaryWriter
@@ -110,7 +110,7 @@ class trainer_bilstm_crf(trainer_base):
                                 return_meta=True)
     
 
-class NER_FedAvg_bilstm_crf(NER_FedAvg_base):
+class RE_FedAvg_bilstm_crf(RE_FedAvg_base):
         
     def generate_models(self):
         return BIRNN_CRF(vocab_size=self.args['vocab_size'], \

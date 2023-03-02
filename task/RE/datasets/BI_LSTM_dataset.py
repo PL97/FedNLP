@@ -10,11 +10,11 @@ class DataSequence(torch.utils.data.Dataset):
     def __init__(self, df, labels_to_ids, ids_to_labels, word_to_ids, max_length=20):
         self.labels_to_ids, self.ids_to_labels, self.word_to_ids = labels_to_ids, ids_to_labels, word_to_ids
         self.max_length = max_length
-        self.labels_orig = [i.split() for i in df['labels'].values.tolist()]
+        self.labels_orig = df['labels'].values.tolist()
         self.texts_orig = [i.split() for i in df['text'].values.tolist()]
 
         ## get the index of the label and words in text
-        self.labels = [list(map(lambda x: self.labels_to_ids[x], l)) for l in self.labels_orig]
+        self.labels = [self.labels_to_ids[l] for l in self.labels_orig]
         self.texts = [list(map(lambda x: self.word_to_ids[x], t)) for t in self.texts_orig]
         
         ## padding and truncate to ensure same length
@@ -23,12 +23,10 @@ class DataSequence(torch.utils.data.Dataset):
              ## padding or truncate data
             t_pad = [self.word_to_ids['<PAD>']]*self.max_length
             t_pad[:min(self.max_length, len(t))] = t[:min(self.max_length, len(t))]
-            l_pad = [self.labels_to_ids['<PAD>']]*self.max_length
-            l_pad[:min(self.max_length, len(l))] = l[:min(self.max_length, len(l))]
+            
             self.text_pad.append(t_pad)
-            self.label_pad.append(l_pad)
         self.texts = self.text_pad
-        self.labels = self.label_pad
+        self.labels = self.labels
         
         
     def __len__(self):
@@ -47,12 +45,11 @@ class DataSequence(torch.utils.data.Dataset):
 
 
 def preprocessing(train_df):
-    labels_orig = [i.split() for i in train_df['labels'].values.tolist()]
+    labels_orig = train_df['labels'].values.tolist()
     texts_orig = [i.split() for i in train_df['text'].values.tolist()]
-    unique_labels = set()
+    unique_labels = set(labels_orig)
     unique_words = set()
-    for lb, txt in zip(labels_orig, texts_orig):
-        [unique_labels.add(i) for i in lb if i not in unique_labels]
+    for txt in texts_orig:
         [unique_words.add(j) for j in txt if j not in unique_words]
     labels_to_ids = {k: v for v, k in enumerate(sorted(unique_labels))}
     ids_to_labels = {v: k for v, k in enumerate(sorted(unique_labels))}
@@ -84,11 +81,10 @@ def preprocessing(train_df):
     return labels_to_ids, ids_to_labels, word_to_ids, unique_labels
 
 
-def get_data(df_train, df_val, bs):
+def get_data(df_train, df_val, bs, df_combined, df_test=None):
     
     dls, stats = {}, {}
-    df = pd.read_csv("./data/2018_Track_2_ADE_and_medication_extraction_challenge/ner.csv")
-    labels_to_ids, ids_to_labels, word_to_ids, unique_labels = preprocessing(train_df=df)
+    labels_to_ids, ids_to_labels, word_to_ids, unique_labels = preprocessing(train_df=df_combined)
     dls['train'] = torch.utils.data.DataLoader(
                         DataSequence(df_train, max_length=75, \
                         labels_to_ids=labels_to_ids, ids_to_labels=ids_to_labels, \
@@ -99,6 +95,12 @@ def get_data(df_train, df_val, bs):
                         labels_to_ids=labels_to_ids, ids_to_labels=ids_to_labels, \
                         word_to_ids=word_to_ids), \
                         batch_size=bs, shuffle=False, num_workers=4)
+    if df_test is not None:
+        dls['test'] = torch.utils.data.DataLoader(
+                    DataSequence(df_test, max_length=75, \
+                    labels_to_ids=labels_to_ids, ids_to_labels=ids_to_labels, \
+                    word_to_ids=word_to_ids), \
+                    batch_size=bs, shuffle=False, num_workers=4)
     stats['vocab_size'] = len(word_to_ids)
     stats['ids_to_labels'] = ids_to_labels
     return dls, stats

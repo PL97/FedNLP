@@ -2,11 +2,14 @@
 
 
 # CUDA_LAUNCH_BLOCKING=1 CUDA_VISIBLE_DEVICES=$2 python fed_main.py saved_dir $1
-workspace="workspace_medical_2018_challenge_$3_split_$4"
-rm -rf $workspace/$1
-mkdir $workspace/
-mkdir $workspace/$1
-CUDA_VISIBLE_DEVICES=$2 python fed_main.py \
-    --workspace $workspace/$1 \
+workspace="workspace_$2/$4/$1/"
+rm -rf $workspace/$1 && mkdir -p $workspace/$1 || mkdir -p $workspace/$1
+
+CUDA_VISIBLE_DEVICES=0 python fed_main.py \
+    --ds $2 \
+    --workspace $workspace/ \
     --n_split $3 \
-    --model $4 > $workspace/$1/log.txt
+    --model $4 > $workspace/log.txt
+
+# ./bash_scripts/fed.sh fedavg BC2GM 10 bluebert
+# sbatch simulate_fed.slurm fedavg BC2GM 10 bluebert
