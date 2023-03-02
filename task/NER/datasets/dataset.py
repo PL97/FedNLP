@@ -50,15 +50,9 @@ def align_label(tokenized_inputs, origional_text, labels, labels_to_ids, label_a
 
 class DataSequence(torch.utils.data.Dataset):
 
-    def __init__(self, df, tokenizer, max_length=150):
+    def __init__(self, df, tokenizer, labels_to_ids, ids_to_labels, max_length=150):
         
         labels = [i.split() for i in df['labels'].values.tolist()]
-        unique_labels = set()
-        
-        for lb in labels:
-            [unique_labels.add(i) for i in lb if i not in unique_labels]
-        labels_to_ids = {k: v for v, k in enumerate(sorted(unique_labels))}
-        self.ids_to_labels = {v: k for v, k in enumerate(sorted(unique_labels))}
 
         lb = [i.split(" ") for i in df['labels'].values.tolist()]
         txt = df['text'].values.tolist()
@@ -92,16 +86,24 @@ class DataSequence(torch.utils.data.Dataset):
 
         return batch_data, batch_labels
     
+def preprocess(df_combined):
+    labels = df_combined['labels'].values.tolist()
+    unique_labels = set(labels)
+    
+    labels_to_ids = {k: v for v, k in enumerate(sorted(unique_labels))}
+    ids_to_labels = {v: k for v, k in enumerate(sorted(unique_labels))}
+    return labels_to_ids, ids_to_labels
 
-def get_data(df_train, df_val, bs, tokenizer, df_test=None):
+def get_data(df_train, df_val, bs, tokenizer, df_test=None, df_combined=None):
     dls, stats = {}, {}
-    train_dataset = DataSequence(df_train, tokenizer=tokenizer)
-    val_dataset = DataSequence(df_val, tokenizer=tokenizer)
+    labels_to_ids, ids_to_labels = preprocess(df_combined) if df_combined is not None else preprocess(df_combined)
+    train_dataset = DataSequence(df_train, labels_to_ids, ids_to_labels, tokenizer=tokenizer)
+    val_dataset = DataSequence(df_val, labels_to_ids, ids_to_labels, tokenizer=tokenizer)
     dls['train'] = DataLoader(train_dataset, num_workers=4, batch_size=bs, shuffle=True)
     dls['val'] = DataLoader(val_dataset, num_workers=4, batch_size=bs, shuffle=False)
     if df_test is not None:
-        test_dataset = DataSequence(df_test, tokenizer=tokenizer)
+        test_dataset = DataSequence(df_test, labels_to_ids, ids_to_labels, tokenizer=tokenizer)
         dls['test'] = DataLoader(test_dataset, num_workers=4, batch_size=bs, shuffle=False)
-    stats['ids_to_labels'] = train_dataset.ids_to_labels
+    stats['ids_to_labels'] = ids_to_labels
     return dls, stats
     
