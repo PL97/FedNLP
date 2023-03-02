@@ -60,6 +60,10 @@ class trainer_base:
 ####################################### federated learning ##########################################
 
 class RE_FedAvg_base(FedAlg):
+    def __init__(self, dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, num_labels, **args):
+        super().__init__(dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, num_labels, **args)
+        self.ids_to_labels = args['ids_to_labels']
+    
     def generate_models(self):
         pass
     
@@ -83,7 +87,7 @@ class RE_FedAvg_base(FedAlg):
     
     def global_validate(self):
         ## access trainloader self.dls[idx]['validation']
-        label_map = self.dls[0]['train'].dataset.ids_to_labels
+        label_map = self.ids_to_labels
         ret_dict = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: 0)))
         for client_idx in range(self.client_num):
             global_metrics = self.validate(self.server_model, client_idx)
