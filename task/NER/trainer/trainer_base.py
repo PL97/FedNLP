@@ -61,6 +61,11 @@ class trainer_base:
 ####################################### federated learning ##########################################
 
 class NER_FedAvg_base(FedAlg):
+    def __init__(self, dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, num_labels, **args):
+        self.ids_to_labels = args['ids_to_labels'] #! parent's __init__ calls generate_model, it is where it calls this attribute
+        super().__init__(dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, num_labels, **args)
+       
+    
     def generate_models(self):
         pass
     
@@ -79,7 +84,6 @@ class NER_FedAvg_base(FedAlg):
     
     def global_validate(self):
         ## access trainloader self.dls[idx]['validation']
-        label_map = self.dls[0]['train'].dataset.ids_to_labels
         ret_dict = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: 0)))
         for client_idx in range(self.client_num):
             global_metrics = self.validate(self.server_model, client_idx)
