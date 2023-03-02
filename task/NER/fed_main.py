@@ -59,7 +59,7 @@ if __name__ == "__main__":
             dataset_name = f"site-{idx+1}"
             df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
             df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
-            dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=tokenizer, df_test=df_test)
+            dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=tokenizer, df_test=df_test, df_combined=df_combined)
             
         ## prepare models
         fed_model = NER_FedAvg_bert(
@@ -83,7 +83,7 @@ if __name__ == "__main__":
             dataset_name = f"site-{idx+1}"
             df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
             df_val = pd.read_csv(os.path.join(root_dir, dataset_name+"_val.csv"))
-            dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=tokenizer, df_test=df_test)
+            dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=tokenizer, df_test=df_test, df_combined=df_combined)
             
         ## prepare models
         fed_model = NER_FedAvg_gpt(
