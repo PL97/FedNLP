@@ -125,6 +125,10 @@ class trainer_bert(trainer_base):
     
 
 class NER_FedAvg_bert(NER_FedAvg_base):
+    def __init__(self, dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, num_labels, **args):
+        super().__init__(dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, num_labels, **args)
+        self.ids_to_labels = args['ids_to_labels']
+        
     def generate_models(self):
         return BertModel(num_labels = self.num_labels, model_name=self.model_name)
     
@@ -142,7 +146,7 @@ class NER_FedAvg_bert(NER_FedAvg_base):
         
     def validate(self, model, client_idx):
         trainloader = self.dls[client_idx]['train']
-        ids_to_labels = self.dls[client_idx]['train'].dataset.ids_to_labels
+        ids_to_labels = self.ids_to_labels
         valloader = self.dls[client_idx]['val']
         ret_dict = {}
         ret_dict['train'] =_shared_validate(model=model, \
@@ -158,7 +162,7 @@ class NER_FedAvg_bert(NER_FedAvg_base):
                                             device=self.device)
         return ret_dict
     
-    def inference(self, dataloader, ids_to_labels, prefix):
-        return _shared_validate(self.server_model, dataloader, ids_to_labels=ids_to_labels, prefix=prefix, device=self.device, return_meta=True)
+    def inference(self, dataloader, prefix):
+        return _shared_validate(self.server_model, dataloader, ids_to_labels=self.ids_to_labels, prefix=prefix, device=self.device, return_meta=True)
         
         

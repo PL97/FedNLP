@@ -71,7 +71,9 @@ if __name__ == "__main__":
                 device=device, 
                 saved_dir = saved_dir,
                 model_name=args['model'],
-                num_labels=num_labels)
+                num_labels=num_labels,
+                ids_to_labels=stats['ids_to_labels']
+                )
                     
         fed_model.fit()
     
@@ -95,7 +97,9 @@ if __name__ == "__main__":
                 device=device, 
                 saved_dir = saved_dir,
                 model_name=args['model'],
-                num_labels=num_labels)
+                num_labels=num_labels,
+                ids_to_labels=stats['ids_to_labels']
+                )
                     
         fed_model.fit()
         
@@ -124,7 +128,7 @@ if __name__ == "__main__":
                     )
         fed_model.fit()
     
-    metrics = {split: fed_model.inference(dls[0][split], stats['ids_to_labels'], split) for split in ['test']}
+    metrics = {split: fed_model.inference(dls[0][split], split) for split in ['test']}
     for split in ['test']:
         pd.DataFrame(metrics[split]['meta']).to_csv(f"{args['workspace']}/{split}_prediction.csv")
         metrics[split].pop('meta')
