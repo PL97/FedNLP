@@ -58,7 +58,7 @@ if __name__ == "__main__":
         ## prepare model
         model = BertModel(num_labels = num_labels, model_name=args['model'])
         ## prepare dataloader
-        dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=model.tokenizer, df_test=df_test)
+        dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=model.tokenizer, df_test=df_test, df_combined=df_combined)
         trainer = trainer_bert(model=model, \
                             dls=dls, \
                             ids_to_labels=stats['ids_to_labels'], \
@@ -73,7 +73,7 @@ if __name__ == "__main__":
         model = GPTModel(num_labels = num_labels, model_name=args['model'])
         ## prepare dataloader
         
-        dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=model.tokenizer, df_test=df_test)
+        dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=model.tokenizer, df_test=df_test, df_combined=df_combined)
         
         trainer = trainer_gpt(model=model, \
                             dls=dls, \
@@ -85,8 +85,7 @@ if __name__ == "__main__":
         trainer.fit()
     
     elif args['model'] == "BI_LSTM_CRF":
-        combined_df = pd.read_csv(os.path.join(f"./data/{dataset_name}", "combined.csv"))
-        dls, stats = get_bilstm_crf_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], combined_df=combined_df, df_test=df_test)
+        dls, stats = get_bilstm_crf_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], combined_df=df_combined, df_test=df_test)
         model = BIRNN_CRF(vocab_size=stats['vocab_size'], \
                           tagset_size = len(stats['ids_to_labels'])-2, \
                           embedding_dim=200, \
