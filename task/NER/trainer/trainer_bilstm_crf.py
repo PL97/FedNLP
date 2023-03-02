@@ -121,7 +121,7 @@ class NER_FedAvg_bilstm_crf(NER_FedAvg_base):
         
     def generate_models(self):
         return BIRNN_CRF(vocab_size=self.args['vocab_size'], \
-                          tagset_size = len(self.args['ids_to_labels'])-2, \
+                          tagset_size = len(self.ids_to_labels)-2, \
                           embedding_dim=200, \
                           num_rnn_layers=1, \
                           hidden_dim=256, device=self.device)
@@ -141,28 +141,28 @@ class NER_FedAvg_bilstm_crf(NER_FedAvg_base):
         
     def validate(self, model, client_idx):
         trainloader = self.dls[client_idx]['train']
-        ids_to_labels = self.args['ids_to_labels']
         valloader = self.dls[client_idx]['val']
         ret_dict = {}
         ret_dict['train'] =_shared_validate(model=model, \
                                             dataloader=trainloader, \
-                                            ids_to_labels=ids_to_labels, \
+                                            ids_to_labels=self.ids_to_labels, \
                                             prefix='train', \
                                             device=self.device)
         
         ret_dict['val'] =_shared_validate(model=model, \
                                                  dataloader=valloader, \
-                                                 ids_to_labels=ids_to_labels, \
+                                                 ids_to_labels=self.ids_to_labels, \
                                                  prefix='val', \
                                                  device=self.device)
         return ret_dict
     
-    def inference(self, dataloader, ids_to_labels, prefix):
+    def inference(self, dataloader, prefix):
         return _shared_validate(model=self.server_model, \
                                 dataloader=dataloader, \
                                 device=self.device, \
                                 prefix=prefix, \
-                                ids_to_labels=ids_to_labels, \
+                                ids_to_labels=self.ids_to_labels, \
                                 return_meta=True)
+        
         
         
