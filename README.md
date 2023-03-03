@@ -1,6 +1,6 @@
 ## FedNLP
 
-Git repo for paper "Federated Learning for Clinical Natural Language Processing"
+Git repo for paper "Federated Learning for Biomedical Text Mining"
 
 ## Overview
 | task      | models | datasets| FL |
@@ -24,7 +24,7 @@ chmod +x download_pretrained_models.sh
 ```
 
 ## Datasets
-Download the dataset using the link in the table. Rename RE/NER to data and place under FedNLP/NER/ and FedNLP/RE/ respectively.
+Download the dataset using the link in the table. Rename ***NER***/***RE*** to ***data*** and place under ***FedNLP/NER/*** and ***FedNLP/RE/*** respectively.
 
 
 ## Usage
@@ -80,7 +80,7 @@ cd FedNLP/RE
 ```bibtex
 @misc{FedNLP,
     author={Le Peng},
-    title={FedNLP: Federated Learning for Clinical Natural Language Processing},
+    title={FedNLP: Federated Learning for Biomedical Text Mining},
     howpublished={\url{https://github.com/PL97/FedNLP.git}},
     year={2023}
 }
