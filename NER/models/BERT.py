@@ -9,6 +9,7 @@ class BertModel(torch.nn.Module):
 
         super(BertModel, self).__init__()
 
+        model_name = model_name.lower()
         if model_name == "bluebert":
             self.bert = AutoModelForTokenClassification.from_pretrained(os.path.join(pretrained_path, "bluebert_pubmed_uncased_L-24_H-1024_A-16/"), \
                         num_labels=num_labels, \
@@ -21,7 +22,7 @@ class BertModel(torch.nn.Module):
                         output_attentions = False, \
                         output_hidden_states = False)
             self.tokenizer = BertTokenizerFast.from_pretrained(os.path.join(pretrained_path, "biobert-v1.1"))
-        elif model_name == "bioclinicalbert":
+        elif model_name == "bio_clinicalbert":
             self.bert = AutoModelForTokenClassification.from_pretrained(os.path.join(pretrained_path, "Bio_ClinicalBERT"), \
                         num_labels=num_labels, \
                         output_attentions = False, \

@@ -28,7 +28,7 @@ def parse_args():
     parser.add_argument("--split", type=str, help="WORKSPACE folder", default="site-1")
     parser.add_argument("--workspace", type=str, help="WORKSPACE folder", default="site-1")
     parser.add_argument("--model", type=str, help="specify which model to use: [bert-base-uncased/BI_LSTM_CRF]", default="BI_LSTM_CRF")
-    parser.add_argument("--batch_size", type=str, help="batchsize of train/val/test loader", default=128)
+    parser.add_argument("--batch_size", type=str, help="batchsize of train/val/test loader", default=64)
     parser.add_argument("--epochs", type=int, help="total training epochs", default=1)
     args = parser.parse_args()
     return args

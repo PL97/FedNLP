@@ -1,5 +1,4 @@
 import torch
-from torchvision import datasets, transforms
 from sklearn.model_selection import train_test_split
 import pandas as pd
 from collections import defaultdict
