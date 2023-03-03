@@ -17,7 +17,7 @@ pip install -r requirements.txt
 ```
 
 ## Datasets
-Download the dataset using the link in the table. Rename RE/NER to data and place under FedNLP/NER/ and FedNLP/RE/ respectively.
+Download the dataset using the link in the table. Rename *RE*/*NER* to *data* and place under *FedNLP/NER/* and *FedNLP/RE/* respectively.
 
 
 ## Usage
