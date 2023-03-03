@@ -53,13 +53,14 @@ cd FedNLP/NER
 ```
 
 ### Relation Extraction (RE)
+**centralized training** :point_down:
 ```bash
 cd FedNLP/RE
 
 chmod -R +x bash_scripts/
 ./bash_scripts/run.sh site-0 euadr bluebert 50 ## arg1: data split; arg2: datasets; arg3: model; arg4: total epochs
 ```
-
+**federated learning** :point_down:
 ```bash
 cd FedNLP/RE
 
