@@ -4,33 +4,33 @@ import os
 
 class BertModel(torch.nn.Module):
 
-    def __init__(self, num_labels, model_name='bert-base-uncased', pretrained_path="../../"):
+    def __init__(self, num_labels, model_name='bert-base-uncased', pretrained_path="../pretrained_models/"):
 
         super(BertModel, self).__init__()
 
         if model_name == "bluebert":
-            self.bert = AutoModelForSequenceClassification.from_pretrained(os.path.join(pretrained_path, "pretrained_models/bluebert/NCBI_BERT_pubmed_uncased_L-12_H-768_A-12/"), \
+            self.bert = AutoModelForSequenceClassification.from_pretrained(os.path.join(pretrained_path, "bluebert_pubmed_uncased_L-24_H-1024_A-16/"), \
                         num_labels=num_labels, \
                         output_attentions = False, \
                         output_hidden_states = False)
-            self.tokenizer = BertTokenizerFast.from_pretrained(os.path.join(pretrained_path, "pretrained_models/bluebert/NCBI_BERT_pubmed_uncased_L-12_H-768_A-12/"))
+            self.tokenizer = BertTokenizerFast.from_pretrained(os.path.join(pretrained_path, "bluebert_pubmed_uncased_L-24_H-1024_A-16/"))
         elif model_name == "biobert":
-            self.bert = AutoModelForSequenceClassification.from_pretrained("dmis-lab/biobert-v1.1", \
+            self.bert = AutoModelForSequenceClassification.from_pretrained(os.path.join(pretrained_path, "biobert-v1.1"), \
                         num_labels=num_labels, \
                         output_attentions = False, \
                         output_hidden_states = False)
-            self.tokenizer = BertTokenizerFast.from_pretrained("dmis-lab/biobert-v1.1")
-        elif model_name == "clinicbert":
-            self.bert = AutoModelForSequenceClassification.from_pretrained("tdobrxl/ClinicBERT", \
+            self.tokenizer = BertTokenizerFast.from_pretrained(os.path.join(pretrained_path, "biobert-v1.1"))
+        elif model_name == "bioclinicalbert":
+            self.bert = AutoModelForSequenceClassification.from_pretrained(os.path.join(pretrained_path, "Bio_ClinicalBERT"), \
                         num_labels=num_labels, \
                         output_attentions = False, \
                         output_hidden_states = False)
-            self.tokenizer = AutoTokenizer.from_pretrained("tdobrxl/ClinicBERT")
-        elif model_name == "bert-base-uncased" or model_name == "bert-base-uncased":
-            self.bert = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=num_labels, \
+            self.tokenizer = AutoTokenizer.from_pretrained(os.path.join(pretrained_path, "Bio_ClinicalBERT"))
+        elif model_name == "bert-base-uncased":
+            self.bert = AutoModelForSequenceClassification.from_pretrained(os.path.join(pretrained_path, "bert-base-uncased"), num_labels=num_labels, \
                         output_attentions = False, \
                         output_hidden_states = False)
-            self.tokenizer = BertTokenizerFast.from_pretrained(model_name)
+            self.tokenizer = BertTokenizerFast.from_pretrained(os.path.join(pretrained_path, "bert-base-uncased"))
 
         else:
             exit("model not found (source: BERT.py)")

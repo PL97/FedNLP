@@ -1,10 +1,11 @@
 
 from transformers import AutoTokenizer, AutoModelForTokenClassification, AutoModelForCausalLM
 import torch
+import os
 
 class GPTModel(torch.nn.Module):
 
-    def __init__(self, num_labels, model_name='bert-base-uncased', pretrained_path="../../"):
+    def __init__(self, num_labels, model_name='bert-base-uncased', pretrained_path="../pretrained_models/"):
 
         super(GPTModel, self).__init__()
 
@@ -15,11 +16,11 @@ class GPTModel(torch.nn.Module):
                         output_hidden_states = False)
             self.tokenizer = AutoTokenizer.from_pretrained("microsoft/biogpt")
         elif model_name == "gpt2":
-            self.bert = AutoModelForTokenClassification.from_pretrained("gpt2", \
+            self.bert = AutoModelForTokenClassification.from_pretrained(os.path.join(pretrained_path, "gpt2"), \
                         num_labels=num_labels, \
                         output_attentions = False, \
                         output_hidden_states = False)
-            self.tokenizer = AutoTokenizer.from_pretrained("gpt2")
+            self.tokenizer = AutoTokenizer.from_pretrained(os.path.join(pretrained_path, "gpt2"))
             self.tokenizer.pad_token = self.tokenizer.eos_token
             
             self.bert.config.pad_token_id = self.bert.config.eos_token_id
