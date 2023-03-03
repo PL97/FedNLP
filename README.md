@@ -70,7 +70,7 @@ cd FedNLP/RE
 ## How to cite this work
 
 ```bibtex
-@misc{ner_eval,
+@misc{FedNLP,
     author={Le Peng},
     title={FedNLP: Federated Learning for Clinical Natural Language Processing},
     howpublished={\url{https://github.com/PL97/FedNLP.git}},
