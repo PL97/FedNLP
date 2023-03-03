@@ -1,0 +1,9 @@
+## here we use python 3.9.12
+
+pytorch-lightning==1.7.7
+torch==1.10.2
+
+transformer==4.25.1
+pandas==1.4.3
+scikit-learn==1.1.1
+seqeval==1.2.2
