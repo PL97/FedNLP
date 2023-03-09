@@ -48,3 +48,17 @@ class BIRNN_CRF(nn.Module):
         features, masks = self.__build_features(xs)
         scores, tag_seq = self.crf(features, masks)
         return scores, tag_seq
+    
+if __name__ == "__main__":
+    pass
+    # net = BIRNN_CRF(vocab_size=100000, \
+    #                       tagset_size = 10, \
+    #                       embedding_dim=200, \
+    #                       num_rnn_layers=1, \
+    #                       hidden_dim=256, device=None)
+
+    # import sys
+    # sys.path.append("../")
+    # from utils.utils import count_parameters
+    
+    # count_parameters(net)

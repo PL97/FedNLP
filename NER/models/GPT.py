@@ -39,3 +39,9 @@ class GPTModel(torch.nn.Module):
 
 if __name__ == "__main__":
     pass
+    # net = GPTModel(num_labels=2, model_name="gpt2", pretrained_path="../../pretrained_models/")
+    # import sys
+    # sys.path.append("../")
+    # from utils.utils import count_parameters
+    
+    # count_parameters(net)

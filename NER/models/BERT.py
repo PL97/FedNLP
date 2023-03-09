@@ -46,16 +46,23 @@ class BertModel(torch.nn.Module):
     
 
 if __name__ == "__main__":
-    # pass
-    net = BertModel(num_labels=2, model_name="bluebert", pretrained_path="../../../")
-    tokenizer = net.tokenizer
-    max_length = 150
-    input_ids = tokenizer.encode_plus("This is a sample text.", \
-                                        padding='max_length', \
-                                        max_length = max_length, \
-                                        add_special_tokens = True, \
-                                        truncation=True, \
-                                        return_attention_mask = True)
-    print(input_ids)
-    outputs = net(torch.tensor(input_ids['input_ids']), torch.tensor(input_ids['attention_mask']), torch.tensor([1, 0]))
-    print(outputs)
+    pass
+    # net = BertModel(num_labels=2, model_name="bert-base-uncased", pretrained_path="../../pretrained_models/")
+    
+    # import sys
+    # sys.path.append("../")
+    # from utils.utils import count_parameters
+    
+    # count_parameters(net)
+    
+    # tokenizer = net.tokenizer
+    # max_length = 150
+    # input_ids = tokenizer.encode_plus("This is a sample text.", \
+    #                                     padding='max_length', \
+    #                                     max_length = max_length, \
+    #                                     add_special_tokens = True, \
+    #                                     truncation=True, \
+    #                                     return_attention_mask = True)
+    # print(input_ids)
+    # outputs = net(torch.tensor(input_ids['input_ids']), torch.tensor(input_ids['attention_mask']), torch.tensor([1, 0]))
+    # print(outputs)
