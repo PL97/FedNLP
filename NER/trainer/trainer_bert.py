@@ -50,7 +50,10 @@ def _shared_validate(model, dataloader, device, ids_to_labels, prefix, scaler, r
         mask = val_data['attention_mask'].squeeze(1).to(device)
         input_id = val_data['input_ids'].squeeze(1).to(device)
 
-        with torch.cuda.amp.autocast(enabled=(scaler is not None)):
+        if scaler is not None:
+            with torch.cuda.amp.autocast():
+                loss, logits = model(input_id, mask, val_label)
+        else:
             loss, logits = model(input_id, mask, val_label)
         
         for i in range(logits.shape[0]):
@@ -133,7 +136,8 @@ class NER_FedAvg_bert(NER_FedAvg_base):
                            trainloader=trainloader, \
                            optimizer=optimizer, \
                            scheduler=scheduler, \
-                           device=self.device)
+                           device=self.device, 
+                           scaler=self.scaler)
         
     def validate(self, model, client_idx):
         trainloader = self.dls[client_idx]['train']

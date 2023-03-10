@@ -1,30 +1,36 @@
 import torch
 import os
 from collections import defaultdict
+from transformers import get_linear_schedule_with_warmup
+from torch.optim import SGD, AdamW
+from torch.utils.tensorboard import SummaryWriter
 
 from fed_algo.fedalg import FedAlg
 
 
-
 class trainer_base:
-    def __init__(self):
-        self.model = None
-        self.trainloader = None
-        self.valloader = None
-        self.device = None
-        self.idx_to_label = None
-        self.epochs = None
-        self.lr = None
+    def __init__(self, model, dls, device, ids_to_labels, lr, epochs, saved_dir, amp):
+        self.model = model
+        self.trainloader = dls['train']
+        self.valloader = dls['val']
+        self.device = device
+        self.ids_to_labels = ids_to_labels
+        self.epochs = epochs
+        self.lr = lr
+        self.saved_dir = saved_dir
     
         ## define solver
-        self.optimizer = None
-        self.scheduler = None
-
-        self.writer = None
-        self.saved_dir = None
+        self.optimizer = AdamW(model.parameters(), lr=self.lr)
+        self.scheduler = get_linear_schedule_with_warmup(self.optimizer, 
+                                num_warmup_steps = 0,
+                                num_training_steps = self.epochs*len(self.trainloader))
 
         self.model = self.model.to(self.device)
+        self.writer = SummaryWriter(log_dir=f"{self.saved_dir}/tb_events/")
         os.makedirs(self.saved_dir, exist_ok=True)
+        
+        ## automatic mixed precision (AMP)
+        self.scaler = torch.cuda.amp.GradScaler() if amp else None
     
     def fit(self):
         best_f1 = 0

@@ -61,18 +61,17 @@ if __name__ == "__main__":
             ## for debugging
             dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=tokenizer, df_test=df_test, df_combined=df_combined)
 
-        fed_model = RE_FedAvg_bert(
-                    num_labels = num_labels,
-                    dls=dls,
-                    client_weights = [1/num_client]*num_client, 
-                    lrs = [5e-5]*num_client, 
-                    max_epoches=args['epochs'], 
-                    aggregation_freq=1,
-                    device=device, 
-                    saved_dir = saved_dir,
-                    model_name=args['model'],
-                    ids_to_labels=stats['ids_to_labels']
-                    )
+        fed_model = RE_FedAvg_bert(num_labels = num_labels, \
+                                dls=dls, \
+                                client_weights = [1/num_client]*num_client,  \
+                                lrs = [5e-5]*num_client,  \
+                                max_epoches=args['epochs'],  \
+                                aggregation_freq=1, \
+                                device=device,  \
+                                saved_dir = saved_dir, \
+                                model_name=args['model'], \
+                                ids_to_labels=stats['ids_to_labels'], \
+                                amp=True)
         fed_model.fit()
     
     elif "gpt" in args['model'].lower():
@@ -86,18 +85,17 @@ if __name__ == "__main__":
             ## for debugging
             dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=tokenizer, df_test=df_test, df_combined=df_combined)
 
-        fed_model = RE_FedAvg_gpt(
-                    num_labels = num_labels,
-                    dls=dls,
-                    client_weights = [1/num_client]*num_client, 
-                    lrs = [5e-5]*num_client, 
-                    max_epoches=args['epochs'], 
-                    aggregation_freq=1,
-                    device=device, 
-                    saved_dir = saved_dir,
-                    model_name=args['model'],
-                    ids_to_labels=stats['ids_to_labels']
-                    )
+        fed_model = RE_FedAvg_gpt(num_labels = num_labels,
+                                dls=dls, \
+                                client_weights = [1/num_client]*num_client,  \
+                                lrs = [5e-5]*num_client,  \
+                                max_epoches=args['epochs'],  \
+                                aggregation_freq=1, \
+                                device=device,  \
+                                saved_dir = saved_dir, \
+                                model_name=args['model'], \
+                                ids_to_labels=stats['ids_to_labels'], \
+                                amp=True)
         fed_model.fit()
     else:
         exit("cannot find the model (source: main.py)")

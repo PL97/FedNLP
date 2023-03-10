@@ -68,7 +68,8 @@ if __name__ == "__main__":
                             lr=5e-5, \
                             epochs=args['epochs'], \
                             saved_dir=saved_dir, \
-                            device=device)
+                            device=device, \
+                            amp=True)
         trainer.fit()
         
     elif "gpt" in args['model'].lower():
@@ -84,7 +85,8 @@ if __name__ == "__main__":
                             lr=5e-5, \
                             epochs=args['epochs'], \
                             saved_dir=saved_dir, \
-                            device=device)
+                            device=device, \
+                            amp=True)
         trainer.fit()
         
     else:

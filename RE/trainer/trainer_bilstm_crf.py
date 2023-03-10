@@ -1,7 +1,4 @@
 from trainer.trainer_base import trainer_base, RE_FedAvg_base
-from transformers import get_linear_schedule_with_warmup
-from torch.optim import SGD, AdamW
-from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 import torch.nn as nn
 from seqeval.metrics import classification_report, f1_score
@@ -10,21 +7,30 @@ import os
 import torch
 from models.BILSTM_CRF import BIRNN_CRF
 
-def _shared_train_step(model, trainloader, optimizer, device, scheduler):
+def _shared_train_step(model, trainloader, optimizer, device, scheduler, scaler):
     model.train()
     for X, y in tqdm(trainloader):
         X, y = X.to(device), y.to(device)
         y = y.long()
         optimizer.zero_grad()
-        loss = model.loss(X, y)
 
-        loss.backward()
-        nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
-        optimizer.step()
+        if scaler is not None:
+            with torch.cuda.amp.autocast():
+                loss = model.loss(X, y)
+            scaler.scale(loss).backward()
+            scaler.unscale_(optimizer)
+            # nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
+            scaler.step(optimizer)
+            scaler.update()
+        else:
+            loss = model.loss(X, y)
+            loss.backward()
+            # nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
+            optimizer.step()
         scheduler.step()
         
 @torch.no_grad()
-def _shared_validate(model, dataloader, device, ids_to_labels, prefix, return_meta=False):
+def _shared_validate(model, dataloader, device, ids_to_labels, prefix, scaler, return_meta=False):
     model.eval()
     preds, targets, pred_orig, target_orig = [], [], [], []
     total_loss_val, val_total = 0, 0
@@ -33,8 +39,14 @@ def _shared_validate(model, dataloader, device, ids_to_labels, prefix, return_me
         y = y.long()
         val_total += y.shape[0]
 
-        loss = model.loss(X, y)
-        score, pred = model(X)
+        if scaler is not None:
+            with torch.cuda.amp.autocast():
+                loss = model.loss(X, y)
+                score, pred = model(X)
+        else:
+            loss = model.loss(X, y)
+            score, pred = model(X)
+            
         total_loss_val += loss.item()
         preds.extend(pred)
         targets.extend(y.detach().cpu().tolist())
@@ -66,32 +78,14 @@ def _shared_validate(model, dataloader, device, ids_to_labels, prefix, return_me
 
 
 class trainer_bilstm_crf(trainer_base):
-    def __init__(self, model, dls, device, ids_to_labels, lr, epochs, saved_dir):
-        self.model = model
-        self.trainloader = dls['train']
-        self.valloader = dls['val']
-        self.device = device
-        self.ids_to_labels = ids_to_labels
-        self.epochs = epochs
-        self.lr = lr
-        self.saved_dir = saved_dir
-    
-        ## define solver
-        self.optimizer = AdamW(model.parameters(), lr=self.lr)
-        self.scheduler = get_linear_schedule_with_warmup(self.optimizer, 
-                                num_warmup_steps = 0,
-                                num_training_steps = self.epochs*len(self.trainloader))
-
-        self.model = self.model.to(self.device)
-        self.writer = SummaryWriter(log_dir=f"{self.saved_dir}/tb_events/")
-        os.makedirs(self.saved_dir, exist_ok=True)
 
     def train_step(self):
         return _shared_train_step(model=self.model, \
                                   trainloader=self.trainloader, \
                                   optimizer=self.optimizer, \
                                   device=self.device, \
-                                  scheduler=self.scheduler)
+                                  scheduler=self.scheduler, \
+                                  scaler=self.scaler)
 
 
     def validate(self, dataloader, prefix):
@@ -99,7 +93,8 @@ class trainer_bilstm_crf(trainer_base):
                                 dataloader=dataloader, \
                                 device=self.device, \
                                 prefix=prefix, \
-                                ids_to_labels=self.ids_to_labels)
+                                ids_to_labels=self.ids_to_labels, \
+                                scaler=self.scaler)
 
     def inference(self, dataloader, prefix):
         return _shared_validate(model=self.model, \
@@ -107,6 +102,7 @@ class trainer_bilstm_crf(trainer_base):
                                 device=self.device, \
                                 prefix=prefix, \
                                 ids_to_labels=self.ids_to_labels, \
+                                scaler=self.scaler, \
                                 return_meta=True)
     
 
@@ -117,7 +113,8 @@ class RE_FedAvg_bilstm_crf(RE_FedAvg_base):
                           tagset_size = len(self.args['ids_to_labels'])-2, \
                           embedding_dim=200, \
                           num_rnn_layers=1, \
-                          hidden_dim=256, device=self.device)
+                          hidden_dim=256, \
+                          device=self.device)
     
     
     def train_by_epoch(self, client_idx):
@@ -130,7 +127,8 @@ class RE_FedAvg_bilstm_crf(RE_FedAvg_base):
                            trainloader=trainloader, \
                            optimizer=optimizer, \
                            scheduler=scheduler, \
-                           device=self.device)
+                           device=self.device, \
+                           scaler=self.scaler)
         
     def validate(self, model, client_idx):
         trainloader = self.dls[client_idx]['train']
@@ -141,13 +139,15 @@ class RE_FedAvg_bilstm_crf(RE_FedAvg_base):
                                             dataloader=trainloader, \
                                             ids_to_labels=ids_to_labels, \
                                             prefix='train', \
-                                            device=self.device)
+                                            device=self.device, \
+                                            scaler=self.scaler)
         
         ret_dict['val'] =_shared_validate(model=model, \
                                                  dataloader=valloader, \
                                                  ids_to_labels=ids_to_labels, \
                                                  prefix='val', \
-                                                 device=self.device)
+                                                 device=self.device, \
+                                                 scaler=self.scaler)
         return ret_dict
     
 
@@ -157,6 +157,7 @@ class RE_FedAvg_bilstm_crf(RE_FedAvg_base):
                                 device=self.device, \
                                 prefix=prefix, \
                                 ids_to_labels=ids_to_labels, \
+                                scaler=self.scaler, \
                                 return_meta=True)
         
         

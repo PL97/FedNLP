@@ -11,7 +11,7 @@ import torch
 
 from models.BERT import BertModel
 
-def _shared_train_step(model, trainloader, optimizer, device, scheduler):
+def _shared_train_step(model, trainloader, optimizer, device, scheduler, scaler):
     model.train()
     for train_data, train_label in tqdm(trainloader):
         train_label = train_label.to(device)
@@ -19,16 +19,23 @@ def _shared_train_step(model, trainloader, optimizer, device, scheduler):
         input_id = train_data['input_ids'].squeeze(1).to(device)
 
         optimizer.zero_grad()
-        loss, _ = model(input_id, mask, train_label)[:2]
-
-        loss.backward()
-        nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
-        optimizer.step()
+        if scaler is not None:
+            with torch.cuda.amp.autocast():
+                loss, _ = model(input_id, mask, train_label)[:2]
+            scaler.scale(loss).backward()
+            scaler.unscale_(optimizer)
+            scaler.step(optimizer)
+            scaler.update()
+        else:
+            loss, _ = model(input_id, mask, train_label)[:2]
+            loss.backward()
+            # nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
+            optimizer.step()
         scheduler.step()
         
 
 @torch.no_grad()
-def _shared_validate(model, dataloader, device, ids_to_labels, prefix, return_meta=False):
+def _shared_validate(model, dataloader, device, ids_to_labels, prefix, scaler, return_meta=False):
     model.eval()
 
     total_acc_val, total_loss_val, val_total = 0, 0, 0
@@ -41,7 +48,11 @@ def _shared_validate(model, dataloader, device, ids_to_labels, prefix, return_me
         mask = val_data['attention_mask'].squeeze(1).to(device)
         input_id = val_data['input_ids'].squeeze(1).to(device)
 
-        loss, logits = model(input_id, mask, val_label)[:2]
+        if scaler is not None:
+            with torch.cuda.amp.autocast():
+                loss, logits = model(input_id, mask, val_label)[:2]
+        else:
+            loss, logits = model(input_id, mask, val_label)[:2]
         
         val_y_pred.extend(logits.argmax(dim=1).detach().cpu().tolist())
         val_y_true.extend(val_label.detach().cpu().tolist())
@@ -71,32 +82,14 @@ def _shared_validate(model, dataloader, device, ids_to_labels, prefix, return_me
 
 
 class trainer_bert(trainer_base):
-    def __init__(self, model, dls, device, ids_to_labels, lr, epochs, saved_dir):
-        self.model = model
-        self.trainloader = dls['train']
-        self.valloader = dls['val']
-        self.device = device
-        self.ids_to_labels = ids_to_labels
-        self.epochs = epochs
-        self.lr = lr
-        self.saved_dir = saved_dir
-    
-        ## define solver
-        self.optimizer = AdamW(model.parameters(), lr=self.lr)
-        self.scheduler = get_linear_schedule_with_warmup(self.optimizer, 
-                                num_warmup_steps = 0,
-                                num_training_steps = self.epochs*len(self.trainloader))
-
-        self.model = self.model.to(self.device)
-        self.writer = SummaryWriter(log_dir=f"{self.saved_dir}/tb_events/")
-        os.makedirs(self.saved_dir, exist_ok=True)
 
     def train_step(self):
         return _shared_train_step(model=self.model, \
                                   trainloader=self.trainloader, \
                                   optimizer=self.optimizer, \
                                   device=self.device, \
-                                  scheduler=self.scheduler)
+                                  scheduler=self.scheduler, \
+                                  scaler=self.scaler)
 
 
     def validate(self, dataloader, prefix):
@@ -104,14 +97,16 @@ class trainer_bert(trainer_base):
                                 dataloader=dataloader, \
                                 device=self.device, \
                                 prefix=prefix, \
-                                ids_to_labels=self.ids_to_labels)
+                                ids_to_labels=self.ids_to_labels, \
+                                scaler=self.scaler)
 
     def inference(self, dataloader, prefix):
         return _shared_validate(model=self.model, \
                                 dataloader=dataloader, \
                                 device=self.device, \
                                 prefix=prefix, \
-                                ids_to_labels=self.ids_to_labels,
+                                ids_to_labels=self.ids_to_labels, \
+                                scaler=self.scaler, \
                                 return_meta=True)
         
     
@@ -130,7 +125,8 @@ class RE_FedAvg_bert(RE_FedAvg_base):
                            trainloader=trainloader, \
                            optimizer=optimizer, \
                            scheduler=scheduler, \
-                           device=self.device)
+                           device=self.device, \
+                           scaler=self.scaler)
         
     def validate(self, model, client_idx):
         trainloader = self.dls[client_idx]['train']
@@ -140,17 +136,25 @@ class RE_FedAvg_bert(RE_FedAvg_base):
                                             dataloader=trainloader, \
                                             ids_to_labels=self.ids_to_labels, \
                                             prefix='train', \
-                                            device=self.device)
+                                            device=self.device, \
+                                            scaler=self.scaler)
         
         ret_dict['val'] =_shared_validate(model=model, \
                                                  dataloader=valloader, \
                                                  ids_to_labels=self.ids_to_labels, \
                                                  prefix='val', \
-                                                 device=self.device)
+                                                 device=self.device, \
+                                                 scaler=self.scaler)
         return ret_dict
 
     def inference(self, dataloader, ids_to_labels, prefix):
-        return _shared_validate(self.server_model, dataloader, ids_to_labels=ids_to_labels, prefix=prefix, device=self.device, return_meta=True)
+        return _shared_validate(self.server_model, \
+                                dataloader, \
+                                ids_to_labels=ids_to_labels, \
+                                prefix=prefix, \
+                                device=self.device, \
+                                scaler=self.scaler, \
+                                return_meta=True)
         
         
         
