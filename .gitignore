@@ -3,13 +3,13 @@
 *.jpeg
 *.jpg
 *.csv
-*.pyc
+*.py[cod]
 *.corp
 *.out
 *.html
 
 
-
+__pycache__/
 site*/
 fedavg*/
 *workspace*/
