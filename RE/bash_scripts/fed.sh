@@ -3,7 +3,7 @@
 
 # CUDA_LAUNCH_BLOCKING=1 CUDA_VISIBLE_DEVICES=$2 python fed_main.py saved_dir $1
 workspace="workspace_$2/$4/$1/"
-rm -rf $workspace/$1 && mkdir -p $workspace/$1 || mkdir -p $workspace/$1
+rm -rf $workspace/$1 && mkdir -p $workspace || mkdir -p $workspace
 
 CUDA_VISIBLE_DEVICES=0 python fed_main.py \
     --ds $2 \
