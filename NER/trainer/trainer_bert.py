@@ -12,7 +12,7 @@ import torch
 from models.BERT import BertModel
 from utils.nereval import classifcation_report as ner_classificaiton_report
 
-def _shared_train_step(model, trainloader, optimizer, device, scheduler):
+def _shared_train_step(model, trainloader, optimizer, device, scheduler, scaler):
     model.train()
     for train_data, train_label in tqdm(trainloader):
         train_label = train_label.to(device)
@@ -20,15 +20,24 @@ def _shared_train_step(model, trainloader, optimizer, device, scheduler):
         input_id = train_data['input_ids'].squeeze(1).to(device)
 
         optimizer.zero_grad()
-        loss, _ = model(input_id, mask, train_label)
-        loss.backward()
-        nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
-        optimizer.step()
+        if scaler is not None:
+            with torch.cuda.amp.autocast():
+                loss, _ = model(input_id, mask, train_label)
+            scaler.scale(loss).backward()
+            scaler.unscale_(optimizer)
+            # nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
+            scaler.step(optimizer)
+            scaler.update()
+        else:
+            loss, _ = model(input_id, mask, train_label)
+            loss.backward()
+            # nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
+            optimizer.step()
         scheduler.step()
         
 
 @torch.no_grad()
-def _shared_validate(model, dataloader, device, ids_to_labels, prefix, return_meta=False):
+def _shared_validate(model, dataloader, device, ids_to_labels, prefix, scaler, return_meta=False):
     model.eval()
 
     total_acc_val, total_loss_val, val_total = 0, 0, 0
@@ -41,7 +50,8 @@ def _shared_validate(model, dataloader, device, ids_to_labels, prefix, return_me
         mask = val_data['attention_mask'].squeeze(1).to(device)
         input_id = val_data['input_ids'].squeeze(1).to(device)
 
-        loss, logits = model(input_id, mask, val_label)
+        with torch.cuda.amp.autocast(enabled=(scaler is not None)):
+            loss, logits = model(input_id, mask, val_label)
         
         for i in range(logits.shape[0]):
             ## remove pad tokens
@@ -81,46 +91,30 @@ def _shared_validate(model, dataloader, device, ids_to_labels, prefix, return_me
 
 
 class trainer_bert(trainer_base):
-    def __init__(self, model, dls, device, ids_to_labels, lr, epochs, saved_dir):
-        self.model = model
-        self.trainloader = dls['train']
-        self.valloader = dls['val']
-        self.device = device
-        self.ids_to_labels = ids_to_labels
-        self.epochs = epochs
-        self.lr = lr
-        self.saved_dir = saved_dir
-    
-        ## define solver
-        self.optimizer = AdamW(model.parameters(), lr=self.lr)
-        self.scheduler = get_linear_schedule_with_warmup(self.optimizer, 
-                                num_warmup_steps = 0,
-                                num_training_steps = self.epochs*len(self.trainloader))
-
-        self.model = self.model.to(self.device)
-        self.writer = SummaryWriter(log_dir=f"{self.saved_dir}/tb_events/")
-        os.makedirs(self.saved_dir, exist_ok=True)
 
     def train_step(self):
         return _shared_train_step(model=self.model, \
                                   trainloader=self.trainloader, \
                                   optimizer=self.optimizer, \
                                   device=self.device, \
-                                  scheduler=self.scheduler)
+                                  scheduler=self.scheduler, \
+                                  scaler=self.scaler)
 
     def validate(self, dataloader, prefix):
         return _shared_validate(model=self.model, \
                                 dataloader=dataloader, \
                                 device=self.device, \
                                 prefix=prefix, \
-                                ids_to_labels=self.ids_to_labels)
+                                ids_to_labels=self.ids_to_labels, \
+                                scaler=self.scaler)
     
     def inference(self, dataloader, prefix):
         return _shared_validate(model=self.model, \
                                 dataloader=dataloader, \
                                 device=self.device, \
                                 prefix=prefix, \
-                                ids_to_labels=self.ids_to_labels,
+                                ids_to_labels=self.ids_to_labels, \
+                                scaler=self.scaler, \
                                 return_meta=True)
     
 
@@ -149,16 +143,24 @@ class NER_FedAvg_bert(NER_FedAvg_base):
                                             dataloader=trainloader, \
                                             ids_to_labels=self.ids_to_labels, \
                                             prefix='train', \
-                                            device=self.device)
+                                            device=self.device, \
+                                            scaler=self.scaler)
         
         ret_dict['val'] =_shared_validate(model=model, \
                                             dataloader=valloader, \
                                             ids_to_labels=self.ids_to_labels, \
                                             prefix='val', \
-                                            device=self.device)
+                                            device=self.device, \
+                                            scaler=self.scaler)
         return ret_dict
     
     def inference(self, dataloader, prefix):
-        return _shared_validate(self.server_model, dataloader, ids_to_labels=self.ids_to_labels, prefix=prefix, device=self.device, return_meta=True)
+        return _shared_validate(self.server_model, \
+                                dataloader, \
+                                ids_to_labels=self.ids_to_labels, \
+                                prefix=prefix, \
+                                device=self.device, \
+                                scaler=self.scaler, \
+                                return_meta=True)
         
         

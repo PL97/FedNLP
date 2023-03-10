@@ -13,7 +13,7 @@ from collections import defaultdict
 
 
 class FedAlg():
-    def __init__(self, dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, num_labels, **args):
+    def __init__(self, dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, num_labels, amp, **args):
         self.saved_dir = saved_dir
         self.dls = dls
         self.client_weights = client_weights
@@ -36,7 +36,9 @@ class FedAlg():
         self.schedulers = [get_linear_schedule_with_warmup(self.optimizers[idx], 
                                             num_warmup_steps = 0,
                                             num_training_steps = self.max_epoches*len(dls[idx]['train'])) for idx in range(self.client_num)]
-        # self.optimizers = [AdamW(params=client_models[idx].parameters(), lr=lrs[i], weight_decay=1e-5) for idx in range(client_num)]
+       
+        ## AMP
+        self.scaler = torch.cuda.amp.GradScaler() if amp else None
     
     def generate_models(self):
         pass

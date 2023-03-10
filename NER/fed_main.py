@@ -62,18 +62,17 @@ if __name__ == "__main__":
             dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=tokenizer, df_test=df_test, df_combined=df_combined)
             
         ## prepare models
-        fed_model = NER_FedAvg_bert(
-                dls=dls,
-                client_weights = [1/num_client]*num_client, 
-                lrs = [5e-5]*num_client, 
-                max_epoches=args['epochs'], 
-                aggregation_freq=1,
-                device=device, 
-                saved_dir = saved_dir,
-                model_name=args['model'],
-                num_labels=num_labels,
-                ids_to_labels=stats['ids_to_labels']
-                )
+        fed_model = NER_FedAvg_bert(dls=dls, \
+                                    client_weights = [1/num_client]*num_client,  \
+                                    lrs = [5e-5]*num_client,  \
+                                    max_epoches=args['epochs'],  \
+                                    aggregation_freq=1, \
+                                    device=device,  \
+                                    saved_dir = saved_dir, \
+                                    model_name=args['model'], \
+                                    num_labels=num_labels, \
+                                    ids_to_labels=stats['ids_to_labels'],  \
+                                    amp=True)
                     
         fed_model.fit()
     
@@ -88,18 +87,17 @@ if __name__ == "__main__":
             dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=tokenizer, df_test=df_test, df_combined=df_combined)
             
         ## prepare models
-        fed_model = NER_FedAvg_gpt(
-                dls=dls,
-                client_weights = [1/num_client]*num_client, 
-                lrs = [5e-5]*num_client, 
-                max_epoches=args['epochs'], 
-                aggregation_freq=1,
-                device=device, 
-                saved_dir = saved_dir,
-                model_name=args['model'],
-                num_labels=num_labels,
-                ids_to_labels=stats['ids_to_labels']
-                )
+        fed_model = NER_FedAvg_gpt(dls=dls, \
+                                    client_weights = [1/num_client]*num_client,  \
+                                    lrs = [5e-5]*num_client,  \
+                                    max_epoches=args['epochs'],  \
+                                    aggregation_freq=1, \
+                                    device=device,  \
+                                    saved_dir = saved_dir, \
+                                    model_name=args['model'], \
+                                    num_labels=num_labels, \
+                                    ids_to_labels=stats['ids_to_labels'], \
+                                    amp=True)
                     
         fed_model.fit()
         
