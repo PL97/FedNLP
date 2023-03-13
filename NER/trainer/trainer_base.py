@@ -68,9 +68,9 @@ class trainer_base:
 ####################################### federated learning ##########################################
 
 class NER_FedAvg_base(FedAlg):
-    def __init__(self, dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, num_labels, **args):
+    def __init__(self, dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, num_labels, amp, **args):
         self.ids_to_labels = args['ids_to_labels'] #! parent's __init__ calls generate_model, it is where it calls this attribute
-        super().__init__(dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, num_labels, **args)
+        super().__init__(dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, num_labels, amp, **args)
        
     
     def generate_models(self):

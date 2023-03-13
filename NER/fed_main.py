@@ -122,8 +122,8 @@ if __name__ == "__main__":
                     model_name=args['model'],
                     vocab_size=stats['vocab_size'], 
                     ids_to_labels=stats['ids_to_labels'],
-                    num_labels=num_labels
-                    )
+                    num_labels=num_labels, \
+                    amp=True)
         fed_model.fit()
     
     else:
