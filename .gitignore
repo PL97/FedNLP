@@ -8,7 +8,7 @@
 *.out
 *.html
 *.slurm
-.ignore$
+*.ignore
 
 
 __pycache__/

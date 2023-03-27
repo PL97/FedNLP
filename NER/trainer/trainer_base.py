@@ -97,8 +97,8 @@ class NER_FedAvg_base(FedAlg):
             for k, v in global_metrics['train'].items():
                 for kk, vv in v.items():
                     if isinstance(global_metrics['train'][k][kk], numbers.Number): 
-                        ret_dict['train'][k][kk] += global_metrics['train'][k][kk]
-                        ret_dict['val'][k][kk] += global_metrics['val'][k][kk]
+                        ret_dict['train'][k][kk] += global_metrics['train'][k][kk] if k in global_metrics['train'] else 0  # special case: client got 0 samples for token k
+                        ret_dict['val'][k][kk] += global_metrics['val'][k][kk] if k in global_metrics['val'] else 0 # special case: client got 0 samples for token k
                     
 
         ## aggregate results
