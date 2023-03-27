@@ -8,6 +8,7 @@
 *.out
 *.html
 *.slurm
+.ignore$
 
 
 __pycache__/
@@ -15,5 +16,6 @@ site*/
 fedavg*/
 *workspace*/
 data/
+data*/
 data_pre/
 pretrained_models/
