@@ -83,11 +83,19 @@ class NER_FedAvg_base(FedAlg):
         pass
     
     def local_train(self, idx):
-        self.train_by_epoch(idx)
+        client_model = self.generate_models().to(self.device)
+        client_model.load_state_dict(self.client_state_dict[idx])
+        client_optimizer = AdamW(params=client_model.parameters(), lr=self.lrs[idx])
+        client_scheduler = get_linear_schedule_with_warmup(client_optimizer, 
+                                            num_warmup_steps = 0,
+                                            num_training_steps = len(self.dls[idx]['train']))
+        self.train_by_epoch(client_model, self.dls[idx]['train'], client_optimizer, client_scheduler)
+        self.client_state_dict[idx] = client_model.cpu().state_dict()
     
     def local_validate(self, idx):
-        model = self.client_models[idx]
-        return self.validate(model, idx)
+        client_model = self.generate_models().to(self.device)
+        client_model.load_state_dict(self.client_state_dict[idx])
+        return self.validate(client_model, idx)
     
     def global_validate(self):
         ## access trainloader self.dls[idx]['validation']
@@ -111,18 +119,20 @@ class NER_FedAvg_base(FedAlg):
         return ret_dict
     
 
-    def communication(self, server_model, models, not_update_client=False, bn_exclude=False):
+    def communication(self, server_model, not_update_client=False, bn_exclude=False):
         with torch.no_grad():
+            server_state_dict = server_model.cpu().state_dict()
             # aggregate params
-            for key in server_model.state_dict().keys():
+            for key in server_state_dict.keys():
                 if 'norm' not in key:
-                    temp = torch.zeros_like(server_model.state_dict()[key], dtype=torch.float32)
+                    temp = torch.zeros_like(server_state_dict[key], dtype=torch.float32)
                     for client_idx in range(self.client_num):
-                        temp += self.client_weights[client_idx] * models[client_idx].state_dict()[key]
-                    server_model.state_dict()[key].data.copy_(temp)
+                        temp += self.client_weights[client_idx] * self.client_state_dict[client_idx][key]
+                    server_state_dict[key].data.copy_(temp)
                     # if not not_update_client:
                     for client_idx in range(len(self.client_weights)):
-                        models[client_idx].state_dict()[key].data.copy_(server_model.state_dict()[key])
-        return server_model, models
+                        self.client_state_dict[client_idx][key].data.copy_(server_state_dict[key])
+            server_model.load_state_dict(server_state_dict)
+        return server_model
         
         
