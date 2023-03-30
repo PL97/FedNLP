@@ -62,7 +62,7 @@ def _shared_validate(model, dataloader, device, ids_to_labels, prefix, scaler, r
     target_names = [str(x) for x in ids_to_labels.values()]
     try:
         summary = classification_report(y_true=val_y_true, y_pred=val_y_pred, \
-                    target_names=target_names, zero_division=0)
+                    target_names=target_names, zero_division=0, digits=3)
         print(f"{prefix}: ", summary)
         metric_dict = parse_summary(summary)
     except:
@@ -100,8 +100,8 @@ class trainer_bert(trainer_base):
                                 ids_to_labels=self.ids_to_labels, \
                                 scaler=self.scaler)
 
-    def inference(self, dataloader, prefix):
-        return _shared_validate(model=self.model, \
+    def inference(self, model, dataloader, prefix):
+        return _shared_validate(model=model, \
                                 dataloader=dataloader, \
                                 device=self.device, \
                                 prefix=prefix, \

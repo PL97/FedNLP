@@ -63,7 +63,7 @@ def _shared_validate(model, dataloader, device, ids_to_labels, prefix, scaler, r
             target_orig.append(ids_to_labels[t])   
         
     ## prepare metric summary   
-    summary = classification_report(y_true=[target_orig], y_pred=[pred_orig], zero_division=0)
+    summary = classification_report(y_true=[target_orig], y_pred=[pred_orig], zero_division=0, digits=3)
     print(f"{prefix}: ", summary)
     metric_dict = parse_summary(summary)
     metric_dict['macro avg']['loss'] = total_loss_val/val_total
