@@ -101,7 +101,7 @@ if __name__ == "__main__":
                     
         fed_model.fit()
         
-    elif args['model'] == "BI_LSTM_CRF":
+    elif args['model'].lower() == "bi_lstm_crf":
         for idx in range(num_client):
             dataset_name = f"site-{idx+1}"
             df_train = pd.read_csv(os.path.join(root_dir, dataset_name+"_train.csv"))
