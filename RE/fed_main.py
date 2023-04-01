@@ -26,6 +26,7 @@ def parse_args():
     parser.add_argument("--model", type=str, help="specify which model to use: [bert-base-uncased/BI_LSTM_CRF]", default="bert-base-uncased")
     parser.add_argument("--batch_size", type=str, help="batchsize of train/val/test loader", default=128)
     parser.add_argument("--epochs", type=int, help="total training epochs", default=1)
+    parser.add_argument("--eval", action='store_true', help="evaluate best model")
     args = parser.parse_args()
     return args
 
@@ -52,7 +53,8 @@ if __name__ == "__main__":
     df_test = pd.read_csv(os.path.join(f"./data/{args['ds']}", "test.csv"))
     if 'bert' in args['model'].lower():
         ## need to define tokenizer here
-        tokenizer = BertModel(num_labels = num_labels, model_name=args['model']).tokenizer
+        model = BertModel(num_labels = num_labels, model_name=args['model'])
+        tokenizer = model.tokenizer
         
         for idx in range(num_client):
             dataset_name = f"site-{idx+1}"
@@ -61,7 +63,7 @@ if __name__ == "__main__":
             ## for debugging
             dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=tokenizer, df_test=df_test, df_combined=df_combined)
 
-        fed_model = RE_FedAvg_bert(num_labels = num_labels, \
+        trainer = RE_FedAvg_bert(num_labels = num_labels, \
                                 dls=dls, \
                                 client_weights = [1/num_client]*num_client,  \
                                 lrs = [5e-5]*num_client,  \
@@ -72,11 +74,11 @@ if __name__ == "__main__":
                                 model_name=args['model'], \
                                 ids_to_labels=stats['ids_to_labels'], \
                                 amp=True)
-        fed_model.fit()
     
     elif "gpt" in args['model'].lower():
         ## need to define tokenizer here
-        tokenizer = GPTModel(num_labels = num_labels, model_name=args['model']).tokenizer
+        model = GPTModel(num_labels = num_labels, model_name=args['model'])
+        tokenizer = model.tokenizer
         
         for idx in range(num_client):
             dataset_name = f"site-{idx+1}"
@@ -85,7 +87,7 @@ if __name__ == "__main__":
             ## for debugging
             dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=tokenizer, df_test=df_test, df_combined=df_combined)
 
-        fed_model = RE_FedAvg_gpt(num_labels = num_labels,
+        trainer = RE_FedAvg_gpt(num_labels = num_labels,
                                 dls=dls, \
                                 client_weights = [1/num_client]*num_client,  \
                                 lrs = [5e-5]*num_client,  \
@@ -96,12 +98,16 @@ if __name__ == "__main__":
                                 model_name=args['model'], \
                                 ids_to_labels=stats['ids_to_labels'], \
                                 amp=True)
-        fed_model.fit()
     else:
         exit("cannot find the model (source: main.py)")
-        
 
-    metrics = {split: fed_model.inference(dls[0][split], stats['ids_to_labels'], split) for split in ['test']}
+    if not args['eval']:
+        trainer.fit()
+    
+    model.load_state_dict(torch.load(f"./{trainer.saved_dir}/global/best.pt"))
+    model = model.to(device)
+
+    metrics = {split: trainer.inference(model, dls[0][split], stats['ids_to_labels'], split) for split in ['test']}
     for split in ['test']:
         pd.DataFrame(metrics[split]['meta']).to_csv(f"{args['workspace']}/{split}_prediction.csv")
         metrics[split].pop('meta')

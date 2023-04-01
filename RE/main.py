@@ -29,6 +29,7 @@ def parse_args():
     parser.add_argument("--model", type=str, help="specify which model to use: [bert-base-uncased/BI_LSTM_CRF]", default="BI_LSTM_CRF")
     parser.add_argument("--batch_size", type=str, help="batchsize of train/val/test loader", default=64)
     parser.add_argument("--epochs", type=int, help="total training epochs", default=1)
+    parser.add_argument("--eval", action='store_true', help="evaluate best model")
     args = parser.parse_args()
     return args
 
@@ -49,6 +50,7 @@ if __name__ == "__main__":
     df_train = pd.read_csv(os.path.join(root_dir, args['split']+"_train.csv"))
     df_val = pd.read_csv(os.path.join(root_dir, args['split']+"_val.csv"))
     df_test = pd.read_csv(os.path.join(f"./data/{dataset_name}", "test.csv"))
+    
 
     
     df_combined = pd.read_csv(os.path.join(f"./data/{dataset_name}", "combined.csv"))
@@ -61,7 +63,6 @@ if __name__ == "__main__":
         model = BertModel(num_labels = num_labels, model_name=args['model'])
         ## prepare dataloader
         dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=model.tokenizer, df_test=df_test, df_combined=df_combined)
-
         trainer = trainer_bert(model=model, \
                             dls=dls, \
                             ids_to_labels=stats['ids_to_labels'], \
@@ -70,7 +71,6 @@ if __name__ == "__main__":
                             saved_dir=saved_dir, \
                             device=device, \
                             amp=True)
-        trainer.fit()
         
     elif "gpt" in args['model'].lower():
         ## prepare model
@@ -87,13 +87,15 @@ if __name__ == "__main__":
                             saved_dir=saved_dir, \
                             device=device, \
                             amp=True)
-        trainer.fit()
         
     else:
         exit("cannot find the model (source: main.py)")
     
-
-    metrics = {split: trainer.inference(dls[split], prefix=split) for split in ['train', 'val', 'test']}
+    if not args['eval']:
+        trainer.fit()
+    
+    model.load_state_dict(torch.load(f"./{trainer.saved_dir}/best.pt"))
+    metrics = {split: trainer.inference(model, dls[split], prefix=split) for split in ['train', 'val', 'test']}
     for split in ['train', 'val', 'test']:
         pd.DataFrame(metrics[split]['meta']).to_csv(f"{args['workspace']}/{args['split']}/{split}_prediction.csv")
         metrics[split].pop('meta')        

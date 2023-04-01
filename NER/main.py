@@ -30,6 +30,7 @@ def parse_args():
     parser.add_argument("--model", type=str, help="specify which model to use: [bert-base-uncased/BI_LSTM_CRF]", default="BI_LSTM_CRF")
     parser.add_argument("--batch_size", type=str, help="batchsize of train/val/test loader", default=32)
     parser.add_argument("--epochs", type=int, help="total training epochs", default=1)
+    parser.add_argument("--eval", action='store_true', help="evaluate best model")
     args = parser.parse_args()
     return args
 
@@ -85,7 +86,6 @@ if __name__ == "__main__":
                             saved_dir=saved_dir, \
                             device=device, \
                             amp=True)
-        trainer.fit()
     
     elif args['model'].lower() == "bi_lstm_crf":
         dls, stats = get_bilstm_crf_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], combined_df=df_combined, df_test=df_test)
@@ -103,12 +103,14 @@ if __name__ == "__main__":
                             saved_dir=saved_dir, \
                             device=device, \
                             amp=True)
-        trainer.fit()
     
     else:
         exit("cannot find the model (source: main.py)")
-        
     
+    if not args['eval']:
+        trainer.fit()
+        
+    model.load_state_dict(torch.load(f"./{trainer.saved_dir}/best.pt"))
     metrics = {split: trainer.inference(dls[split], prefix=split) for split in ['train', 'val', 'test']}
     for split in ['train', 'val', 'test']:
         pd.DataFrame(metrics[split]['meta']).to_csv(f"{args['workspace']}/{args['split']}/{split}_prediction.csv")

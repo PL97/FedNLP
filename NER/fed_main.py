@@ -29,6 +29,7 @@ def parse_args():
     parser.add_argument("--model", type=str, help="specify which model to use: [bert-base-uncased/BI_LSTM_CRF]", default="bert-base-uncased")
     parser.add_argument("--batch_size", type=str, help="batchsize of train/val/test loader", default=64)
     parser.add_argument("--epochs", type=int, help="total training epochs", default=1)
+    parser.add_argument("--eval", action='store_true', help="evaluate best model")
     args = parser.parse_args()
     return args
 

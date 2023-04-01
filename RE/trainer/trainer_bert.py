@@ -13,6 +13,7 @@ from models.BERT import BertModel
 
 def _shared_train_step(model, trainloader, optimizer, device, scheduler, scaler):
     model.train()
+    model.to(device)
     for train_data, train_label in tqdm(trainloader):
         train_label = train_label.to(device)
         mask = train_data['attention_mask'].squeeze(1).to(device)
@@ -37,6 +38,7 @@ def _shared_train_step(model, trainloader, optimizer, device, scheduler, scaler)
 @torch.no_grad()
 def _shared_validate(model, dataloader, device, ids_to_labels, prefix, scaler, return_meta=False):
     model.eval()
+    model.to(device)
 
     total_acc_val, total_loss_val, val_total = 0, 0, 0
     val_y_pred, val_y_true = [], []
@@ -147,8 +149,8 @@ class RE_FedAvg_bert(RE_FedAvg_base):
                                                  scaler=self.scaler)
         return ret_dict
 
-    def inference(self, dataloader, ids_to_labels, prefix):
-        return _shared_validate(self.server_model, \
+    def inference(self, model, dataloader, ids_to_labels, prefix):
+        return _shared_validate(model, \
                                 dataloader, \
                                 ids_to_labels=ids_to_labels, \
                                 prefix=prefix, \
