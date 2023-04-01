@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-workspace="workspace_$2/$3/baseline/"
+workspace="workspace$5/$2/$3/baseline/"
 
 rm -rf $workspace/$1 && mkdir -p $workspace/$1 || mkdir -p $workspace/$1
 

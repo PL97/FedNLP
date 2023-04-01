@@ -10,6 +10,7 @@ from transformers import get_linear_schedule_with_warmup
 import os
 from torch.utils.tensorboard import SummaryWriter
 from collections import defaultdict
+import gc
 
 
 class FedAlg():
@@ -30,12 +31,8 @@ class FedAlg():
         
         
         ## setup models and training configs
-        self.server_model = self.generate_models().to(device)
-        self.client_models = [copy.deepcopy(self.server_model).to(device) for i in range(self.client_num)]
-        self.optimizers = [AdamW(params=self.client_models[idx].parameters(), lr=self.lrs[idx]) for idx in range(self.client_num)]
-        self.schedulers = [get_linear_schedule_with_warmup(self.optimizers[idx], 
-                                            num_warmup_steps = 0,
-                                            num_training_steps = self.max_epoches*len(dls[idx]['train'])) for idx in range(self.client_num)]
+        self.server_model = self.generate_models()
+        self.client_state_dict = [copy.deepcopy(self.server_model.state_dict()) for i in range(self.client_num)]
        
         ## AMP
         self.scaler = torch.cuda.amp.GradScaler() if amp else None
@@ -57,11 +54,13 @@ class FedAlg():
     
     def save_models(self, file_name="best.pt"):
         for client_idx in range(self.client_num):
-            torch.save(self.client_models[client_idx].state_dict(), f"./{self.saved_dir}/site-{client_idx+1}/{file_name}")
+            torch.save(self.client_state_dict[client_idx], f"./{self.saved_dir}/site-{client_idx+1}/{file_name}")
         torch.save(self.server_model.state_dict(), f"./{self.saved_dir}/global/{file_name}")
     
-    def communication(self, server_model, models, not_update_client=False, bn_exclude=False):
+    
+    def communication(self, server_model, not_update_client=False, bn_exclude=False):
         with torch.no_grad():
+            ## offload model from gpu to cpu
             # aggregate params
             if bn_exclude:
                 for key in server_model.state_dict().keys():
@@ -69,28 +68,28 @@ class FedAlg():
                         temp = torch.zeros_like(server_model.state_dict()[key], dtype=torch.float32)
                         # temp = torch.zeros_like(server_model.state_dict()[key], dtype=type(server_model.state_dict()[key]))
                         for client_idx in range(len(self.client_weights)):
-                            temp += self.client_weights[client_idx] * models[client_idx].state_dict()[key]
+                            temp += self.client_weights[client_idx] * self.client_state_dict[client_idx][key]
                         server_model.state_dict()[key].data.copy_(temp)
                         # if not not_update_client:
                         for client_idx in range(len(self.client_weights)):
-                            models[client_idx].state_dict()[key].data.copy_(server_model.state_dict()[key])
+                            self.client_state_dict[client_idx][key].data.copy_(server_model.state_dict()[key])
             else:
                 for key in server_model.state_dict().keys():
                     # num_batches_tracked is a non trainable LongTensor and
                     # num_batches_tracked are the same for all clients for the given datasets
                     #if 'num_batches_tracked' in key or (args.conv_only and 'classifier' in key):
                     if 'num_batches_tracked' in key:
-                        server_model.state_dict()[key].data.copy_(models[0].state_dict()[key])
+                        server_model.state_dict()[key].data.copy_(self.client_state_dict[client_idx][key])
                     else:
                         temp = torch.zeros_like(server_model.state_dict()[key], dtype=torch.float32)
                         # temp = torch.zeros_like(server_model.state_dict()[key], dtype=type(server_model.state_dict()[key]))
                         for client_idx in range(len(self.client_weights)):
-                            temp += self.client_weights[client_idx] * models[client_idx].state_dict()[key]
+                            temp += self.client_weights[client_idx] * self.client_state_dict[client_idx][key]
                         server_model.state_dict()[key].data.copy_(temp)
                         if not not_update_client:
                             for client_idx in range(len(self.client_weights)):
-                                models[client_idx].state_dict()[key].data.copy_(server_model.state_dict()[key])
-        return server_model, models
+                                self.client_state_dict[client_idx][key].data.copy_(server_model.state_dict()[key])
+        return server_model
 
     
     def fit(self):
@@ -104,7 +103,6 @@ class FedAlg():
         for epoch in range(self.max_epoches):
             # local update
             for client_idx in range(self.client_num):
-                # local_train(model, dls[client_idx], optimizers[client_idx], device)
                 self.local_train(client_idx)
                 
             # aggregation & save best model
@@ -129,7 +127,7 @@ class FedAlg():
                     writer.add_scalars(f'{metric}/val', tmp_dict_validation, epoch)
                     
                 if not (epoch % self.aggregation_freq):
-                    self.server_model, self.client_models = self.communication(self.server_model, self.client_models)
+                    self.server_model = self.communication(self.server_model)
                 
                 
             ## checkpoint the best performance based on macro avg f1-score
