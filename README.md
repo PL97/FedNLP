@@ -2,6 +2,22 @@
 
 Git repo for paper "Federated Learning for Biomedical Text Mining"
 
+## First stable release
+
+### What we have :star2: 
+
+- support models with various architectures including BERT, GPT, and BILSTM-CRF
+- simulate federated learning using FedAvg
+- log the result using tensorboard
+- auxiliary bash script to download models from hugging face, run batch python script for fast prototype
+
+### What is expected to see in the next release :rocket: 
+
+- [ ] simulate distribution shift in federated learning
+- [ ] study the impact of federated learning under different federation scales
+- [ ] study the impact of different federated learning algorithms
+
+
 ## Overview
 | task      | models | datasets| FL |
 | ----------- | ----------- |----------|----------|
