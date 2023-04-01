@@ -5,66 +5,56 @@ from torch.utils.data.distributed import DistributedSampler
 import re
 
 
-def align_label(tokenized_inputs, origional_text, labels, labels_to_ids, label_all_tokens=False, tokenizer=None):
+def align_label(tokenized_inputs, labels, labels_to_ids):
     null_label_id = -100
-    label_ids = []
-    origional_text = origional_text.split(" ")
 
-
-    orig_labels_i = 0
-    partially_mathced = False
-    sub_str = str()
-    for token_id in tokenized_inputs['input_ids'][0]:
-        token_id = token_id.numpy().item()
-        cur_str = tokenizer.convert_ids_to_tokens(token_id).lower()
-        if (token_id == tokenizer.pad_token_id) or \
-            (token_id == tokenizer.cls_token_id) or \
-            (token_id == tokenizer.sep_token_id):
-            
-            label_ids.append(null_label_id)
-            
-        elif (not partially_mathced) and \
-            origional_text[orig_labels_i].lower().startswith(cur_str) and \
-            origional_text[orig_labels_i].lower() != cur_str:
-            
-            label_str = labels[orig_labels_i]
-            label_ids.append(labels_to_ids[label_str])
-            orig_labels_i += 1
-            partially_mathced = True
-            sub_str += cur_str
-        
-        elif (not partially_mathced) and origional_text[orig_labels_i].lower() == cur_str:
-            label_str = labels[orig_labels_i]
-            label_ids.append(labels_to_ids[label_str])
-            orig_labels_i += 1
-            partially_mathced = False
-
+    # generate label id vector for the network
+    # mark the tokens to be ignored
+    labels_aligned = []
+    # single sentence each time, so always use 0 index
+    # get the index mapping from token to word
+    # this can be dependent on the specific tokenizer
+    word_ids = tokenized_inputs.word_ids(batch_index=0)
+    previous_word_idx = None
+    for word_idx in word_ids:
+        if word_idx is None:
+            # set None the ignore tokens
+            labels_aligned.append(null_label_id)
+        elif word_idx != previous_word_idx:
+            # only label the first token of a word
+            labels_aligned.append(labels_to_ids[labels[word_idx]])
         else:
-            label_ids.append(null_label_id)
-            sub_str += re.sub("#+", "", cur_str)
-            if sub_str == origional_text[orig_labels_i-1].lower():
-                partially_mathced = False
-                sub_str = ""
-
-    return label_ids
+            labels_aligned.append(null_label_id)
+        previous_word_idx = word_idx
+    return labels_aligned
 
 class DataSequence(torch.utils.data.Dataset):
 
     def __init__(self, df, labels_to_ids, ids_to_labels, tokenizer, max_length=150):
-        
-        labels = [i.split() for i in df['labels'].values.tolist()]
 
-        lb = [i.split(" ") for i in df['labels'].values.tolist()]
-        txt = df['text'].values.tolist()
-        self.texts = [tokenizer.encode_plus(str(i), \
-                               padding='max_length', \
-                               max_length = max_length, \
-                               add_special_tokens = True, \
-                               truncation=True, \
-                               return_attention_mask = True, \
-                               return_tensors="pt") for i in txt]
-        self.labels = [align_label(t, tt, l, labels_to_ids=labels_to_ids, tokenizer=tokenizer) \
-                        for t, tt, l in zip(self.texts, txt, lb)]
+        # Raw texts and corresponding labels
+        texts_batch_raw = [i.split(" ") for i in df["text"].values.tolist()]
+        labels_batch_raw = [i.split(" ") for i in df["labels"].values.tolist()]
+        # Iterate through all cases
+        self.texts = []
+        self.labels = []
+        for batch_idx in range(len(texts_batch_raw)):
+            texts_raw = texts_batch_raw[batch_idx]
+            labels_raw = labels_batch_raw[batch_idx]
+            # Encode texts with tokenizer
+            texts_encoded = tokenizer.encode_plus(
+                texts_raw,
+                padding="max_length",
+                max_length=max_length,
+                add_special_tokens=True,
+                truncation=True,
+                is_split_into_words=True,
+                return_attention_mask=True,
+                return_tensors="pt",
+            )
+            labels_aligned = align_label(texts_encoded, labels_raw, labels_to_ids)
+            self.texts.append(texts_encoded)
+            self.labels.append(labels_aligned)
 
 
     def __len__(self):

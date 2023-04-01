@@ -20,7 +20,7 @@ class GPTModel(torch.nn.Module):
                         num_labels=num_labels, \
                         output_attentions = False, \
                         output_hidden_states = False)
-            self.tokenizer = AutoTokenizer.from_pretrained(os.path.join(pretrained_path, "gpt2"))
+            self.tokenizer = AutoTokenizer.from_pretrained(os.path.join(pretrained_path, "gpt2"), add_prefix_space=True)
             self.tokenizer.pad_token = self.tokenizer.eos_token
             
             self.bert.config.pad_token_id = self.bert.config.eos_token_id

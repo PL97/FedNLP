@@ -111,7 +111,7 @@ if __name__ == "__main__":
         trainer.fit()
         
     model.load_state_dict(torch.load(f"./{trainer.saved_dir}/best.pt"))
-    metrics = {split: trainer.inference(dls[split], prefix=split) for split in ['train', 'val', 'test']}
+    metrics = {split: trainer.inference(model, dls[split], prefix=split) for split in ['train', 'val', 'test']}
     for split in ['train', 'val', 'test']:
         pd.DataFrame(metrics[split]['meta']).to_csv(f"{args['workspace']}/{args['split']}/{split}_prediction.csv")
         metrics[split].pop('meta')        
