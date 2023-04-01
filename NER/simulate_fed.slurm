@@ -25,3 +25,8 @@ sh ./bash_scripts/fed.sh $1 $2 $3 $4 $5
 # conda env create -f environment.yml
 # ./bash_scripts/fed.sh fedavg BC2GM 10 bluebert 50
 # sbatch simulate_fed.slurm fedavg BC2GM 10 bluebert 50
+
+
+## models: bluebert, biobert, bio_clinicalbert, bert-base-uncased, gpt2, bi_lstm_crf
+
+## dataset: 2018_n2c2, BC2GM, BC4CHEMD, BC5CDR-chem, BC5CDR-disease, JNLPBA, linnaeus, NCBI-disease, s800

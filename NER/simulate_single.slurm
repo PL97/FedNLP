@@ -24,3 +24,7 @@ sh ./bash_scripts/run.sh $1 $2 $3 $4
 # conda env create -f environment.yml
 # sbatch simulate_single.slurm site-0 BC2GM bluebert 50
 # ./bash_scripts/run.sh site-0 BC2GM bluebert 50
+
+## models: bluebert, biobert, bio_clinicalbert, bert-base-uncased, gpt2, bi_lstm_crf
+
+## dataset: 2018_n2c2, BC2GM, BC4CHEMD, BC5CDR-chem, BC5CDR-disease, JNLPBA, linnaeus, NCBI-disease, s800

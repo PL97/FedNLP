@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
 
-workspace="workspace_medical_2018_challenge"
-CUDA_VISIBLE_DEVICES=0 python validation.py \
-    --ds site-1 \
-    --workspace $workspace/fedavg/site-1 \
-    > $workspace/fedavg/site-1/metrics.txt
+# CUDA_LAUNCH_BLOCKING=1 CUDA_VISIBLE_DEVICES=$2 python fed_main.py saved_dir $1
+workspace="workspace_$2/$4/$1/"
 
-CUDA_VISIBLE_DEVICES=0 python validation.py \
-    --ds site-2 \
-    --workspace $workspace/fedavg/site-2 \
-    > $workspace/fedavg/site-2/metrics.txt
+CUDA_VISIBLE_DEVICES=0 python fed_main.py \
+    --ds $2 \
+    --workspace $workspace/ \
+    --n_split $3 \
+    --model $4 \
+    --eval > $workspace/metric.txt
 
-CUDA_VISIBLE_DEVICES=0 python validation.py \
-    --ds fedavg \
-    --workspace $workspace/fedavg/global \
-    > $workspace/fedavg/global/metrics.txt
+# ./bash_scripts/eval_fed.sh fedavg euadr 10 bluebert
+# sbatch simulate_fed.slurm fedavg euadr 10 bluebert 50

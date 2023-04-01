@@ -11,7 +11,7 @@
 ##SBATCH --gres=gpu:v100:1
 
 #SBATCH --gres=gpu:a100:1
-#SBATCH -p a100-8
+#SBATCH -p a100-4
 ##SBATCH -p apollo_agate
 
 module load parallel
@@ -25,3 +25,5 @@ sh ./bash_scripts/fed.sh $1 $2 $3 $4 $5
 # conda env create -f environment.yml
 # ./bash_scripts/fed.sh fedavg euadr 10 bluebert 50
 # sbatch simulate_fed.slurm fedavg euadr 10 bluebert 50
+
+## models: bluebert, biobert, bio_clinicalbert, bert-base-uncased, gpt2, bi_lstm_crf

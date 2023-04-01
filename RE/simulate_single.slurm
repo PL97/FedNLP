@@ -7,11 +7,11 @@
 #SBATCH --mail-type=NONE  
 #SBATCH --mail-user=peng0347@umn.edu 
 
-##SBATCH -p v100                                   
-##SBATCH --gres=gpu:v100:1
+#SBATCH -p v100                                   
+#SBATCH --gres=gpu:v100:1
 
-#SBATCH --gres=gpu:a100:1
-#SBATCH -p a100-4
+##SBATCH --gres=gpu:a100:1
+##SBATCH -p a100-4
 ##SBATCH -p apollo_agate
 
 module load parallel
@@ -25,3 +25,7 @@ sh ./bash_scripts/run.sh $1 $2 $3 $4
 # conda env create -f environment.yml
 # sbatch simulate_single.slurm site-0 euadr bluebert 50
 # ./bash_scripts/run.sh site-0 euadr bluebert 50
+
+## models: bluebert, biobert, bio_clinicalbert, bert-base-uncased, gpt2, bi_lstm_crf
+
+## dataset: 2018_n2c2, BC2GM, BC4CHEMD, BC5CDR-chem, BC5CDR-disease, JNLPBA, linnaeus, NCBI-disease, s800
