@@ -104,8 +104,8 @@ class trainer_bilstm_crf(trainer_base):
                                 ids_to_labels=self.ids_to_labels, \
                                 scaler=self.scaler)
 
-    def inference(self, dataloader, prefix):
-        return _shared_validate(model=self.model, \
+    def inference(self, model, dataloader, prefix):
+        return _shared_validate(model=model, \
                                 dataloader=dataloader, \
                                 device=self.device, \
                                 prefix=prefix, \
