@@ -27,16 +27,19 @@ def parse_args():
     parser.add_argument("--batch_size", type=str, help="batchsize of train/val/test loader", default=128)
     parser.add_argument("--epochs", type=int, help="total training epochs", default=1)
     parser.add_argument("--eval", action='store_true', help="evaluate best model")
+    parser.add_argument("--seed", type=int, help="radom seed", default=0)
     args = parser.parse_args()
     return args
 
 
 if __name__ == "__main__":
-    seed = 0
+    args = vars(parse_args())
+    
+    seed = args['seed']
     torch.manual_seed(seed)
     np.random.seed(seed)
     random.seed(seed)
-    args = vars(parse_args())
+    
     saved_dir = args['workspace']
     
     device = torch.device("cuda")

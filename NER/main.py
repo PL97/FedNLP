@@ -31,18 +31,22 @@ def parse_args():
     parser.add_argument("--batch_size", type=str, help="batchsize of train/val/test loader", default=32)
     parser.add_argument("--epochs", type=int, help="total training epochs", default=1)
     parser.add_argument("--eval", action='store_true', help="evaluate best model")
+    parser.add_argument("--seed", type=int, help="radom seed", default=0)
     args = parser.parse_args()
     return args
 
 
 if __name__ == "__main__":
-    seed = 0
+
+
+    device = torch.device("cuda")
+    args = vars(parse_args())
+
+    seed = args['seed']
     torch.manual_seed(seed)
     np.random.seed(seed)
     random.seed(seed)
 
-    device = torch.device("cuda")
-    args = vars(parse_args())
     dataset_name = args['ds']
     saved_dir = os.path.join(args['workspace'], args['split'])
     num_client = 10
