@@ -11,6 +11,7 @@ from utils.nereval import classifcation_report as ner_classificaiton_report
 
 def _shared_train_step(model, trainloader, optimizer, device, scheduler, scaler):
     model.train()
+    model.to(device)
     for X, y in tqdm(trainloader):
         X, y = X.to(device), y.to(device)
         y = y.long()
@@ -34,6 +35,7 @@ def _shared_train_step(model, trainloader, optimizer, device, scheduler, scaler)
 @torch.no_grad()
 def _shared_validate(model, dataloader, device, ids_to_labels, prefix, scaler, return_meta=False):
     model.eval()
+    model.to(device)
     preds, targets, pred_orig, target_orig = [], [], [], []
     total_loss_val, val_total = 0, 0
     for X, y in tqdm(dataloader):
@@ -124,44 +126,37 @@ class NER_FedAvg_bilstm_crf(NER_FedAvg_base):
                           hidden_dim=256, device=self.device)
     
     
-    def train_by_epoch(self, client_idx):
-        model = self.client_models[client_idx]
-        trainloader = self.dls[client_idx]['train']
-        optimizer = self.optimizers[client_idx]
-        scheduler = self.schedulers[client_idx]
-        
+    def train_by_epoch(self, model, train_dl, optimizer, scheduler):        
         _shared_train_step(model=model, \
-                           trainloader=trainloader, \
+                           trainloader=train_dl, \
                            optimizer=optimizer, \
                            scheduler=scheduler, \
-                           device=self.device, \
+                           device=self.device, 
                            scaler=self.scaler)
         
     def validate(self, model, client_idx):
-        trainloader = self.dls[client_idx]['train']
-        valloader = self.dls[client_idx]['val']
         ret_dict = {}
         ret_dict['train'] =_shared_validate(model=model, \
-                                            dataloader=trainloader, \
+                                            dataloader=self.dls[client_idx]['train'], \
                                             ids_to_labels=self.ids_to_labels, \
                                             prefix='train', \
                                             device=self.device, \
                                             scaler=self.scaler)
         
         ret_dict['val'] =_shared_validate(model=model, \
-                                                 dataloader=valloader, \
-                                                 ids_to_labels=self.ids_to_labels, \
-                                                 prefix='val', \
-                                                 device=self.device, \
-                                                 scaler=self.scaler)
+                                            dataloader=self.dls[client_idx]['val'], \
+                                            ids_to_labels=self.ids_to_labels, \
+                                            prefix='val', \
+                                            device=self.device, \
+                                            scaler=self.scaler)
         return ret_dict
     
     def inference(self, dataloader, prefix):
-        return _shared_validate(model=self.server_model, \
-                                dataloader=dataloader, \
-                                device=self.device, \
-                                prefix=prefix, \
+        return _shared_validate(self.server_model, \
+                                dataloader, \
                                 ids_to_labels=self.ids_to_labels, \
+                                prefix=prefix, \
+                                device=self.device, \
                                 scaler=self.scaler, \
                                 return_meta=True)
         
