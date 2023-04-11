@@ -1,4 +1,4 @@
-from trainer.trainer_base import trainer_base, NER_FedAvg_base
+from trainer.trainer_base import trainer_base, NER_FedAvg_base, NER_FedProx_base
 from transformers import get_linear_schedule_with_warmup
 from torch.optim import SGD, AdamW
 from torch.utils.tensorboard import SummaryWriter
@@ -163,3 +163,77 @@ class NER_FedAvg_bert(NER_FedAvg_base):
                                 return_meta=True)
         
         
+class NER_FedProx_bert(NER_FedProx_base):
+        
+    def generate_models(self):
+        return BertModel(num_labels = self.num_labels, model_name=self.model_name)
+    
+    def train_by_epoch(self, server_model, model, train_dl, optimizer, scheduler):   
+        mu = 10  
+        def fedprox_train_step(server_model, model, trainloader, optimizer, device, scheduler, scaler):
+            model.train()
+            model.to(device)
+            for train_data, train_label in tqdm(trainloader):
+                train_label = train_label.to(device)
+                mask = train_data['attention_mask'].squeeze(1).to(device)
+                input_id = train_data['input_ids'].squeeze(1).to(device)
+
+                optimizer.zero_grad()
+                if scaler is not None:
+                    with torch.cuda.amp.autocast():
+                        loss, _ = model(input_id, mask, train_label)
+                        
+                        ################## calculate the proximal term ###################
+                        w_diff = torch.tensor(0., device=device)
+                        for w, w_t in zip(server_model.parameters(), model.parameters()):
+                            w, w_t = w.to(device), w_t.to(device)
+                            w_diff += torch.pow(torch.norm(w-w_t), 2)
+                        loss += mu / 2. * w_diff
+                        ##################################################################
+                        
+                        
+                        
+                    scaler.scale(loss).backward()
+                    scaler.unscale_(optimizer)
+                    # nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
+                    scaler.step(optimizer)
+                    scaler.update()
+                else:
+                    loss, _ = model(input_id, mask, train_label)
+                    loss.backward()
+                    # nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
+                    optimizer.step()
+                scheduler.step()
+        fedprox_train_step(server_model=server_model, \
+                        model=model, \
+                        trainloader=train_dl, \
+                        optimizer=optimizer, \
+                        scheduler=scheduler, \
+                        device=self.device, 
+                        scaler=self.scaler)
+        
+    def validate(self, model, client_idx):
+        ret_dict = {}
+        ret_dict['train'] =_shared_validate(model=model, \
+                                            dataloader=self.dls[client_idx]['train'], \
+                                            ids_to_labels=self.ids_to_labels, \
+                                            prefix='train', \
+                                            device=self.device, \
+                                            scaler=self.scaler)
+        
+        ret_dict['val'] =_shared_validate(model=model, \
+                                            dataloader=self.dls[client_idx]['val'], \
+                                            ids_to_labels=self.ids_to_labels, \
+                                            prefix='val', \
+                                            device=self.device, \
+                                            scaler=self.scaler)
+        return ret_dict
+    
+    def inference(self, dataloader, prefix):
+        return _shared_validate(self.server_model, \
+                                dataloader, \
+                                ids_to_labels=self.ids_to_labels, \
+                                prefix=prefix, \
+                                device=self.device, \
+                                scaler=self.scaler, \
+                                return_meta=True)

@@ -134,5 +134,21 @@ class NER_FedAvg_base(FedAlg):
                         self.client_state_dict[client_idx][key].data.copy_(server_state_dict[key])
             server_model.load_state_dict(server_state_dict)
         return server_model
+    
+
+
+
+class NER_FedProx_base(NER_FedAvg_base):
+    def local_train(self, idx):
+        client_model = self.generate_models().to(self.device)
+        client_model.load_state_dict(self.client_state_dict[idx])
+        client_optimizer = AdamW(params=client_model.parameters(), lr=self.lrs[idx])
+        client_scheduler = get_linear_schedule_with_warmup(client_optimizer, 
+                                            num_warmup_steps = 0,
+                                            num_training_steps = len(self.dls[idx]['train']))
+        self.train_by_epoch(self.server_model, client_model, self.dls[idx]['train'], client_optimizer, client_scheduler)
+        self.client_state_dict[idx] = client_model.cpu().state_dict()
+    
+    
         
         

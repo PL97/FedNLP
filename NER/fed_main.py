@@ -9,8 +9,8 @@ from models.BERT import BertModel
 from models.GPT import GPTModel
 from datasets.dataset import get_data as get_bert_data
 from datasets.BI_LSTM_dataset import get_data as get_bilstm_crf_data
-from trainer.trainer_bert import NER_FedAvg_bert
-from trainer.trainer_bilstm_crf import NER_FedAvg_bilstm_crf
+from trainer.trainer_bert import NER_FedAvg_bert, NER_FedProx_bert
+from trainer.trainer_bilstm_crf import NER_FedAvg_bilstm_crf, NER_FedProx_bilstm_crf
 from trainer.trainer_gpt import NER_FedAvg_gpt
 import random
 import numpy as np
@@ -31,6 +31,7 @@ def parse_args():
     parser.add_argument("--epochs", type=int, help="total training epochs", default=1)
     parser.add_argument("--eval", action='store_true', help="evaluate best model")
     parser.add_argument("--seed", type=int, help="radom seed", default=0)
+    parser.add_argument("--fedalg", type=str, help="federated learning algorithm", default="fedavg")
     args = parser.parse_args()
     return args
 
@@ -67,17 +68,32 @@ if __name__ == "__main__":
             dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=tokenizer, df_test=df_test, df_combined=df_combined)
             
         ## prepare models
-        fed_model = NER_FedAvg_bert(dls=dls, \
-                                    client_weights = [1/num_client]*num_client,  \
-                                    lrs = [5e-5]*num_client,  \
-                                    max_epoches=args['epochs'],  \
-                                    aggregation_freq=1, \
-                                    device=device,  \
-                                    saved_dir = saved_dir, \
-                                    model_name=args['model'], \
-                                    num_labels=num_labels, \
-                                    ids_to_labels=stats['ids_to_labels'],  \
-                                    amp=True)
+        if args['fedalg'].lower() == "fedavg":
+            fed_model = NER_FedAvg_bert(dls=dls, \
+                                        client_weights = [1/num_client]*num_client,  \
+                                        lrs = [5e-5]*num_client,  \
+                                        max_epoches=args['epochs'],  \
+                                        aggregation_freq=1, \
+                                        device=device,  \
+                                        saved_dir = saved_dir, \
+                                        model_name=args['model'], \
+                                        num_labels=num_labels, \
+                                        ids_to_labels=stats['ids_to_labels'],  \
+                                        amp=True)
+        elif args['fedalg'].lower() == "fedprox":
+            fed_model = NER_FedProx_bert(dls=dls, \
+                                        client_weights = [1/num_client]*num_client,  \
+                                        lrs = [5e-5]*num_client,  \
+                                        max_epoches=args['epochs'],  \
+                                        aggregation_freq=1, \
+                                        device=device,  \
+                                        saved_dir = saved_dir, \
+                                        model_name=args['model'], \
+                                        num_labels=num_labels, \
+                                        ids_to_labels=stats['ids_to_labels'],  \
+                                        amp=True)
+        else:
+            exit("federated learning algorithm not found (source: fed_main.py)")
                     
         fed_model.fit()
     
@@ -92,7 +108,8 @@ if __name__ == "__main__":
             dls[idx], stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=tokenizer, df_test=df_test, df_combined=df_combined)
             
         ## prepare models
-        fed_model = NER_FedAvg_gpt(dls=dls, \
+        if args['fedalg'].lower() == "fedavg":
+            fed_model = NER_FedAvg_gpt(dls=dls, \
                                     client_weights = [1/num_client]*num_client,  \
                                     lrs = [5e-5]*num_client,  \
                                     max_epoches=args['epochs'],  \
@@ -103,7 +120,21 @@ if __name__ == "__main__":
                                     num_labels=num_labels, \
                                     ids_to_labels=stats['ids_to_labels'], \
                                     amp=True)
-                    
+        elif args['fedalg'].lower() == "fedprox":  
+            fed_model = NER_FedProx_gpt(dls=dls, \
+                                    client_weights = [1/num_client]*num_client,  \
+                                    lrs = [5e-5]*num_client,  \
+                                    max_epoches=args['epochs'],  \
+                                    aggregation_freq=1, \
+                                    device=device,  \
+                                    saved_dir = saved_dir, \
+                                    model_name=args['model'], \
+                                    num_labels=num_labels, \
+                                    ids_to_labels=stats['ids_to_labels'], \
+                                    amp=True) 
+        else:
+            exit("federated learning algorithm not found (source: fed_main.py)")
+         
         fed_model.fit()
         
     elif args['model'].lower() == "bi_lstm_crf":
@@ -115,20 +146,37 @@ if __name__ == "__main__":
             dls[idx], stats = get_bilstm_crf_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], combined_df=df_combined, df_test=df_test)
 
         
-
-        fed_model = NER_FedAvg_bilstm_crf(
-                    dls=dls,
-                    client_weights = [1/num_client]*num_client, 
-                    lrs = [1e-3]*num_client, 
-                    max_epoches=args['epochs'], 
-                    aggregation_freq=1,
-                    device=device, 
-                    saved_dir = saved_dir,
-                    model_name=args['model'],
-                    vocab_size=stats['vocab_size'], 
-                    ids_to_labels=stats['ids_to_labels'],
-                    num_labels=num_labels, \
-                    amp=True)
+        if args['fedalg'].lower() == "fedavg":
+            fed_model = NER_FedAvg_bilstm_crf(
+                        dls=dls,
+                        client_weights = [1/num_client]*num_client, 
+                        lrs = [1e-3]*num_client, 
+                        max_epoches=args['epochs'], 
+                        aggregation_freq=1,
+                        device=device, 
+                        saved_dir = saved_dir,
+                        model_name=args['model'],
+                        vocab_size=stats['vocab_size'], 
+                        ids_to_labels=stats['ids_to_labels'],
+                        num_labels=num_labels, \
+                        amp=True)
+        elif args['fedalg'].lower() == "fedprox": 
+            fed_model = NER_FedProx_bilstm_crf(
+                        dls=dls,
+                        client_weights = [1/num_client]*num_client, 
+                        lrs = [1e-3]*num_client, 
+                        max_epoches=args['epochs'], 
+                        aggregation_freq=1,
+                        device=device, 
+                        saved_dir = saved_dir,
+                        model_name=args['model'],
+                        vocab_size=stats['vocab_size'], 
+                        ids_to_labels=stats['ids_to_labels'],
+                        num_labels=num_labels, \
+                        amp=True)
+        else:
+            exit("federated learning algorithm not found (source: fed_main.py)")
+            
         fed_model.fit()
     
     else:
