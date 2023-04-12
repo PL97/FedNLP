@@ -171,7 +171,7 @@ class NER_FedProx_bilstm_crf(NER_FedProx_base):
                           hidden_dim=256, device=self.device)
     
     def train_by_epoch(self, server_model, model, train_dl, optimizer, scheduler):   
-        mu = 10  
+        mu = 0.5
         def fedprox_train_step(server_model, model, trainloader, optimizer, device, scheduler, scaler):
             model.train()
             model.to(device)

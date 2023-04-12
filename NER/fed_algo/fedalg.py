@@ -70,9 +70,9 @@ class FedAlg():
                         for client_idx in range(len(self.client_weights)):
                             temp += self.client_weights[client_idx] * self.client_state_dict[client_idx][key]
                         server_model.state_dict()[key].data.copy_(temp)
-                        # if not not_update_client:
-                        for client_idx in range(len(self.client_weights)):
-                            self.client_state_dict[client_idx][key].data.copy_(server_model.state_dict()[key])
+                        if not not_update_client:
+                            for client_idx in range(len(self.client_weights)):
+                                self.client_state_dict[client_idx][key].data.copy_(server_model.state_dict()[key])
             else:
                 for key in server_model.state_dict().keys():
                     # num_batches_tracked is a non trainable LongTensor and

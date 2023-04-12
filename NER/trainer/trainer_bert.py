@@ -169,7 +169,7 @@ class NER_FedProx_bert(NER_FedProx_base):
         return BertModel(num_labels = self.num_labels, model_name=self.model_name)
     
     def train_by_epoch(self, server_model, model, train_dl, optimizer, scheduler):   
-        mu = 10  
+        mu = 0.5
         def fedprox_train_step(server_model, model, trainloader, optimizer, device, scheduler, scaler):
             model.train()
             model.to(device)
