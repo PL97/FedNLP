@@ -11,7 +11,7 @@ from datasets.dataset import get_data as get_bert_data
 from datasets.BI_LSTM_dataset import get_data as get_bilstm_crf_data
 from trainer.trainer_bert import NER_FedAvg_bert, NER_FedProx_bert
 from trainer.trainer_bilstm_crf import NER_FedAvg_bilstm_crf, NER_FedProx_bilstm_crf
-from trainer.trainer_gpt import NER_FedAvg_gpt
+from trainer.trainer_gpt import NER_FedAvg_gpt, NER_FedProx_gpt
 import random
 import numpy as np
 from collections import defaultdict
