@@ -32,6 +32,7 @@ def parse_args():
     parser.add_argument("--epochs", type=int, help="total training epochs", default=1)
     parser.add_argument("--eval", action='store_true', help="evaluate best model")
     parser.add_argument("--seed", type=int, help="radom seed", default=0)
+    parser.add_argument("--n_split", type=int, help="number of split", default=2)
     args = parser.parse_args()
     return args
 
@@ -49,7 +50,7 @@ if __name__ == "__main__":
 
     dataset_name = args['ds']
     saved_dir = os.path.join(args['workspace'], args['split'])
-    num_client = 10
+    num_client = args['n_split']
     root_dir = f"./data/{dataset_name}/{num_client}_split"
 
     df_train = pd.read_csv(os.path.join(root_dir, args['split']+"_train.csv"))
