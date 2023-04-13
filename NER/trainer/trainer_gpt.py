@@ -1,4 +1,4 @@
-from trainer.trainer_bert import NER_FedAvg_bert, NER_FedProx_base, trainer_bert
+from trainer.trainer_bert import NER_FedAvg_bert, NER_FedProx_bert, trainer_bert
 from models.GPT import GPTModel
 
 class trainer_gpt(trainer_bert):
@@ -9,7 +9,7 @@ class NER_FedAvg_gpt(NER_FedAvg_bert):
         return GPTModel(num_labels = self.num_labels, model_name=self.model_name)
     
     
-class NER_FedProx_gpt(NER_FedProx_base):
+class NER_FedProx_gpt(NER_FedProx_bert):
     def generate_models(self):
         return GPTModel(num_labels = self.num_labels, model_name=self.model_name)
     
