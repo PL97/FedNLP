@@ -124,14 +124,13 @@ class NER_FedAvg_base(FedAlg):
             server_state_dict = server_model.cpu().state_dict()
             # aggregate params
             for key in server_state_dict.keys():
-                if 'norm' not in key:
-                    temp = torch.zeros_like(server_state_dict[key], dtype=torch.float32)
-                    for client_idx in range(self.client_num):
-                        temp += self.client_weights[client_idx] * self.client_state_dict[client_idx][key]
-                    server_state_dict[key].data.copy_(temp)
-                    # if not not_update_client:
-                    for client_idx in range(len(self.client_weights)):
-                        self.client_state_dict[client_idx][key].data.copy_(server_state_dict[key])
+                temp = torch.zeros_like(server_state_dict[key], dtype=torch.float32)
+                for client_idx in range(self.client_num):
+                    temp += self.client_weights[client_idx] * self.client_state_dict[client_idx][key]
+                server_state_dict[key].data.copy_(temp)
+                # if not not_update_client:
+                for client_idx in range(len(self.client_weights)):
+                    self.client_state_dict[client_idx][key].data.copy_(server_state_dict[key])
             server_model.load_state_dict(server_state_dict)
         return server_model
     
