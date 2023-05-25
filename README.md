@@ -1,6 +1,6 @@
 ## FedNLP
 
-Git repo for paper "Federated Learning for Biomedical Text Mining"
+Git repo for paper "A systematic evaluation of federated learning on biomedical natural language processing"
 
 ## First stable release
 
@@ -21,8 +21,8 @@ Git repo for paper "Federated Learning for Biomedical Text Mining"
 ## Overview
 | task      | models | datasets| FL |
 | ----------- | ----------- |----------|----------|
-| NER      | BERT-base-uncased; BlueBERT; BioBERT; Bio_ClinicalBERT; GPT2; BiLSTM-CRF       |2018_n2c2; BC2GM; BC5CDR-disease; JNLPBA; NCBI-disease [download :link:](https://drive.google.com/drive/folders/1m7q3f3oVCtyAGn8L540l6AKSPx2UF9wk?usp=share_link)  | FedAvg |
-| RE   | BERT-base-uncased; BlueBERT; BioBERT; Bio_ClinicalBERT; GPT2  | 2018_n2c2; euadr; GAD [download :link:](https://drive.google.com/drive/folders/1xdRDaT_RxIopIPNgNh7Y2Nkwj7UHK-G5?usp=sharing)| FedAvg |
+| NER      | BERT-base-uncased; BlueBERT; BioBERT; Bio_ClinicalBERT; GPT2; BiLSTM-CRF       |2018_n2c2; BC2GM; BC5CDR-disease; JNLPBA; NCBI-disease [TBD :link:]()  | FedAvg |
+| RE   | BERT-base-uncased; BlueBERT; BioBERT; Bio_ClinicalBERT; GPT2  | 2018_n2c2; euadr; GAD [TBD :link:]()| FedAvg |
 
 ## Installation
 ```bash
