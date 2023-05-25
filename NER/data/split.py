@@ -32,7 +32,9 @@ if __name__ == "__main__":
     
     dss = [x  for x in os.listdir(".") if os.path.isdir(x)]
     print(dss)
-    for num_clients in [2, 5, 10]:
+    dss.remove("feature_shift")
+    print(dss)
+    for num_clients in [3, 4, 6, 7, 8, 9]:
         for ds in dss:
             for mode in ['train', 'dev']:
                 saved_name = "val" if mode == "dev" else mode

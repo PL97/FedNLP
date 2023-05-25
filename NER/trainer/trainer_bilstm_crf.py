@@ -12,6 +12,7 @@ from utils.nereval import classifcation_report as ner_classificaiton_report
 def _shared_train_step(model, trainloader, optimizer, device, scheduler, scaler):
     model.train()
     model.to(device)
+    total_loss = 0
     for X, y in tqdm(trainloader):
         X, y = X.to(device), y.to(device)
         y = y.long()
@@ -31,6 +32,8 @@ def _shared_train_step(model, trainloader, optimizer, device, scheduler, scaler)
             # nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
             optimizer.step()
         scheduler.step()
+        total_loss += loss.item()
+    return total_loss
         
 @torch.no_grad()
 def _shared_validate(model, dataloader, device, ids_to_labels, prefix, scaler, return_meta=False):
@@ -171,10 +174,11 @@ class NER_FedProx_bilstm_crf(NER_FedProx_base):
                           hidden_dim=256, device=self.device)
     
     def train_by_epoch(self, server_model, model, train_dl, optimizer, scheduler):   
-        mu = 0.5
+        mu = 0.1
         def fedprox_train_step(server_model, model, trainloader, optimizer, device, scheduler, scaler):
             model.train()
             model.to(device)
+            total_loss = 0
             for X, y in tqdm(trainloader):
                 X, y = X.to(device), y.to(device)
                 y = y.long()
@@ -203,10 +207,12 @@ class NER_FedProx_bilstm_crf(NER_FedProx_base):
                     # nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
                     optimizer.step()
                 scheduler.step()
+                total_loss += loss.item()
+            return total_loss
                 
                 
                 
-        fedprox_train_step(server_model=server_model, \
+        return fedprox_train_step(server_model=server_model, \
                         model=model, \
                         trainloader=train_dl, \
                         optimizer=optimizer, \

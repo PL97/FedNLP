@@ -6,6 +6,8 @@
 #SBATCH --tmp=40g
 #SBATCH --mail-type=NONE  
 #SBATCH --mail-user=peng0347@umn.edu 
+#SBATCH --output=/dev/null
+#SBATCH --error=/dev/null
 
 ##SBATCH -p v100                                   
 ##SBATCH --gres=gpu:v100:1
@@ -19,7 +21,7 @@ module load parallel
 cd /home/jusun/peng0347/FedNLP/RE
 export PATH=/home/jusun/peng0347/miniconda3/bin:$PATH
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/jusun/peng0347/miniconda3/lib/
-sh ./bash_scripts/fed.sh $1 $2 $3 $4 $5
+sh ./bash_scripts/fed.sh $1 $2 $3 $4 $5 $6 $7
 
 
 # conda env create -f environment.yml
@@ -27,3 +29,10 @@ sh ./bash_scripts/fed.sh $1 $2 $3 $4 $5
 # sbatch simulate_fed.slurm fedavg euadr 10 bluebert 50
 
 ## models: bluebert, biobert, bio_clinicalbert, bert-base-uncased, gpt2, bi_lstm_crf
+## euadr
+
+# sbatch simulate_fed.slurm fedavg euadr 10 bluebert 50 3 3
+# sbatch simulate_fed.slurm fedavg euadr 10 biobert 50 3 3
+# sbatch simulate_fed.slurm fedavg euadr 10 bio_clinicalbert 50 3 3
+# sbatch simulate_fed.slurm fedavg euadr 10 bert-base-uncased 50 3 3
+# sbatch simulate_fed.slurm fedavg euadr 10 gpt2 50 1 1

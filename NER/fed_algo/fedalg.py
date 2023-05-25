@@ -103,7 +103,16 @@ class FedAlg():
         for epoch in range(self.max_epoches):
             # local update
             for client_idx in range(self.client_num):
-                self.local_train(client_idx)
+                pre_loss = np.inf
+                for _ in range(self.aggregation_freq):
+                    cur_loss = self.local_train(client_idx)
+                    ## check stop terminate condition
+                    if cur_loss > pre_loss:
+                        break
+                    pre_loss = cur_loss
+                    print(f"client {client_idx}: local train {_+1}/{self.aggregation_freq}\t loss {cur_loss}")
+                    
+                        
                 
             # aggregation & save best model
             with torch.no_grad():
@@ -126,8 +135,7 @@ class FedAlg():
                     writer.add_scalars(f'{metric}/train', tmp_dict_train, epoch)
                     writer.add_scalars(f'{metric}/val', tmp_dict_validation, epoch)
                     
-                if not (epoch % self.aggregation_freq):
-                    self.server_model = self.communication(self.server_model)
+                self.server_model = self.communication(self.server_model)
                 
                 
             ## checkpoint the best performance based on macro avg f1-score

@@ -1,0 +1,2456 @@
+workspace1/BC2GM/bi_lstm_crf/baseline/site-1
+precision-strict: 0.645±0.013 (0.427±0.018)
+recall-strict: 0.596±0.020 (0.394±0.018)
+f1-score-strict: 0.619±0.005 (0.409±0.014)
+
+
+
+workspace1/BC2GM/bi_lstm_crf/baseline/site-2
+precision-strict: 0.656±0.010 (0.443±0.023)
+recall-strict: 0.601±0.006 (0.405±0.014)
+f1-score-strict: 0.627±0.003 (0.423±0.017)
+
+
+
+workspace1/BC2GM/bi_lstm_crf/baseline/site-0
+precision-strict: 0.930±0.002 (0.872±0.002)
+recall-strict: 0.918±0.002 (0.861±0.002)
+f1-score-strict: 0.924±0.001 (0.866±0.001)
+
+
+
+workspace1/BC2GM/bi_lstm_crf/baseline/site-3
+precision-strict: 0.646±0.019 (0.432±0.032)
+recall-strict: 0.598±0.012 (0.399±0.010)
+f1-score-strict: 0.621±0.004 (0.415±0.020)
+
+
+
+workspace1/BC2GM/bi_lstm_crf/baseline/site-4
+precision-strict: 0.635±0.011 (0.428±0.012)
+recall-strict: 0.624±0.022 (0.421±0.021)
+f1-score-strict: 0.629±0.006 (0.424±0.013)
+
+
+
+workspace1/BC2GM/bi_lstm_crf/baseline/site-5
+precision-strict: 0.654±0.011 (0.433±0.024)
+recall-strict: 0.595±0.013 (0.394±0.020)
+f1-score-strict: 0.623±0.003 (0.412±0.020)
+
+
+
+workspace1/BC2GM/bi_lstm_crf/baseline/site-6
+precision-strict: 0.646±0.037 (0.429±0.039)
+recall-strict: 0.580±0.046 (0.384±0.020)
+f1-score-strict: 0.609±0.011 (0.403±0.006)
+
+
+
+workspace1/BC2GM/bi_lstm_crf/baseline/site-7
+precision-strict: 0.632±0.012 (0.424±0.013)
+recall-strict: 0.613±0.019 (0.411±0.021)
+f1-score-strict: 0.622±0.004 (0.417±0.015)
+
+
+
+workspace1/BC2GM/bi_lstm_crf/baseline/site-8
+precision-strict: 0.637±0.016 (0.428±0.026)
+recall-strict: 0.622±0.009 (0.418±0.010)
+f1-score-strict: 0.629±0.004 (0.423±0.018)
+
+
+
+workspace1/BC2GM/bi_lstm_crf/baseline/site-9
+precision-strict: 0.677±0.026 (0.453±0.035)
+recall-strict: 0.574±0.019 (0.383±0.009)
+f1-score-strict: 0.621±0.003 (0.414±0.017)
+
+
+
+workspace1/BC2GM/bi_lstm_crf/baseline/site-10
+precision-strict: 0.647±0.018 (0.431±0.011)
+recall-strict: 0.596±0.024 (0.397±0.022)
+f1-score-strict: 0.620±0.005 (0.413±0.011)
+
+
+
+workspace1/BC2GM/bi_lstm_crf/fedavg
+precision-strict: 0.879±0.012 (0.715±0.021)
+recall-strict: 0.723±0.006 (0.588±0.009)
+f1-score-strict: 0.793±0.005 (0.645±0.013)
+
+
+
+workspace1/BC2GM/bluebert/baseline/site-1
+precision-strict: 0.894±0.000 (0.767±0.004)
+recall-strict: 0.914±0.005 (0.784±0.004)
+f1-score-strict: 0.904±0.003 (0.775±0.003)
+
+
+
+workspace1/BC2GM/bluebert/baseline/site-2
+precision-strict: 0.900±0.002 (0.775±0.002)
+recall-strict: 0.916±0.007 (0.788±0.009)
+f1-score-strict: 0.908±0.003 (0.781±0.005)
+
+
+
+workspace1/BC2GM/bluebert/baseline/site-3
+precision-strict: 0.899±0.011 (0.772±0.009)
+recall-strict: 0.907±0.017 (0.779±0.015)
+f1-score-strict: 0.903±0.003 (0.775±0.004)
+
+
+
+workspace1/BC2GM/bluebert/baseline/site-4
+precision-strict: 0.891±0.002 (0.768±0.003)
+recall-strict: 0.913±0.004 (0.788±0.003)
+f1-score-strict: 0.902±0.001 (0.778±0.001)
+
+
+
+workspace1/BC2GM/bluebert/baseline/site-5
+precision-strict: 0.885±0.006 (0.756±0.009)
+recall-strict: 0.922±0.011 (0.787±0.006)
+f1-score-strict: 0.903±0.003 (0.771±0.003)
+
+
+
+workspace1/BC2GM/bluebert/baseline/site-6
+precision-strict: 0.892±0.005 (0.766±0.000)
+recall-strict: 0.921±0.006 (0.791±0.007)
+f1-score-strict: 0.906±0.004 (0.778±0.003)
+
+
+
+workspace1/BC2GM/bluebert/baseline/site-7
+precision-strict: 0.889±0.006 (0.768±0.006)
+recall-strict: 0.923±0.003 (0.798±0.006)
+f1-score-strict: 0.905±0.002 (0.783±0.005)
+
+
+
+workspace1/BC2GM/bluebert/baseline/site-8
+precision-strict: 0.896±0.008 (0.764±0.005)
+recall-strict: 0.919±0.007 (0.784±0.008)
+f1-score-strict: 0.907±0.003 (0.774±0.001)
+
+
+
+workspace1/BC2GM/bluebert/baseline/site-9
+precision-strict: 0.898±0.001 (0.769±0.001)
+recall-strict: 0.922±0.002 (0.789±0.002)
+f1-score-strict: 0.910±0.001 (0.779±0.001)
+
+
+
+workspace1/BC2GM/bluebert/baseline/site-10
+precision-strict: 0.897±0.005 (0.777±0.002)
+recall-strict: 0.922±0.005 (0.799±0.006)
+f1-score-strict: 0.909±0.001 (0.787±0.002)
+
+
+
+workspace1/BC2GM/bluebert/fedavg
+precision-strict: 0.962±0.003 (0.915±0.004)
+recall-strict: 0.971±0.002 (0.923±0.002)
+f1-score-strict: 0.966±0.001 (0.919±0.002)
+
+
+
+workspace1/BC2GM/biobert/baseline/site-1
+precision-strict: 0.919±0.003 (0.801±0.004)
+recall-strict: 0.935±0.004 (0.815±0.001)
+f1-score-strict: 0.927±0.001 (0.808±0.001)
+
+
+
+workspace1/BC2GM/biobert/baseline/site-0
+precision-strict: 0.977±0.001 (0.934±0.004)
+recall-strict: 0.983±0.001 (0.940±0.002)
+f1-score-strict: 0.980±0.000 (0.937±0.003)
+
+
+
+workspace1/BC2GM/biobert/baseline/site-2
+precision-strict: 0.927±0.005 (0.805±0.006)
+recall-strict: 0.940±0.003 (0.816±0.002)
+f1-score-strict: 0.933±0.001 (0.811±0.003)
+
+
+
+workspace1/BC2GM/biobert/baseline/site-3
+precision-strict: 0.926±0.003 (0.802±0.007)
+recall-strict: 0.940±0.004 (0.813±0.004)
+f1-score-strict: 0.933±0.002 (0.807±0.005)
+
+
+
+workspace1/BC2GM/biobert/baseline/site-4
+precision-strict: 0.914±0.002 (0.795±0.005)
+recall-strict: 0.944±0.003 (0.821±0.003)
+f1-score-strict: 0.929±0.000 (0.808±0.004)
+
+
+
+workspace1/BC2GM/biobert/baseline/site-5
+precision-strict: 0.922±0.003 (0.797±0.004)
+recall-strict: 0.944±0.002 (0.815±0.001)
+f1-score-strict: 0.932±0.001 (0.806±0.002)
+
+
+
+workspace1/BC2GM/biobert/baseline/site-6
+precision-strict: 0.924±0.004 (0.802±0.003)
+recall-strict: 0.938±0.001 (0.815±0.001)
+f1-score-strict: 0.931±0.002 (0.809±0.002)
+
+
+
+workspace1/BC2GM/biobert/baseline/site-7
+precision-strict: 0.917±0.009 (0.793±0.007)
+recall-strict: 0.947±0.005 (0.819±0.005)
+f1-score-strict: 0.932±0.003 (0.805±0.003)
+
+
+
+workspace1/BC2GM/biobert/baseline/site-8
+precision-strict: 0.915±0.004 (0.791±0.005)
+recall-strict: 0.947±0.004 (0.819±0.004)
+f1-score-strict: 0.931±0.000 (0.805±0.003)
+
+
+
+workspace1/BC2GM/biobert/baseline/site-9
+precision-strict: 0.924±0.002 (0.798±0.004)
+recall-strict: 0.939±0.003 (0.811±0.004)
+f1-score-strict: 0.932±0.002 (0.805±0.004)
+
+
+
+workspace1/BC2GM/biobert/baseline/site-10
+precision-strict: 0.918±0.002 (0.800±0.003)
+recall-strict: 0.944±0.002 (0.823±0.002)
+f1-score-strict: 0.931±0.001 (0.812±0.002)
+
+
+
+workspace1/BC2GM/biobert/fedavg
+precision-strict: 0.969±0.002 (0.917±0.002)
+recall-strict: 0.980±0.002 (0.927±0.002)
+f1-score-strict: 0.974±0.001 (0.922±0.000)
+
+
+
+workspace1/BC2GM/bio_clinicalbert/baseline/site-1
+precision-strict: 0.874±0.006 (0.750±0.007)
+recall-strict: 0.911±0.006 (0.781±0.006)
+f1-score-strict: 0.892±0.001 (0.765±0.004)
+
+
+
+workspace1/BC2GM/bio_clinicalbert/baseline/site-0
+precision-strict: 0.973±0.002 (0.933±0.002)
+recall-strict: 0.974±0.001 (0.934±0.001)
+f1-score-strict: 0.974±0.001 (0.933±0.001)
+
+
+
+workspace1/BC2GM/bio_clinicalbert/baseline/site-2
+precision-strict: 0.885±0.007 (0.753±0.011)
+recall-strict: 0.908±0.009 (0.772±0.009)
+f1-score-strict: 0.896±0.002 (0.762±0.008)
+
+
+
+workspace1/BC2GM/bio_clinicalbert/baseline/site-3
+precision-strict: 0.882±0.003 (0.757±0.003)
+recall-strict: 0.909±0.003 (0.780±0.002)
+f1-score-strict: 0.895±0.000 (0.768±0.001)
+
+
+
+workspace1/BC2GM/bio_clinicalbert/baseline/site-4
+precision-strict: 0.877±0.007 (0.755±0.006)
+recall-strict: 0.922±0.003 (0.794±0.003)
+f1-score-strict: 0.899±0.002 (0.774±0.002)
+
+
+
+workspace1/BC2GM/bio_clinicalbert/baseline/site-5
+precision-strict: 0.885±0.003 (0.753±0.009)
+recall-strict: 0.917±0.006 (0.781±0.003)
+f1-score-strict: 0.901±0.001 (0.767±0.006)
+
+
+
+workspace1/BC2GM/bio_clinicalbert/baseline/site-6
+precision-strict: 0.883±0.005 (0.751±0.003)
+recall-strict: 0.915±0.008 (0.778±0.008)
+f1-score-strict: 0.899±0.002 (0.764±0.002)
+
+
+
+workspace1/BC2GM/bio_clinicalbert/baseline/site-7
+precision-strict: 0.885±0.009 (0.759±0.009)
+recall-strict: 0.914±0.006 (0.784±0.004)
+f1-score-strict: 0.899±0.002 (0.771±0.003)
+
+
+
+workspace1/BC2GM/bio_clinicalbert/baseline/site-8
+precision-strict: 0.871±0.004 (0.740±0.006)
+recall-strict: 0.924±0.005 (0.785±0.001)
+f1-score-strict: 0.897±0.002 (0.762±0.003)
+
+
+
+workspace1/BC2GM/bio_clinicalbert/baseline/site-9
+precision-strict: 0.887±0.004 (0.759±0.001)
+recall-strict: 0.914±0.005 (0.782±0.006)
+f1-score-strict: 0.900±0.001 (0.770±0.003)
+
+
+
+workspace1/BC2GM/bio_clinicalbert/baseline/site-10
+precision-strict: 0.884±0.009 (0.757±0.008)
+recall-strict: 0.919±0.005 (0.787±0.005)
+f1-score-strict: 0.901±0.003 (0.772±0.002)
+
+
+
+workspace1/BC2GM/bio_clinicalbert/fedavg
+precision-strict: 0.952±0.002 (0.893±0.003)
+recall-strict: 0.968±0.002 (0.908±0.000)
+f1-score-strict: 0.960±0.002 (0.901±0.001)
+
+
+
+workspace1/BC2GM/bert-base-uncased/baseline/site-1
+precision-strict: 0.878±0.004 (0.748±0.005)
+recall-strict: 0.894±0.005 (0.762±0.001)
+f1-score-strict: 0.886±0.001 (0.755±0.002)
+
+
+
+workspace1/BC2GM/bert-base-uncased/baseline/site-0
+precision-strict: 0.972±0.001 (0.929±0.001)
+recall-strict: 0.972±0.001 (0.928±0.002)
+f1-score-strict: 0.972±0.001 (0.928±0.001)
+
+
+
+workspace1/BC2GM/bert-base-uncased/baseline/site-2
+precision-strict: 0.873±0.007 (0.740±0.004)
+recall-strict: 0.911±0.001 (0.772±0.004)
+f1-score-strict: 0.892±0.003 (0.756±0.002)
+
+
+
+workspace1/BC2GM/bert-base-uncased/baseline/site-3
+precision-strict: 0.870±0.005 (0.742±0.006)
+recall-strict: 0.903±0.002 (0.769±0.002)
+f1-score-strict: 0.886±0.002 (0.755±0.004)
+
+
+
+workspace1/BC2GM/bert-base-uncased/baseline/site-4
+precision-strict: 0.868±0.006 (0.746±0.008)
+recall-strict: 0.904±0.005 (0.778±0.009)
+f1-score-strict: 0.886±0.003 (0.762±0.007)
+
+
+
+workspace1/BC2GM/bert-base-uncased/baseline/site-5
+precision-strict: 0.867±0.005 (0.737±0.005)
+recall-strict: 0.910±0.007 (0.773±0.006)
+f1-score-strict: 0.888±0.001 (0.755±0.003)
+
+
+
+workspace1/BC2GM/bert-base-uncased/baseline/site-6
+precision-strict: 0.874±0.007 (0.746±0.005)
+recall-strict: 0.908±0.003 (0.775±0.004)
+f1-score-strict: 0.891±0.003 (0.760±0.002)
+
+
+
+workspace1/BC2GM/bert-base-uncased/baseline/site-7
+precision-strict: 0.862±0.006 (0.742±0.005)
+recall-strict: 0.905±0.004 (0.779±0.003)
+f1-score-strict: 0.883±0.001 (0.760±0.002)
+
+
+
+workspace1/BC2GM/bert-base-uncased/baseline/site-8
+precision-strict: 0.874±0.008 (0.747±0.007)
+recall-strict: 0.910±0.001 (0.778±0.004)
+f1-score-strict: 0.891±0.004 (0.762±0.004)
+
+
+
+workspace1/BC2GM/bert-base-uncased/baseline/site-9
+precision-strict: 0.877±0.003 (0.749±0.003)
+recall-strict: 0.905±0.001 (0.773±0.002)
+f1-score-strict: 0.891±0.001 (0.760±0.001)
+
+
+
+workspace1/BC2GM/bert-base-uncased/baseline/site-10
+precision-strict: 0.866±0.012 (0.744±0.011)
+recall-strict: 0.914±0.007 (0.785±0.006)
+f1-score-strict: 0.890±0.003 (0.764±0.003)
+
+
+
+workspace1/BC2GM/bert-base-uncased/fedavg
+precision-strict: 0.954±0.002 (0.892±0.001)
+recall-strict: 0.965±0.001 (0.902±0.001)
+f1-score-strict: 0.959±0.001 (0.897±0.000)
+
+
+
+workspace1/BC2GM/gpt2/baseline/site-1
+precision-strict: 0.717±0.018 (0.556±0.012)
+recall-strict: 0.700±0.022 (0.543±0.022)
+f1-score-strict: 0.708±0.010 (0.549±0.011)
+
+
+
+workspace1/BC2GM/gpt2/baseline/site-0
+precision-strict: 0.902±0.008 (0.846±0.006)
+recall-strict: 0.880±0.007 (0.826±0.008)
+f1-score-strict: 0.891±0.001 (0.836±0.001)
+
+
+
+workspace1/BC2GM/gpt2/baseline/site-2
+precision-strict: 0.739±0.006 (0.572±0.007)
+recall-strict: 0.687±0.021 (0.532±0.024)
+f1-score-strict: 0.712±0.010 (0.551±0.016)
+
+
+
+workspace1/BC2GM/gpt2/baseline/site-3
+precision-strict: 0.714±0.017 (0.551±0.016)
+recall-strict: 0.714±0.014 (0.550±0.008)
+f1-score-strict: 0.713±0.005 (0.550±0.005)
+
+
+
+workspace1/BC2GM/gpt2/baseline/site-4
+precision-strict: 0.701±0.004 (0.553±0.002)
+recall-strict: 0.731±0.017 (0.576±0.016)
+f1-score-strict: 0.716±0.007 (0.564±0.008)
+
+
+
+workspace1/BC2GM/gpt2/baseline/site-5
+precision-strict: 0.712±0.020 (0.553±0.020)
+recall-strict: 0.723±0.017 (0.562±0.010)
+f1-score-strict: 0.717±0.005 (0.557±0.008)
+
+
+
+workspace1/BC2GM/gpt2/baseline/site-6
+precision-strict: 0.700±0.007 (0.545±0.007)
+recall-strict: 0.719±0.011 (0.559±0.010)
+f1-score-strict: 0.709±0.008 (0.552±0.008)
+
+
+
+workspace1/BC2GM/gpt2/baseline/site-7
+precision-strict: 0.708±0.016 (0.551±0.010)
+recall-strict: 0.724±0.018 (0.563±0.017)
+f1-score-strict: 0.716±0.003 (0.556±0.006)
+
+
+
+workspace1/BC2GM/gpt2/baseline/site-8
+precision-strict: 0.691±0.017 (0.528±0.021)
+recall-strict: 0.743±0.015 (0.567±0.010)
+f1-score-strict: 0.716±0.010 (0.547±0.014)
+
+
+
+workspace1/BC2GM/gpt2/baseline/site-9
+precision-strict: 0.708±0.003 (0.546±0.005)
+recall-strict: 0.717±0.013 (0.553±0.015)
+f1-score-strict: 0.712±0.007 (0.549±0.010)
+
+
+
+workspace1/BC2GM/gpt2/baseline/site-10
+precision-strict: 0.706±0.010 (0.545±0.011)
+recall-strict: 0.748±0.012 (0.578±0.006)
+f1-score-strict: 0.726±0.003 (0.561±0.003)
+
+
+
+workspace1/BC2GM/gpt2/fedavg
+precision-strict: 0.806±0.005 (0.683±0.007)
+recall-strict: 0.785±0.004 (0.665±0.006)
+f1-score-strict: 0.796±0.001 (0.674±0.006)
+
+
+
+workspace1/2018_n2c2/biobert/baseline/site-1
+precision-strict: 0.860±0.009 (0.794±0.007)
+recall-strict: 0.839±0.001 (0.776±0.000)
+f1-score-strict: 0.849±0.004 (0.784±0.003)
+
+
+
+workspace1/2018_n2c2/biobert/baseline/site-0
+precision-strict: 0.890±0.002 (0.827±0.005)
+recall-strict: 0.880±0.004 (0.819±0.001)
+f1-score-strict: 0.884±0.002 (0.823±0.002)
+
+
+
+workspace1/2018_n2c2/biobert/baseline/site-2
+precision-strict: 0.857±0.006 (0.779±0.006)
+recall-strict: 0.839±0.001 (0.763±0.003)
+f1-score-strict: 0.846±0.002 (0.769±0.003)
+
+
+
+workspace1/2018_n2c2/biobert/baseline/site-3
+precision-strict: 0.858±0.002 (0.794±0.001)
+recall-strict: 0.841±0.005 (0.780±0.004)
+f1-score-strict: 0.848±0.003 (0.786±0.002)
+
+
+
+workspace1/2018_n2c2/biobert/baseline/site-4
+precision-strict: 0.860±0.005 (0.797±0.005)
+recall-strict: 0.841±0.006 (0.781±0.008)
+f1-score-strict: 0.849±0.004 (0.788±0.006)
+
+
+
+workspace1/2018_n2c2/biobert/baseline/site-5
+precision-strict: 0.850±0.001 (0.776±0.004)
+recall-strict: 0.832±0.003 (0.761±0.004)
+f1-score-strict: 0.840±0.002 (0.768±0.004)
+
+
+
+workspace1/2018_n2c2/biobert/baseline/site-6
+precision-strict: 0.857±0.003 (0.792±0.001)
+recall-strict: 0.829±0.006 (0.770±0.004)
+f1-score-strict: 0.840±0.004 (0.779±0.002)
+
+
+
+workspace1/2018_n2c2/biobert/baseline/site-7
+precision-strict: 0.855±0.005 (0.789±0.005)
+recall-strict: 0.840±0.002 (0.777±0.004)
+f1-score-strict: 0.846±0.003 (0.782±0.004)
+
+
+
+workspace1/2018_n2c2/biobert/baseline/site-8
+precision-strict: 0.866±0.003 (0.804±0.003)
+recall-strict: 0.832±0.004 (0.775±0.003)
+f1-score-strict: 0.847±0.001 (0.788±0.001)
+
+
+
+workspace1/2018_n2c2/biobert/baseline/site-9
+precision-strict: 0.856±0.007 (0.792±0.006)
+recall-strict: 0.837±0.005 (0.776±0.004)
+f1-score-strict: 0.844±0.001 (0.782±0.001)
+
+
+
+workspace1/2018_n2c2/biobert/baseline/site-10
+precision-strict: 0.850±0.005 (0.782±0.003)
+recall-strict: 0.838±0.001 (0.773±0.001)
+f1-score-strict: 0.843±0.003 (0.777±0.001)
+
+
+
+workspace1/2018_n2c2/biobert/fedavg
+precision-strict: 0.876±0.004 (0.815±0.005)
+recall-strict: 0.883±0.002 (0.821±0.002)
+f1-score-strict: 0.879±0.002 (0.818±0.003)
+
+
+
+workspace1/2018_n2c2/bluebert/baseline/site-1
+precision-strict: 0.850±0.009 (0.778±0.010)
+recall-strict: 0.826±0.001 (0.759±0.003)
+f1-score-strict: 0.836±0.004 (0.767±0.005)
+
+
+
+workspace1/2018_n2c2/bluebert/baseline/site-0
+***************workspace missing: workspace1/2018_n2c2/bluebert/baseline/site-0
+workspace1/2018_n2c2/bluebert/baseline/site-2
+precision-strict: 0.851±0.011 (0.773±0.009)
+recall-strict: 0.834±0.004 (0.758±0.003)
+f1-score-strict: 0.839±0.003 (0.763±0.003)
+
+
+
+workspace1/2018_n2c2/bluebert/baseline/site-3
+precision-strict: 0.802±0.077 (0.680±0.155)
+recall-strict: 0.674±0.216 (0.600±0.232)
+f1-score-strict: 0.696±0.203 (0.613±0.229)
+
+
+
+workspace1/2018_n2c2/bluebert/baseline/site-4
+precision-strict: 0.852±0.006 (0.788±0.002)
+recall-strict: 0.830±0.003 (0.770±0.001)
+f1-score-strict: 0.839±0.005 (0.777±0.001)
+
+
+
+workspace1/2018_n2c2/bluebert/baseline/site-5
+precision-strict: 0.846±0.005 (0.769±0.006)
+recall-strict: 0.824±0.000 (0.752±0.003)
+f1-score-strict: 0.833±0.003 (0.759±0.005)
+
+
+
+workspace1/2018_n2c2/bluebert/baseline/site-6
+***************workspace missing: workspace1/2018_n2c2/bluebert/baseline/site-6
+workspace1/2018_n2c2/bluebert/baseline/site-7
+precision-strict: 0.857±0.000 (0.788±0.005)
+recall-strict: 0.832±0.006 (0.767±0.010)
+f1-score-strict: 0.843±0.003 (0.777±0.008)
+
+
+
+workspace1/2018_n2c2/bluebert/baseline/site-8
+precision-strict: 0.856±0.004 (0.789±0.007)
+recall-strict: 0.824±0.004 (0.762±0.001)
+f1-score-strict: 0.837±0.001 (0.773±0.003)
+
+
+
+workspace1/2018_n2c2/bluebert/baseline/site-9
+precision-strict: 0.851±0.007 (0.780±0.006)
+recall-strict: 0.821±0.003 (0.755±0.003)
+f1-score-strict: 0.831±0.002 (0.764±0.003)
+
+
+
+workspace1/2018_n2c2/bluebert/baseline/site-10
+***************workspace missing: workspace1/2018_n2c2/bluebert/baseline/site-10
+workspace1/2018_n2c2/bluebert/fedavg
+precision-strict: 0.874±0.003 (0.815±0.001)
+recall-strict: 0.879±0.001 (0.819±0.001)
+f1-score-strict: 0.876±0.002 (0.817±0.000)
+
+
+
+workspace1/2018_n2c2/bert-base-uncased/baseline/site-1
+precision-strict: 0.851±0.003 (0.780±0.002)
+recall-strict: 0.818±0.005 (0.753±0.002)
+f1-score-strict: 0.833±0.004 (0.766±0.002)
+
+
+
+workspace1/2018_n2c2/bert-base-uncased/baseline/site-2
+precision-strict: 0.846±0.004 (0.766±0.004)
+recall-strict: 0.820±0.002 (0.746±0.003)
+f1-score-strict: 0.830±0.002 (0.754±0.003)
+
+
+
+workspace1/2018_n2c2/bert-base-uncased/baseline/site-0
+precision-strict: 0.890±0.003 (0.832±0.001)
+recall-strict: 0.869±0.002 (0.813±0.001)
+f1-score-strict: 0.879±0.002 (0.822±0.001)
+
+
+
+workspace1/2018_n2c2/bert-base-uncased/baseline/site-3
+precision-strict: 0.859±0.003 (0.786±0.005)
+recall-strict: 0.809±0.002 (0.744±0.003)
+f1-score-strict: 0.830±0.001 (0.762±0.003)
+
+
+
+workspace1/2018_n2c2/bert-base-uncased/baseline/site-4
+precision-strict: 0.848±0.005 (0.784±0.003)
+recall-strict: 0.822±0.010 (0.762±0.011)
+f1-score-strict: 0.833±0.004 (0.772±0.005)
+
+
+
+workspace1/2018_n2c2/bert-base-uncased/baseline/site-5
+precision-strict: 0.850±0.014 (0.773±0.018)
+recall-strict: 0.804±0.005 (0.735±0.005)
+f1-score-strict: 0.823±0.006 (0.750±0.010)
+
+
+
+workspace1/2018_n2c2/bert-base-uncased/baseline/site-6
+precision-strict: 0.858±0.002 (0.784±0.007)
+recall-strict: 0.807±0.005 (0.743±0.005)
+f1-score-strict: 0.826±0.003 (0.759±0.004)
+
+
+
+workspace1/2018_n2c2/bert-base-uncased/baseline/site-7
+precision-strict: 0.840±0.002 (0.769±0.002)
+recall-strict: 0.813±0.003 (0.747±0.004)
+f1-score-strict: 0.826±0.002 (0.757±0.003)
+
+
+
+workspace1/2018_n2c2/bert-base-uncased/baseline/site-8
+precision-strict: 0.858±0.007 (0.798±0.005)
+recall-strict: 0.808±0.003 (0.754±0.002)
+f1-score-strict: 0.829±0.004 (0.772±0.003)
+
+
+
+workspace1/2018_n2c2/bert-base-uncased/baseline/site-9
+precision-strict: 0.850±0.002 (0.778±0.003)
+recall-strict: 0.809±0.003 (0.745±0.003)
+f1-score-strict: 0.825±0.004 (0.758±0.004)
+
+
+
+workspace1/2018_n2c2/bert-base-uncased/baseline/site-10
+precision-strict: 0.848±0.003 (0.778±0.006)
+recall-strict: 0.813±0.012 (0.749±0.008)
+f1-score-strict: 0.828±0.006 (0.761±0.002)
+
+
+
+workspace1/2018_n2c2/bert-base-uncased/fedavg
+precision-strict: 0.877±0.002 (0.817±0.003)
+recall-strict: 0.878±0.003 (0.818±0.001)
+f1-score-strict: 0.877±0.002 (0.817±0.002)
+
+
+
+workspace1/2018_n2c2/gpt2/baseline/site-1
+precision-strict: 0.794±0.010 (0.730±0.010)
+recall-strict: 0.708±0.006 (0.656±0.007)
+f1-score-strict: 0.741±0.005 (0.685±0.007)
+
+
+
+workspace1/2018_n2c2/gpt2/baseline/site-2
+precision-strict: 0.792±0.010 (0.721±0.011)
+recall-strict: 0.704±0.021 (0.646±0.017)
+f1-score-strict: 0.736±0.012 (0.674±0.009)
+
+
+
+workspace1/2018_n2c2/gpt2/baseline/site-3
+precision-strict: 0.778±0.003 (0.715±0.006)
+recall-strict: 0.731±0.004 (0.674±0.003)
+f1-score-strict: 0.750±0.004 (0.691±0.005)
+
+
+
+workspace1/2018_n2c2/gpt2/baseline/site-4
+precision-strict: 0.775±0.007 (0.714±0.011)
+recall-strict: 0.716±0.006 (0.663±0.006)
+f1-score-strict: 0.740±0.006 (0.684±0.008)
+
+
+
+workspace1/2018_n2c2/gpt2/baseline/site-5
+precision-strict: 0.779±0.011 (0.702±0.009)
+recall-strict: 0.718±0.013 (0.655±0.009)
+f1-score-strict: 0.742±0.006 (0.674±0.004)
+
+
+
+workspace1/2018_n2c2/gpt2/baseline/site-0
+precision-strict: 0.837±0.002 (0.777±0.002)
+recall-strict: 0.778±0.004 (0.724±0.001)
+f1-score-strict: 0.801±0.001 (0.745±0.001)
+
+
+
+workspace1/2018_n2c2/gpt2/baseline/site-6
+precision-strict: 0.787±0.013 (0.720±0.017)
+recall-strict: 0.705±0.006 (0.651±0.002)
+f1-score-strict: 0.732±0.006 (0.674±0.002)
+
+
+
+workspace1/2018_n2c2/gpt2/baseline/site-7
+precision-strict: 0.773±0.009 (0.706±0.006)
+recall-strict: 0.723±0.003 (0.664±0.004)
+f1-score-strict: 0.744±0.001 (0.682±0.001)
+
+
+
+workspace1/2018_n2c2/gpt2/baseline/site-8
+precision-strict: 0.798±0.010 (0.732±0.009)
+recall-strict: 0.713±0.011 (0.659±0.012)
+f1-score-strict: 0.744±0.004 (0.685±0.007)
+
+
+
+workspace1/2018_n2c2/gpt2/baseline/site-9
+precision-strict: 0.770±0.007 (0.702±0.001)
+recall-strict: 0.720±0.002 (0.662±0.005)
+f1-score-strict: 0.740±0.002 (0.678±0.003)
+
+
+
+workspace1/2018_n2c2/gpt2/baseline/site-10
+precision-strict: 0.773±0.018 (0.706±0.018)
+recall-strict: 0.722±0.006 (0.664±0.004)
+f1-score-strict: 0.740±0.004 (0.679±0.006)
+
+
+
+workspace1/2018_n2c2/gpt2/fedavg
+precision-strict: 0.847±0.002 (0.789±0.004)
+recall-strict: 0.769±0.005 (0.720±0.003)
+f1-score-strict: 0.798±0.003 (0.746±0.001)
+
+
+
+workspace1/2018_n2c2/bio_clinicalbert/fedavg
+precision-strict: 0.876±0.002 (0.813±0.003)
+recall-strict: 0.880±0.003 (0.817±0.002)
+f1-score-strict: 0.878±0.001 (0.815±0.001)
+
+
+
+workspace1/2018_n2c2/bio_clinicalbert/baseline/site-1
+precision-strict: 0.859±0.003 (0.792±0.003)
+recall-strict: 0.838±0.002 (0.775±0.001)
+f1-score-strict: 0.847±0.002 (0.782±0.002)
+
+
+
+workspace1/2018_n2c2/bio_clinicalbert/baseline/site-2
+precision-strict: 0.852±0.002 (0.780±0.002)
+recall-strict: 0.842±0.003 (0.772±0.002)
+f1-score-strict: 0.845±0.001 (0.775±0.000)
+
+
+
+workspace1/2018_n2c2/bio_clinicalbert/baseline/site-0
+precision-strict: 0.892±0.006 (0.834±0.005)
+recall-strict: 0.878±0.006 (0.821±0.005)
+f1-score-strict: 0.885±0.006 (0.827±0.005)
+
+
+
+workspace1/2018_n2c2/bio_clinicalbert/baseline/site-3
+precision-strict: 0.861±0.005 (0.796±0.007)
+recall-strict: 0.839±0.003 (0.777±0.001)
+f1-score-strict: 0.849±0.002 (0.785±0.003)
+
+
+
+workspace1/2018_n2c2/bio_clinicalbert/baseline/site-4
+precision-strict: 0.855±0.004 (0.796±0.006)
+recall-strict: 0.843±0.005 (0.785±0.001)
+f1-score-strict: 0.848±0.002 (0.790±0.003)
+
+
+
+workspace1/2018_n2c2/bio_clinicalbert/baseline/site-5
+precision-strict: 0.848±0.004 (0.775±0.005)
+recall-strict: 0.834±0.005 (0.762±0.007)
+f1-score-strict: 0.840±0.002 (0.767±0.005)
+
+
+
+workspace1/2018_n2c2/bio_clinicalbert/baseline/site-6
+precision-strict: 0.859±0.004 (0.787±0.006)
+recall-strict: 0.833±0.001 (0.766±0.002)
+f1-score-strict: 0.841±0.001 (0.773±0.003)
+
+
+
+workspace1/2018_n2c2/bio_clinicalbert/baseline/site-7
+precision-strict: 0.850±0.005 (0.788±0.005)
+recall-strict: 0.837±0.007 (0.778±0.004)
+f1-score-strict: 0.843±0.002 (0.782±0.000)
+
+
+
+workspace1/2018_n2c2/bio_clinicalbert/baseline/site-8
+precision-strict: 0.876±0.010 (0.807±0.013)
+recall-strict: 0.823±0.003 (0.763±0.002)
+f1-score-strict: 0.841±0.002 (0.778±0.005)
+
+
+
+workspace1/2018_n2c2/bio_clinicalbert/baseline/site-9
+precision-strict: 0.855±0.004 (0.793±0.005)
+recall-strict: 0.841±0.002 (0.780±0.004)
+f1-score-strict: 0.845±0.003 (0.784±0.005)
+
+
+
+workspace1/2018_n2c2/bio_clinicalbert/baseline/site-10
+precision-strict: 0.855±0.006 (0.787±0.005)
+recall-strict: 0.830±0.004 (0.766±0.005)
+f1-score-strict: 0.841±0.001 (0.775±0.002)
+
+
+
+workspace1/2018_n2c2/bi_lstm_crf/baseline/site-1
+precision-strict: 0.793±0.006 (0.717±0.011)
+recall-strict: 0.694±0.001 (0.633±0.004)
+f1-score-strict: 0.734±0.001 (0.667±0.006)
+
+
+
+workspace1/2018_n2c2/bi_lstm_crf/baseline/site-0
+precision-strict: 0.873±0.008 (0.818±0.009)
+recall-strict: 0.805±0.004 (0.757±0.003)
+f1-score-strict: 0.834±0.002 (0.783±0.002)
+
+
+
+workspace1/2018_n2c2/bi_lstm_crf/baseline/site-2
+precision-strict: 0.781±0.020 (0.706±0.018)
+recall-strict: 0.696±0.008 (0.634±0.008)
+f1-score-strict: 0.730±0.003 (0.663±0.005)
+
+
+
+workspace1/2018_n2c2/bi_lstm_crf/baseline/site-3
+precision-strict: 0.804±0.005 (0.731±0.013)
+recall-strict: 0.679±0.006 (0.621±0.005)
+f1-score-strict: 0.727±0.004 (0.664±0.007)
+
+
+
+workspace1/2018_n2c2/bi_lstm_crf/baseline/site-4
+precision-strict: 0.790±0.002 (0.720±0.005)
+recall-strict: 0.695±0.008 (0.637±0.003)
+f1-score-strict: 0.734±0.005 (0.671±0.002)
+
+
+
+workspace1/2018_n2c2/bi_lstm_crf/baseline/site-5
+precision-strict: 0.798±0.003 (0.709±0.006)
+recall-strict: 0.682±0.001 (0.616±0.004)
+f1-score-strict: 0.728±0.001 (0.654±0.003)
+
+
+
+workspace1/2018_n2c2/bi_lstm_crf/baseline/site-6
+precision-strict: 0.794±0.010 (0.717±0.009)
+recall-strict: 0.684±0.004 (0.625±0.006)
+f1-score-strict: 0.726±0.005 (0.660±0.007)
+
+
+
+workspace1/2018_n2c2/bi_lstm_crf/baseline/site-7
+precision-strict: 0.801±0.003 (0.726±0.005)
+recall-strict: 0.679±0.009 (0.622±0.011)
+f1-score-strict: 0.726±0.006 (0.663±0.008)
+
+
+
+workspace1/2018_n2c2/bi_lstm_crf/baseline/site-8
+precision-strict: 0.797±0.003 (0.724±0.003)
+recall-strict: 0.686±0.007 (0.628±0.008)
+f1-score-strict: 0.729±0.005 (0.666±0.005)
+
+
+
+workspace1/2018_n2c2/bi_lstm_crf/baseline/site-9
+precision-strict: 0.806±0.018 (0.722±0.017)
+recall-strict: 0.686±0.002 (0.623±0.007)
+f1-score-strict: 0.733±0.008 (0.663±0.009)
+
+
+
+workspace1/2018_n2c2/bi_lstm_crf/baseline/site-10
+precision-strict: 0.788±0.004 (0.719±0.007)
+recall-strict: 0.681±0.002 (0.626±0.005)
+f1-score-strict: 0.721±0.003 (0.661±0.006)
+
+
+
+workspace1/2018_n2c2/bi_lstm_crf/fedavg
+precision-strict: 0.887±0.004 (0.821±0.007)
+recall-strict: 0.739±0.002 (0.696±0.002)
+f1-score-strict: 0.782±0.002 (0.734±0.003)
+
+
+
+workspace1/BC4CHEMD/bi_lstm_crf/baseline/site-1
+precision-strict: 0.748±0.003 (0.656±0.006)
+recall-strict: 0.780±0.005 (0.684±0.009)
+f1-score-strict: 0.764±0.002 (0.669±0.007)
+
+
+
+workspace1/BC4CHEMD/bi_lstm_crf/baseline/site-0
+precision-strict: 0.961±0.002 (0.937±0.002)
+recall-strict: 0.955±0.000 (0.931±0.000)
+f1-score-strict: 0.958±0.001 (0.934±0.001)
+
+
+
+workspace1/BC4CHEMD/bi_lstm_crf/baseline/site-2
+precision-strict: 0.756±0.011 (0.667±0.014)
+recall-strict: 0.775±0.011 (0.684±0.008)
+f1-score-strict: 0.765±0.002 (0.675±0.005)
+
+
+
+workspace1/BC4CHEMD/bi_lstm_crf/baseline/site-3
+precision-strict: 0.742±0.008 (0.651±0.012)
+recall-strict: 0.791±0.003 (0.694±0.004)
+f1-score-strict: 0.766±0.004 (0.672±0.008)
+
+
+
+workspace1/BC4CHEMD/bi_lstm_crf/baseline/site-4
+precision-strict: 0.741±0.011 (0.655±0.012)
+recall-strict: 0.793±0.011 (0.701±0.009)
+f1-score-strict: 0.766±0.004 (0.677±0.006)
+
+
+
+workspace1/BC4CHEMD/bi_lstm_crf/baseline/site-5
+precision-strict: 0.742±0.010 (0.653±0.010)
+recall-strict: 0.796±0.003 (0.700±0.005)
+f1-score-strict: 0.768±0.004 (0.675±0.006)
+
+
+
+workspace1/BC4CHEMD/bi_lstm_crf/baseline/site-6
+precision-strict: 0.745±0.007 (0.655±0.008)
+recall-strict: 0.782±0.001 (0.687±0.003)
+f1-score-strict: 0.763±0.003 (0.671±0.005)
+
+
+
+workspace1/BC4CHEMD/bi_lstm_crf/baseline/site-7
+precision-strict: 0.747±0.013 (0.658±0.016)
+recall-strict: 0.788±0.005 (0.694±0.001)
+f1-score-strict: 0.767±0.004 (0.675±0.009)
+
+
+
+workspace1/BC4CHEMD/bi_lstm_crf/baseline/site-8
+precision-strict: 0.746±0.004 (0.652±0.004)
+recall-strict: 0.787±0.009 (0.688±0.015)
+f1-score-strict: 0.766±0.002 (0.670±0.009)
+
+
+
+workspace1/BC4CHEMD/bi_lstm_crf/baseline/site-9
+precision-strict: 0.748±0.015 (0.659±0.014)
+recall-strict: 0.791±0.013 (0.697±0.012)
+f1-score-strict: 0.769±0.003 (0.677±0.006)
+
+
+
+workspace1/BC4CHEMD/bi_lstm_crf/baseline/site-10
+precision-strict: 0.754±0.003 (0.660±0.004)
+recall-strict: 0.779±0.009 (0.682±0.014)
+f1-score-strict: 0.767±0.003 (0.670±0.009)
+
+
+
+workspace1/BC4CHEMD/bi_lstm_crf/fedavg
+precision-strict: 0.935±0.006 (0.897±0.006)
+recall-strict: 0.904±0.003 (0.867±0.003)
+f1-score-strict: 0.920±0.002 (0.882±0.002)
+
+
+
+workspace1/BC4CHEMD/gpt2/baseline/site-1
+precision-strict: 0.744±0.016 (0.684±0.017)
+recall-strict: 0.751±0.009 (0.691±0.006)
+f1-score-strict: 0.747±0.004 (0.687±0.006)
+
+
+
+workspace1/BC4CHEMD/gpt2/baseline/site-0
+precision-strict: 0.897±0.002 (0.875±0.003)
+recall-strict: 0.861±0.002 (0.840±0.002)
+f1-score-strict: 0.879±0.002 (0.857±0.002)
+
+
+
+workspace1/BC4CHEMD/gpt2/baseline/site-2
+precision-strict: 0.764±0.007 (0.707±0.006)
+recall-strict: 0.728±0.004 (0.673±0.004)
+f1-score-strict: 0.746±0.002 (0.689±0.003)
+
+
+
+workspace1/BC4CHEMD/gpt2/baseline/site-3
+precision-strict: 0.760±0.008 (0.695±0.008)
+recall-strict: 0.738±0.008 (0.675±0.006)
+f1-score-strict: 0.748±0.001 (0.685±0.001)
+
+
+
+workspace1/BC4CHEMD/gpt2/baseline/site-4
+precision-strict: 0.760±0.018 (0.699±0.018)
+recall-strict: 0.732±0.025 (0.673±0.022)
+f1-score-strict: 0.745±0.005 (0.685±0.004)
+
+
+
+workspace1/BC4CHEMD/gpt2/baseline/site-5
+precision-strict: 0.760±0.011 (0.699±0.011)
+recall-strict: 0.739±0.009 (0.680±0.008)
+f1-score-strict: 0.750±0.002 (0.689±0.002)
+
+
+
+workspace1/BC4CHEMD/gpt2/baseline/site-6
+precision-strict: 0.754±0.003 (0.691±0.003)
+recall-strict: 0.729±0.005 (0.668±0.005)
+f1-score-strict: 0.741±0.003 (0.679±0.003)
+
+
+
+workspace1/BC4CHEMD/gpt2/baseline/site-7
+precision-strict: 0.764±0.012 (0.704±0.011)
+recall-strict: 0.744±0.016 (0.685±0.014)
+f1-score-strict: 0.753±0.004 (0.695±0.003)
+
+
+
+workspace1/BC4CHEMD/gpt2/baseline/site-8
+precision-strict: 0.752±0.007 (0.690±0.007)
+recall-strict: 0.745±0.006 (0.684±0.005)
+f1-score-strict: 0.748±0.002 (0.687±0.003)
+
+
+
+workspace1/BC4CHEMD/gpt2/baseline/site-9
+precision-strict: 0.741±0.016 (0.682±0.015)
+recall-strict: 0.749±0.009 (0.689±0.008)
+f1-score-strict: 0.745±0.004 (0.686±0.004)
+
+
+
+workspace1/BC4CHEMD/gpt2/baseline/site-10
+precision-strict: 0.736±0.014 (0.677±0.015)
+recall-strict: 0.751±0.013 (0.691±0.010)
+f1-score-strict: 0.744±0.001 (0.684±0.004)
+
+
+
+workspace1/BC4CHEMD/gpt2/fedavg
+***************workspace missing: workspace1/BC4CHEMD/gpt2/fedavg
+workspace1/BC4CHEMD/bluebert/baseline/site-1
+precision-strict: 0.924±0.002 (0.888±0.000)
+recall-strict: 0.937±0.005 (0.901±0.006)
+f1-score-strict: 0.930±0.001 (0.895±0.003)
+
+
+
+workspace1/BC4CHEMD/bluebert/baseline/site-0
+***************workspace missing: workspace1/BC4CHEMD/bluebert/baseline/site-0
+workspace1/BC4CHEMD/bluebert/baseline/site-2
+precision-strict: 0.913±0.027 (0.875±0.029)
+recall-strict: 0.935±0.006 (0.896±0.002)
+f1-score-strict: 0.924±0.011 (0.885±0.014)
+
+
+
+workspace1/BC4CHEMD/bluebert/baseline/site-3
+precision-strict: 0.924±0.003 (0.888±0.003)
+recall-strict: 0.936±0.003 (0.900±0.003)
+f1-score-strict: 0.930±0.000 (0.894±0.000)
+
+
+
+workspace1/BC4CHEMD/bluebert/baseline/site-4
+precision-strict: 0.915±0.013 (0.875±0.017)
+recall-strict: 0.938±0.002 (0.897±0.006)
+f1-score-strict: 0.927±0.008 (0.886±0.011)
+
+
+
+workspace1/BC4CHEMD/bluebert/baseline/site-5
+precision-strict: 0.925±0.008 (0.888±0.007)
+recall-strict: 0.928±0.001 (0.891±0.002)
+f1-score-strict: 0.926±0.004 (0.890±0.004)
+
+
+
+workspace1/BC4CHEMD/bluebert/baseline/site-6
+precision-strict: 0.921±0.004 (0.882±0.006)
+recall-strict: 0.933±0.005 (0.893±0.002)
+f1-score-strict: 0.927±0.000 (0.888±0.002)
+
+
+
+workspace1/BC4CHEMD/bluebert/baseline/site-7
+***************workspace missing: workspace1/BC4CHEMD/bluebert/baseline/site-7
+workspace1/BC4CHEMD/bluebert/baseline/site-8
+precision-strict: 0.925±0.005 (0.889±0.004)
+recall-strict: 0.934±0.005 (0.897±0.006)
+f1-score-strict: 0.929±0.000 (0.893±0.002)
+
+
+
+workspace1/BC4CHEMD/bluebert/baseline/site-9
+precision-strict: 0.918±0.007 (0.880±0.011)
+recall-strict: 0.927±0.007 (0.889±0.011)
+f1-score-strict: 0.922±0.007 (0.885±0.011)
+
+
+
+workspace1/BC4CHEMD/bluebert/fedavg
+***************workspace missing: workspace1/BC4CHEMD/bluebert/fedavg
+workspace1/BC4CHEMD/bert-base-uncased/baseline/site-1
+precision-strict: 0.923±0.001 (0.882±0.001)
+recall-strict: 0.924±0.002 (0.883±0.001)
+f1-score-strict: 0.924±0.001 (0.883±0.000)
+
+
+
+workspace1/BC4CHEMD/bert-base-uncased/baseline/site-0
+***************workspace missing: workspace1/BC4CHEMD/bert-base-uncased/baseline/site-0
+workspace1/BC4CHEMD/bert-base-uncased/baseline/site-2
+precision-strict: 0.923±0.003 (0.882±0.003)
+recall-strict: 0.921±0.005 (0.880±0.005)
+f1-score-strict: 0.922±0.001 (0.881±0.001)
+
+
+
+workspace1/BC4CHEMD/bert-base-uncased/baseline/site-3
+precision-strict: 0.917±0.002 (0.876±0.003)
+recall-strict: 0.922±0.003 (0.881±0.004)
+f1-score-strict: 0.920±0.001 (0.879±0.002)
+
+
+
+workspace1/BC4CHEMD/bert-base-uncased/baseline/site-4
+precision-strict: 0.917±0.005 (0.877±0.005)
+recall-strict: 0.926±0.003 (0.886±0.002)
+f1-score-strict: 0.922±0.001 (0.882±0.001)
+
+
+
+workspace1/BC4CHEMD/bert-base-uncased/baseline/site-5
+precision-strict: 0.923±0.002 (0.884±0.001)
+recall-strict: 0.920±0.005 (0.881±0.006)
+f1-score-strict: 0.921±0.002 (0.883±0.003)
+
+
+
+workspace1/BC4CHEMD/bert-base-uncased/baseline/site-6
+precision-strict: 0.921±0.001 (0.880±0.001)
+recall-strict: 0.914±0.002 (0.873±0.002)
+f1-score-strict: 0.918±0.001 (0.877±0.001)
+
+
+
+workspace1/BC4CHEMD/bert-base-uncased/baseline/site-7
+precision-strict: 0.922±0.004 (0.883±0.004)
+recall-strict: 0.922±0.004 (0.884±0.004)
+f1-score-strict: 0.922±0.000 (0.884±0.001)
+
+
+
+workspace1/BC4CHEMD/bert-base-uncased/baseline/site-8
+precision-strict: 0.924±0.000 (0.883±0.001)
+recall-strict: 0.920±0.002 (0.879±0.002)
+f1-score-strict: 0.922±0.001 (0.881±0.001)
+
+
+
+workspace1/BC4CHEMD/bert-base-uncased/baseline/site-9
+precision-strict: 0.922±0.006 (0.883±0.006)
+recall-strict: 0.919±0.006 (0.881±0.005)
+f1-score-strict: 0.920±0.001 (0.882±0.000)
+
+
+
+workspace1/BC4CHEMD/bert-base-uncased/baseline/site-10
+precision-strict: 0.922±0.002 (0.881±0.002)
+recall-strict: 0.917±0.003 (0.877±0.002)
+f1-score-strict: 0.919±0.001 (0.879±0.001)
+
+
+
+workspace1/BC4CHEMD/bert-base-uncased/fedavg
+precision-strict: 0.966±0.000 (0.947±0.001)
+recall-strict: 0.980±0.000 (0.960±0.001)
+f1-score-strict: 0.973±0.000 (0.954±0.001)
+
+
+
+workspace1/BC4CHEMD/biobert/baseline/site-1
+precision-strict: 0.939±0.005 (0.907±0.004)
+recall-strict: 0.951±0.004 (0.918±0.004)
+f1-score-strict: 0.945±0.001 (0.913±0.001)
+
+
+
+workspace1/BC4CHEMD/biobert/baseline/site-0
+***************workspace missing: workspace1/BC4CHEMD/biobert/baseline/site-0
+workspace1/BC4CHEMD/biobert/baseline/site-2
+precision-strict: 0.938±0.004 (0.904±0.004)
+recall-strict: 0.947±0.005 (0.913±0.005)
+f1-score-strict: 0.942±0.000 (0.908±0.000)
+
+
+
+workspace1/BC4CHEMD/biobert/baseline/site-3
+precision-strict: 0.939±0.002 (0.908±0.001)
+recall-strict: 0.945±0.002 (0.914±0.003)
+f1-score-strict: 0.942±0.000 (0.911±0.001)
+
+
+
+workspace1/BC4CHEMD/biobert/baseline/site-4
+precision-strict: 0.940±0.005 (0.908±0.004)
+recall-strict: 0.951±0.002 (0.919±0.003)
+f1-score-strict: 0.945±0.001 (0.914±0.001)
+
+
+
+workspace1/BC4CHEMD/biobert/baseline/site-5
+precision-strict: 0.938±0.001 (0.907±0.000)
+recall-strict: 0.954±0.001 (0.922±0.002)
+f1-score-strict: 0.946±0.000 (0.915±0.001)
+
+
+
+workspace1/BC4CHEMD/biobert/baseline/site-6
+precision-strict: 0.938±0.004 (0.906±0.003)
+recall-strict: 0.945±0.002 (0.912±0.002)
+f1-score-strict: 0.941±0.001 (0.909±0.001)
+
+
+
+workspace1/BC4CHEMD/biobert/baseline/site-7
+precision-strict: 0.936±0.002 (0.906±0.002)
+recall-strict: 0.954±0.002 (0.923±0.002)
+f1-score-strict: 0.945±0.000 (0.915±0.000)
+
+
+
+workspace1/BC4CHEMD/biobert/baseline/site-8
+precision-strict: 0.934±0.002 (0.902±0.003)
+recall-strict: 0.955±0.002 (0.923±0.000)
+f1-score-strict: 0.945±0.000 (0.912±0.001)
+
+
+
+workspace1/BC4CHEMD/biobert/baseline/site-9
+precision-strict: 0.935±0.001 (0.904±0.001)
+recall-strict: 0.951±0.002 (0.919±0.002)
+f1-score-strict: 0.943±0.000 (0.912±0.001)
+
+
+
+workspace1/BC4CHEMD/biobert/baseline/site-10
+precision-strict: 0.935±0.003 (0.903±0.002)
+recall-strict: 0.955±0.001 (0.921±0.002)
+f1-score-strict: 0.945±0.002 (0.912±0.001)
+
+
+
+workspace1/BC4CHEMD/biobert/fedavg
+precision-strict: 0.974±0.001 (0.958±0.001)
+recall-strict: 0.983±0.000 (0.967±0.000)
+f1-score-strict: 0.978±0.000 (0.963±0.001)
+
+
+
+workspace1/BC4CHEMD/bio_clinicalbert/baseline/site-1
+precision-strict: 0.922±0.003 (0.882±0.004)
+recall-strict: 0.928±0.001 (0.887±0.002)
+f1-score-strict: 0.925±0.002 (0.885±0.003)
+
+
+
+workspace1/BC4CHEMD/bio_clinicalbert/baseline/site-0
+***************workspace missing: workspace1/BC4CHEMD/bio_clinicalbert/baseline/site-0
+workspace1/BC4CHEMD/bio_clinicalbert/baseline/site-2
+precision-strict: 0.925±0.002 (0.886±0.003)
+recall-strict: 0.918±0.001 (0.878±0.003)
+f1-score-strict: 0.921±0.001 (0.882±0.003)
+
+
+
+workspace1/BC4CHEMD/bio_clinicalbert/baseline/site-3
+precision-strict: 0.922±0.002 (0.885±0.001)
+recall-strict: 0.924±0.004 (0.887±0.005)
+f1-score-strict: 0.923±0.001 (0.886±0.002)
+
+
+
+workspace1/BC4CHEMD/bio_clinicalbert/baseline/site-4
+precision-strict: 0.921±0.002 (0.881±0.002)
+recall-strict: 0.931±0.003 (0.890±0.003)
+f1-score-strict: 0.926±0.001 (0.886±0.000)
+
+
+
+workspace1/BC4CHEMD/bio_clinicalbert/baseline/site-5
+precision-strict: 0.923±0.006 (0.886±0.008)
+recall-strict: 0.925±0.007 (0.888±0.005)
+f1-score-strict: 0.924±0.001 (0.887±0.002)
+
+
+
+workspace1/BC4CHEMD/bio_clinicalbert/baseline/site-6
+precision-strict: 0.929±0.001 (0.889±0.002)
+recall-strict: 0.918±0.002 (0.879±0.002)
+f1-score-strict: 0.924±0.001 (0.884±0.001)
+
+
+
+workspace1/BC4CHEMD/bio_clinicalbert/baseline/site-7
+precision-strict: 0.923±0.004 (0.886±0.003)
+recall-strict: 0.928±0.003 (0.890±0.004)
+f1-score-strict: 0.925±0.000 (0.888±0.001)
+
+
+
+workspace1/BC4CHEMD/bio_clinicalbert/baseline/site-8
+precision-strict: 0.925±0.002 (0.886±0.002)
+recall-strict: 0.927±0.002 (0.888±0.002)
+f1-score-strict: 0.926±0.001 (0.887±0.001)
+
+
+
+workspace1/BC4CHEMD/bio_clinicalbert/baseline/site-9
+precision-strict: 0.922±0.004 (0.885±0.003)
+recall-strict: 0.925±0.003 (0.888±0.005)
+f1-score-strict: 0.924±0.000 (0.886±0.002)
+
+
+
+workspace1/BC4CHEMD/bio_clinicalbert/baseline/site-10
+precision-strict: 0.922±0.001 (0.882±0.002)
+recall-strict: 0.927±0.002 (0.887±0.005)
+f1-score-strict: 0.925±0.001 (0.885±0.003)
+
+
+
+workspace1/BC4CHEMD/bio_clinicalbert/fedavg
+precision-strict: 0.965±0.001 (0.947±0.001)
+recall-strict: 0.977±0.000 (0.959±0.000)
+f1-score-strict: 0.971±0.001 (0.953±0.001)
+
+
+
+workspace1/JNLPBA/bi_lstm_crf/baseline/site-0
+precision-strict: 0.958±0.002 (0.922±0.003)
+recall-strict: 0.963±0.002 (0.927±0.001)
+f1-score-strict: 0.961±0.000 (0.924±0.001)
+
+
+
+workspace1/JNLPBA/bi_lstm_crf/baseline/site-1
+precision-strict: 0.823±0.019 (0.669±0.022)
+recall-strict: 0.825±0.013 (0.669±0.008)
+f1-score-strict: 0.824±0.003 (0.669±0.010)
+
+
+
+workspace1/JNLPBA/bi_lstm_crf/baseline/site-2
+precision-strict: 0.821±0.008 (0.670±0.015)
+recall-strict: 0.826±0.006 (0.673±0.005)
+f1-score-strict: 0.824±0.001 (0.671±0.009)
+
+
+
+workspace1/JNLPBA/bi_lstm_crf/baseline/site-3
+precision-strict: 0.823±0.008 (0.668±0.015)
+recall-strict: 0.823±0.008 (0.668±0.011)
+f1-score-strict: 0.823±0.004 (0.668±0.012)
+
+
+
+workspace1/JNLPBA/bi_lstm_crf/baseline/site-4
+precision-strict: 0.826±0.011 (0.674±0.018)
+recall-strict: 0.815±0.010 (0.666±0.014)
+f1-score-strict: 0.820±0.008 (0.670±0.015)
+
+
+
+workspace1/JNLPBA/bi_lstm_crf/baseline/site-5
+precision-strict: 0.834±0.017 (0.674±0.021)
+recall-strict: 0.803±0.018 (0.649±0.020)
+f1-score-strict: 0.818±0.006 (0.661±0.016)
+
+
+
+workspace1/JNLPBA/bi_lstm_crf/baseline/site-6
+precision-strict: 0.832±0.015 (0.673±0.025)
+recall-strict: 0.808±0.017 (0.654±0.017)
+f1-score-strict: 0.820±0.008 (0.663±0.019)
+
+
+
+workspace1/JNLPBA/bi_lstm_crf/baseline/site-7
+precision-strict: 0.828±0.012 (0.685±0.018)
+recall-strict: 0.819±0.009 (0.677±0.009)
+f1-score-strict: 0.824±0.004 (0.681±0.012)
+
+
+
+workspace1/JNLPBA/bi_lstm_crf/baseline/site-8
+precision-strict: 0.818±0.002 (0.667±0.011)
+recall-strict: 0.832±0.006 (0.678±0.012)
+f1-score-strict: 0.825±0.004 (0.672±0.011)
+
+
+
+workspace1/JNLPBA/bi_lstm_crf/baseline/site-9
+precision-strict: 0.829±0.006 (0.674±0.013)
+recall-strict: 0.821±0.005 (0.668±0.009)
+f1-score-strict: 0.825±0.004 (0.671±0.010)
+
+
+
+workspace1/JNLPBA/bi_lstm_crf/baseline/site-10
+precision-strict: 0.823±0.010 (0.670±0.014)
+recall-strict: 0.819±0.004 (0.667±0.010)
+f1-score-strict: 0.821±0.004 (0.668±0.011)
+
+
+
+workspace1/JNLPBA/bi_lstm_crf/fedavg
+precision-strict: 0.912±0.002 (0.820±0.004)
+recall-strict: 0.891±0.000 (0.801±0.003)
+f1-score-strict: 0.902±0.001 (0.810±0.004)
+
+
+
+workspace1/JNLPBA/bluebert/baseline/site-0
+precision-strict: 0.962±0.003 (0.933±0.004)
+recall-strict: 0.976±0.000 (0.947±0.001)
+f1-score-strict: 0.969±0.001 (0.940±0.003)
+
+
+
+workspace1/JNLPBA/bluebert/baseline/site-1
+precision-strict: 0.892±0.001 (0.803±0.002)
+recall-strict: 0.924±0.002 (0.832±0.004)
+f1-score-strict: 0.907±0.001 (0.817±0.003)
+
+
+
+workspace1/JNLPBA/bluebert/baseline/site-2
+precision-strict: 0.891±0.003 (0.805±0.005)
+recall-strict: 0.924±0.004 (0.834±0.001)
+f1-score-strict: 0.907±0.001 (0.819±0.002)
+
+
+
+workspace1/JNLPBA/bluebert/baseline/site-3
+precision-strict: 0.896±0.003 (0.811±0.004)
+recall-strict: 0.922±0.003 (0.834±0.002)
+f1-score-strict: 0.909±0.001 (0.822±0.002)
+
+
+
+workspace1/JNLPBA/bluebert/baseline/site-4
+precision-strict: 0.890±0.002 (0.803±0.002)
+recall-strict: 0.924±0.003 (0.833±0.001)
+f1-score-strict: 0.907±0.001 (0.818±0.001)
+
+
+
+workspace1/JNLPBA/bluebert/baseline/site-5
+precision-strict: 0.892±0.003 (0.802±0.002)
+recall-strict: 0.922±0.004 (0.829±0.004)
+f1-score-strict: 0.907±0.000 (0.815±0.001)
+
+
+
+workspace1/JNLPBA/bluebert/baseline/site-6
+precision-strict: 0.895±0.002 (0.807±0.005)
+recall-strict: 0.917±0.006 (0.827±0.004)
+f1-score-strict: 0.906±0.002 (0.817±0.003)
+
+
+
+workspace1/JNLPBA/bluebert/baseline/site-7
+precision-strict: 0.898±0.001 (0.810±0.002)
+recall-strict: 0.922±0.002 (0.832±0.003)
+f1-score-strict: 0.910±0.002 (0.821±0.002)
+
+
+
+workspace1/JNLPBA/bluebert/baseline/site-8
+precision-strict: 0.892±0.004 (0.803±0.004)
+recall-strict: 0.928±0.003 (0.836±0.003)
+f1-score-strict: 0.910±0.001 (0.819±0.001)
+
+
+
+workspace1/JNLPBA/bluebert/baseline/site-9
+precision-strict: 0.899±0.001 (0.813±0.002)
+recall-strict: 0.921±0.003 (0.833±0.003)
+f1-score-strict: 0.910±0.001 (0.823±0.002)
+
+
+
+workspace1/JNLPBA/bluebert/baseline/site-10
+precision-strict: 0.892±0.002 (0.800±0.002)
+recall-strict: 0.919±0.003 (0.824±0.002)
+f1-score-strict: 0.905±0.001 (0.812±0.001)
+
+
+
+workspace1/JNLPBA/bluebert/fedavg
+precision-strict: 0.953±0.000 (0.913±0.001)
+recall-strict: 0.974±0.001 (0.934±0.002)
+f1-score-strict: 0.963±0.001 (0.923±0.001)
+
+
+
+workspace1/JNLPBA/bio_clinicalbert/baseline/site-0
+precision-strict: 0.965±0.001 (0.937±0.001)
+recall-strict: 0.974±0.001 (0.946±0.001)
+f1-score-strict: 0.969±0.001 (0.941±0.001)
+
+
+
+workspace1/JNLPBA/bio_clinicalbert/baseline/site-1
+precision-strict: 0.891±0.001 (0.803±0.001)
+recall-strict: 0.918±0.003 (0.827±0.003)
+f1-score-strict: 0.904±0.001 (0.815±0.001)
+
+
+
+workspace1/JNLPBA/bio_clinicalbert/baseline/site-2
+precision-strict: 0.888±0.002 (0.799±0.002)
+recall-strict: 0.925±0.002 (0.832±0.003)
+f1-score-strict: 0.906±0.001 (0.815±0.002)
+
+
+
+workspace1/JNLPBA/bio_clinicalbert/baseline/site-3
+precision-strict: 0.896±0.001 (0.808±0.004)
+recall-strict: 0.913±0.007 (0.823±0.004)
+f1-score-strict: 0.904±0.003 (0.815±0.003)
+
+
+
+workspace1/JNLPBA/bio_clinicalbert/baseline/site-4
+precision-strict: 0.883±0.003 (0.796±0.003)
+recall-strict: 0.927±0.001 (0.836±0.001)
+f1-score-strict: 0.905±0.001 (0.816±0.002)
+
+
+
+workspace1/JNLPBA/bio_clinicalbert/baseline/site-5
+precision-strict: 0.892±0.001 (0.800±0.002)
+recall-strict: 0.912±0.000 (0.818±0.002)
+f1-score-strict: 0.902±0.001 (0.809±0.002)
+
+
+
+workspace1/JNLPBA/bio_clinicalbert/baseline/site-6
+precision-strict: 0.895±0.002 (0.807±0.003)
+recall-strict: 0.919±0.002 (0.829±0.001)
+f1-score-strict: 0.907±0.000 (0.818±0.001)
+
+
+
+workspace1/JNLPBA/bio_clinicalbert/baseline/site-7
+precision-strict: 0.898±0.004 (0.808±0.003)
+recall-strict: 0.919±0.004 (0.826±0.005)
+f1-score-strict: 0.908±0.001 (0.817±0.001)
+
+
+
+workspace1/JNLPBA/bio_clinicalbert/baseline/site-8
+precision-strict: 0.893±0.001 (0.803±0.001)
+recall-strict: 0.922±0.004 (0.828±0.005)
+f1-score-strict: 0.907±0.001 (0.815±0.003)
+
+
+
+workspace1/JNLPBA/bio_clinicalbert/baseline/site-9
+precision-strict: 0.892±0.002 (0.806±0.002)
+recall-strict: 0.923±0.002 (0.833±0.001)
+f1-score-strict: 0.907±0.001 (0.820±0.001)
+
+
+
+workspace1/JNLPBA/bio_clinicalbert/baseline/site-10
+precision-strict: 0.891±0.003 (0.800±0.005)
+recall-strict: 0.916±0.004 (0.822±0.002)
+f1-score-strict: 0.903±0.000 (0.811±0.002)
+
+
+
+workspace1/JNLPBA/bio_clinicalbert/fedavg
+precision-strict: 0.939±0.001 (0.889±0.002)
+recall-strict: 0.964±0.001 (0.913±0.001)
+f1-score-strict: 0.951±0.000 (0.901±0.001)
+
+
+
+workspace1/JNLPBA/gpt2/baseline/site-0
+precision-strict: 0.918±0.001 (0.875±0.001)
+recall-strict: 0.931±0.003 (0.887±0.003)
+f1-score-strict: 0.925±0.001 (0.881±0.001)
+
+
+
+workspace1/JNLPBA/gpt2/baseline/site-1
+precision-strict: 0.779±0.007 (0.657±0.006)
+recall-strict: 0.808±0.014 (0.681±0.013)
+f1-score-strict: 0.793±0.004 (0.669±0.005)
+
+
+
+workspace1/JNLPBA/gpt2/baseline/site-2
+precision-strict: 0.790±0.007 (0.662±0.007)
+recall-strict: 0.802±0.007 (0.672±0.005)
+f1-score-strict: 0.796±0.002 (0.667±0.002)
+
+
+
+workspace1/JNLPBA/gpt2/baseline/site-3
+precision-strict: 0.802±0.003 (0.677±0.002)
+recall-strict: 0.803±0.007 (0.678±0.006)
+f1-score-strict: 0.803±0.002 (0.678±0.002)
+
+
+
+workspace1/JNLPBA/gpt2/baseline/site-4
+precision-strict: 0.775±0.006 (0.655±0.006)
+recall-strict: 0.822±0.007 (0.695±0.004)
+f1-score-strict: 0.798±0.002 (0.675±0.002)
+
+
+
+workspace1/JNLPBA/gpt2/baseline/site-5
+precision-strict: 0.788±0.001 (0.663±0.002)
+recall-strict: 0.812±0.009 (0.683±0.007)
+f1-score-strict: 0.800±0.004 (0.673±0.003)
+
+
+
+workspace1/JNLPBA/gpt2/baseline/site-6
+precision-strict: 0.785±0.001 (0.653±0.004)
+recall-strict: 0.807±0.005 (0.671±0.003)
+f1-score-strict: 0.796±0.002 (0.662±0.003)
+
+
+
+workspace1/JNLPBA/gpt2/baseline/site-7
+precision-strict: 0.783±0.004 (0.662±0.003)
+recall-strict: 0.825±0.008 (0.698±0.007)
+f1-score-strict: 0.804±0.002 (0.680±0.002)
+
+
+
+workspace1/JNLPBA/gpt2/baseline/site-8
+precision-strict: 0.788±0.002 (0.662±0.004)
+recall-strict: 0.813±0.004 (0.683±0.002)
+f1-score-strict: 0.800±0.001 (0.673±0.003)
+
+
+
+workspace1/JNLPBA/gpt2/baseline/site-9
+precision-strict: 0.783±0.007 (0.661±0.011)
+recall-strict: 0.817±0.013 (0.690±0.006)
+f1-score-strict: 0.800±0.002 (0.675±0.003)
+
+
+
+workspace1/JNLPBA/gpt2/baseline/site-10
+precision-strict: 0.784±0.005 (0.658±0.002)
+recall-strict: 0.801±0.006 (0.673±0.003)
+f1-score-strict: 0.792±0.006 (0.666±0.002)
+
+
+
+workspace1/JNLPBA/gpt2/fedavg
+precision-strict: 0.847±0.004 (0.750±0.003)
+recall-strict: 0.841±0.003 (0.746±0.003)
+f1-score-strict: 0.844±0.001 (0.748±0.001)
+
+
+
+workspace1/JNLPBA/biobert/fedavg
+precision-strict: 0.943±0.003 (0.897±0.003)
+recall-strict: 0.972±0.001 (0.924±0.001)
+f1-score-strict: 0.957±0.001 (0.910±0.002)
+
+
+
+workspace1/JNLPBA/biobert/baseline/site-1
+precision-strict: 0.906±0.003 (0.818±0.003)
+recall-strict: 0.929±0.003 (0.839±0.004)
+f1-score-strict: 0.917±0.001 (0.828±0.002)
+
+
+
+workspace1/JNLPBA/biobert/baseline/site-0
+precision-strict: 0.965±0.001 (0.937±0.002)
+recall-strict: 0.977±0.001 (0.948±0.001)
+f1-score-strict: 0.971±0.000 (0.943±0.001)
+
+
+
+workspace1/JNLPBA/biobert/baseline/site-2
+precision-strict: 0.900±0.004 (0.815±0.003)
+recall-strict: 0.932±0.006 (0.843±0.006)
+f1-score-strict: 0.916±0.001 (0.829±0.002)
+
+
+
+workspace1/JNLPBA/biobert/baseline/site-3
+precision-strict: 0.906±0.002 (0.823±0.001)
+recall-strict: 0.921±0.006 (0.836±0.008)
+f1-score-strict: 0.914±0.002 (0.830±0.004)
+
+
+
+workspace1/JNLPBA/biobert/baseline/site-4
+precision-strict: 0.899±0.002 (0.815±0.003)
+recall-strict: 0.933±0.003 (0.846±0.001)
+f1-score-strict: 0.916±0.001 (0.830±0.001)
+
+
+
+workspace1/JNLPBA/biobert/baseline/site-5
+precision-strict: 0.905±0.001 (0.818±0.002)
+recall-strict: 0.921±0.002 (0.832±0.001)
+f1-score-strict: 0.913±0.001 (0.825±0.001)
+
+
+
+workspace1/JNLPBA/biobert/baseline/site-6
+precision-strict: 0.905±0.003 (0.820±0.002)
+recall-strict: 0.918±0.002 (0.832±0.002)
+f1-score-strict: 0.912±0.000 (0.826±0.001)
+
+
+
+workspace1/JNLPBA/biobert/baseline/site-7
+precision-strict: 0.905±0.001 (0.823±0.001)
+recall-strict: 0.928±0.002 (0.844±0.003)
+f1-score-strict: 0.917±0.001 (0.834±0.002)
+
+
+
+workspace1/JNLPBA/biobert/baseline/site-8
+precision-strict: 0.899±0.001 (0.815±0.001)
+recall-strict: 0.932±0.003 (0.845±0.001)
+f1-score-strict: 0.916±0.002 (0.830±0.000)
+
+
+
+workspace1/JNLPBA/biobert/baseline/site-9
+precision-strict: 0.905±0.003 (0.821±0.005)
+recall-strict: 0.927±0.002 (0.841±0.002)
+f1-score-strict: 0.916±0.000 (0.831±0.003)
+
+
+
+workspace1/JNLPBA/biobert/baseline/site-10
+precision-strict: 0.900±0.002 (0.812±0.002)
+recall-strict: 0.927±0.005 (0.836±0.004)
+f1-score-strict: 0.913±0.001 (0.824±0.001)
+
+
+
+workspace1/JNLPBA/bert-base-uncased/baseline/site-0
+precision-strict: 0.962±0.000 (0.932±0.001)
+recall-strict: 0.976±0.002 (0.946±0.002)
+f1-score-strict: 0.969±0.001 (0.939±0.002)
+
+
+
+workspace1/JNLPBA/bert-base-uncased/baseline/site-1
+precision-strict: 0.888±0.002 (0.798±0.003)
+recall-strict: 0.921±0.000 (0.828±0.002)
+f1-score-strict: 0.905±0.001 (0.813±0.002)
+
+
+
+workspace1/JNLPBA/bert-base-uncased/baseline/site-2
+precision-strict: 0.888±0.001 (0.801±0.002)
+recall-strict: 0.923±0.003 (0.832±0.003)
+f1-score-strict: 0.905±0.001 (0.816±0.002)
+
+
+
+workspace1/JNLPBA/bert-base-uncased/baseline/site-3
+precision-strict: 0.891±0.001 (0.807±0.001)
+recall-strict: 0.915±0.003 (0.828±0.002)
+f1-score-strict: 0.903±0.002 (0.817±0.001)
+
+
+
+workspace1/JNLPBA/bert-base-uncased/baseline/site-4
+precision-strict: 0.888±0.001 (0.801±0.002)
+recall-strict: 0.919±0.003 (0.830±0.003)
+f1-score-strict: 0.903±0.001 (0.815±0.002)
+
+
+
+workspace1/JNLPBA/bert-base-uncased/baseline/site-5
+precision-strict: 0.886±0.004 (0.795±0.005)
+recall-strict: 0.923±0.002 (0.828±0.002)
+f1-score-strict: 0.904±0.002 (0.811±0.003)
+
+
+
+workspace1/JNLPBA/bert-base-uncased/baseline/site-6
+precision-strict: 0.893±0.003 (0.807±0.004)
+recall-strict: 0.915±0.003 (0.826±0.002)
+f1-score-strict: 0.904±0.000 (0.816±0.001)
+
+
+
+workspace1/JNLPBA/bert-base-uncased/baseline/site-7
+precision-strict: 0.892±0.002 (0.806±0.003)
+recall-strict: 0.923±0.001 (0.834±0.002)
+f1-score-strict: 0.907±0.002 (0.819±0.003)
+
+
+
+workspace1/JNLPBA/bert-base-uncased/baseline/site-8
+precision-strict: 0.889±0.002 (0.797±0.002)
+recall-strict: 0.924±0.003 (0.830±0.002)
+f1-score-strict: 0.906±0.001 (0.813±0.000)
+
+
+
+workspace1/JNLPBA/bert-base-uncased/baseline/site-9
+precision-strict: 0.891±0.000 (0.804±0.001)
+recall-strict: 0.924±0.002 (0.834±0.001)
+f1-score-strict: 0.907±0.001 (0.819±0.001)
+
+
+
+workspace1/JNLPBA/bert-base-uncased/baseline/site-10
+precision-strict: 0.888±0.002 (0.796±0.003)
+recall-strict: 0.914±0.002 (0.820±0.003)
+f1-score-strict: 0.901±0.001 (0.808±0.003)
+
+
+
+workspace1/JNLPBA/bert-base-uncased/fedavg
+precision-strict: 0.931±0.001 (0.879±0.001)
+recall-strict: 0.967±0.002 (0.913±0.002)
+f1-score-strict: 0.949±0.001 (0.896±0.001)
+
+
+
+workspace1/NCBI-disease/bluebert/baseline/site-1
+precision-strict: 0.932±0.010 (0.860±0.012)
+recall-strict: 0.926±0.005 (0.855±0.006)
+f1-score-strict: 0.929±0.004 (0.857±0.006)
+
+
+
+workspace1/NCBI-disease/bluebert/baseline/site-2
+precision-strict: 0.916±0.012 (0.848±0.012)
+recall-strict: 0.949±0.007 (0.879±0.009)
+f1-score-strict: 0.932±0.003 (0.863±0.006)
+
+
+
+workspace1/NCBI-disease/bluebert/baseline/site-3
+precision-strict: 0.923±0.010 (0.848±0.010)
+recall-strict: 0.926±0.010 (0.850±0.008)
+f1-score-strict: 0.924±0.003 (0.849±0.002)
+
+
+
+workspace1/NCBI-disease/bluebert/baseline/site-4
+precision-strict: 0.930±0.005 (0.864±0.008)
+recall-strict: 0.915±0.004 (0.850±0.003)
+f1-score-strict: 0.922±0.003 (0.857±0.005)
+
+
+
+workspace1/NCBI-disease/bluebert/baseline/site-5
+precision-strict: 0.926±0.005 (0.866±0.006)
+recall-strict: 0.936±0.007 (0.875±0.005)
+f1-score-strict: 0.931±0.006 (0.870±0.005)
+
+
+
+workspace1/NCBI-disease/bluebert/baseline/site-0
+precision-strict: 0.988±0.004 (0.969±0.005)
+recall-strict: 0.986±0.012 (0.967±0.013)
+f1-score-strict: 0.987±0.008 (0.968±0.009)
+
+
+
+workspace1/NCBI-disease/bluebert/baseline/site-6
+precision-strict: 0.930±0.006 (0.851±0.006)
+recall-strict: 0.923±0.002 (0.845±0.003)
+f1-score-strict: 0.926±0.003 (0.848±0.004)
+
+
+
+workspace1/NCBI-disease/bluebert/baseline/site-7
+precision-strict: 0.918±0.007 (0.858±0.009)
+recall-strict: 0.933±0.005 (0.873±0.005)
+f1-score-strict: 0.926±0.001 (0.865±0.004)
+
+
+
+workspace1/NCBI-disease/bluebert/baseline/site-8
+precision-strict: 0.909±0.011 (0.830±0.010)
+recall-strict: 0.939±0.012 (0.857±0.010)
+f1-score-strict: 0.924±0.003 (0.844±0.001)
+
+
+
+workspace1/NCBI-disease/bluebert/baseline/site-9
+precision-strict: 0.915±0.007 (0.843±0.014)
+recall-strict: 0.927±0.013 (0.855±0.020)
+f1-score-strict: 0.921±0.010 (0.849±0.017)
+
+
+
+workspace1/NCBI-disease/bluebert/baseline/site-10
+precision-strict: 0.921±0.007 (0.849±0.011)
+recall-strict: 0.915±0.008 (0.843±0.005)
+f1-score-strict: 0.918±0.005 (0.846±0.007)
+
+
+
+workspace1/NCBI-disease/bluebert/fedavg
+precision-strict: 0.978±0.002 (0.957±0.001)
+recall-strict: 0.990±0.002 (0.969±0.001)
+f1-score-strict: 0.984±0.002 (0.963±0.000)
+
+
+
+workspace1/NCBI-disease/bi_lstm_crf/baseline/site-1
+precision-strict: 0.782±0.033 (0.626±0.060)
+recall-strict: 0.699±0.007 (0.557±0.025)
+f1-score-strict: 0.738±0.012 (0.589±0.041)
+
+
+
+workspace1/NCBI-disease/bi_lstm_crf/baseline/site-2
+precision-strict: 0.802±0.011 (0.654±0.028)
+recall-strict: 0.696±0.008 (0.568±0.010)
+f1-score-strict: 0.746±0.001 (0.608±0.018)
+
+
+
+workspace1/NCBI-disease/bi_lstm_crf/baseline/site-3
+precision-strict: 0.767±0.024 (0.618±0.035)
+recall-strict: 0.700±0.000 (0.564±0.015)
+f1-score-strict: 0.732±0.011 (0.590±0.024)
+
+
+
+workspace1/NCBI-disease/bi_lstm_crf/baseline/site-4
+precision-strict: 0.795±0.036 (0.637±0.041)
+recall-strict: 0.638±0.024 (0.512±0.034)
+f1-score-strict: 0.708±0.025 (0.567±0.035)
+
+
+
+workspace1/NCBI-disease/bi_lstm_crf/baseline/site-5
+precision-strict: 0.772±0.023 (0.634±0.050)
+recall-strict: 0.710±0.007 (0.582±0.024)
+f1-score-strict: 0.739±0.007 (0.607±0.036)
+
+
+
+workspace1/NCBI-disease/bi_lstm_crf/baseline/site-6
+precision-strict: 0.786±0.031 (0.631±0.047)
+recall-strict: 0.695±0.011 (0.557±0.023)
+f1-score-strict: 0.737±0.017 (0.592±0.033)
+
+
+
+workspace1/NCBI-disease/bi_lstm_crf/baseline/site-7
+precision-strict: 0.772±0.035 (0.628±0.048)
+recall-strict: 0.696±0.015 (0.565±0.007)
+f1-score-strict: 0.732±0.009 (0.594±0.025)
+
+
+
+workspace1/NCBI-disease/bi_lstm_crf/baseline/site-8
+precision-strict: 0.774±0.023 (0.620±0.030)
+recall-strict: 0.682±0.006 (0.546±0.015)
+f1-score-strict: 0.725±0.013 (0.581±0.022)
+
+
+
+workspace1/NCBI-disease/bi_lstm_crf/baseline/site-9
+precision-strict: 0.779±0.028 (0.615±0.046)
+recall-strict: 0.697±0.007 (0.550±0.021)
+f1-score-strict: 0.736±0.014 (0.581±0.032)
+
+
+
+workspace1/NCBI-disease/bi_lstm_crf/baseline/site-10
+precision-strict: 0.783±0.023 (0.620±0.045)
+recall-strict: 0.693±0.012 (0.548±0.030)
+f1-score-strict: 0.735±0.015 (0.582±0.037)
+
+
+
+workspace1/NCBI-disease/bi_lstm_crf/baseline/site-0
+precision-strict: 0.971±0.004 (0.944±0.006)
+recall-strict: 0.971±0.001 (0.945±0.002)
+f1-score-strict: 0.971±0.002 (0.944±0.004)
+
+
+
+workspace1/NCBI-disease/bi_lstm_crf/fedavg
+precision-strict: 0.915±0.019 (0.811±0.036)
+recall-strict: 0.820±0.023 (0.727±0.035)
+f1-score-strict: 0.865±0.020 (0.767±0.035)
+
+
+
+workspace1/NCBI-disease/bert-base-uncased/baseline/site-1
+precision-strict: 0.908±0.008 (0.833±0.005)
+recall-strict: 0.928±0.006 (0.852±0.007)
+f1-score-strict: 0.918±0.003 (0.842±0.003)
+
+
+
+workspace1/NCBI-disease/bert-base-uncased/baseline/site-2
+precision-strict: 0.908±0.008 (0.836±0.009)
+recall-strict: 0.937±0.006 (0.863±0.007)
+f1-score-strict: 0.922±0.007 (0.850±0.008)
+
+
+
+workspace1/NCBI-disease/bert-base-uncased/baseline/site-3
+precision-strict: 0.915±0.008 (0.849±0.003)
+recall-strict: 0.913±0.012 (0.847±0.014)
+f1-score-strict: 0.914±0.004 (0.848±0.006)
+
+
+
+workspace1/NCBI-disease/bert-base-uncased/baseline/site-4
+precision-strict: 0.933±0.005 (0.861±0.009)
+recall-strict: 0.904±0.001 (0.835±0.006)
+f1-score-strict: 0.918±0.003 (0.848±0.008)
+
+
+
+workspace1/NCBI-disease/bert-base-uncased/baseline/site-5
+precision-strict: 0.915±0.016 (0.858±0.016)
+recall-strict: 0.933±0.008 (0.875±0.006)
+f1-score-strict: 0.924±0.005 (0.866±0.005)
+
+
+
+workspace1/NCBI-disease/bert-base-uncased/baseline/site-6
+precision-strict: 0.922±0.008 (0.854±0.006)
+recall-strict: 0.917±0.010 (0.850±0.013)
+f1-score-strict: 0.919±0.003 (0.852±0.007)
+
+
+
+workspace1/NCBI-disease/bert-base-uncased/baseline/site-7
+precision-strict: 0.902±0.019 (0.842±0.018)
+recall-strict: 0.921±0.007 (0.859±0.006)
+f1-score-strict: 0.911±0.007 (0.850±0.007)
+
+
+
+workspace1/NCBI-disease/bert-base-uncased/baseline/site-8
+precision-strict: 0.899±0.011 (0.824±0.008)
+recall-strict: 0.930±0.008 (0.852±0.010)
+f1-score-strict: 0.914±0.003 (0.837±0.003)
+
+
+
+workspace1/NCBI-disease/bert-base-uncased/baseline/site-9
+precision-strict: 0.910±0.007 (0.833±0.007)
+recall-strict: 0.913±0.005 (0.836±0.006)
+f1-score-strict: 0.911±0.001 (0.835±0.004)
+
+
+
+workspace1/NCBI-disease/bert-base-uncased/baseline/site-10
+precision-strict: 0.918±0.002 (0.846±0.003)
+recall-strict: 0.920±0.004 (0.848±0.002)
+f1-score-strict: 0.919±0.002 (0.847±0.001)
+
+
+
+workspace1/NCBI-disease/bert-base-uncased/baseline/site-0
+precision-strict: 0.989±0.002 (0.973±0.002)
+recall-strict: 0.989±0.002 (0.973±0.002)
+f1-score-strict: 0.989±0.001 (0.973±0.000)
+
+
+
+workspace1/NCBI-disease/bert-base-uncased/fedavg
+precision-strict: 0.969±0.002 (0.942±0.002)
+recall-strict: 0.983±0.001 (0.956±0.000)
+f1-score-strict: 0.976±0.001 (0.949±0.001)
+
+
+
+workspace1/NCBI-disease/bio_clinicalbert/baseline/site-1
+precision-strict: 0.922±0.008 (0.849±0.015)
+recall-strict: 0.932±0.008 (0.858±0.002)
+f1-score-strict: 0.927±0.001 (0.854±0.008)
+
+
+
+workspace1/NCBI-disease/bio_clinicalbert/baseline/site-2
+precision-strict: 0.905±0.013 (0.837±0.019)
+recall-strict: 0.940±0.006 (0.869±0.006)
+f1-score-strict: 0.922±0.004 (0.853±0.011)
+
+
+
+workspace1/NCBI-disease/bio_clinicalbert/baseline/site-3
+precision-strict: 0.921±0.009 (0.850±0.009)
+recall-strict: 0.918±0.004 (0.847±0.003)
+f1-score-strict: 0.920±0.002 (0.848±0.003)
+
+
+
+workspace1/NCBI-disease/bio_clinicalbert/baseline/site-4
+precision-strict: 0.924±0.002 (0.860±0.002)
+recall-strict: 0.913±0.003 (0.849±0.002)
+f1-score-strict: 0.918±0.002 (0.855±0.002)
+
+
+
+workspace1/NCBI-disease/bio_clinicalbert/baseline/site-5
+precision-strict: 0.924±0.006 (0.863±0.002)
+recall-strict: 0.937±0.002 (0.875±0.004)
+f1-score-strict: 0.931±0.003 (0.869±0.001)
+
+
+
+workspace1/NCBI-disease/bio_clinicalbert/baseline/site-6
+precision-strict: 0.922±0.008 (0.857±0.011)
+recall-strict: 0.923±0.012 (0.858±0.011)
+f1-score-strict: 0.922±0.003 (0.857±0.005)
+
+
+
+workspace1/NCBI-disease/bio_clinicalbert/baseline/site-7
+precision-strict: 0.919±0.005 (0.856±0.006)
+recall-strict: 0.923±0.004 (0.859±0.001)
+f1-score-strict: 0.921±0.003 (0.858±0.003)
+
+
+
+workspace1/NCBI-disease/bio_clinicalbert/baseline/site-8
+precision-strict: 0.920±0.006 (0.845±0.008)
+recall-strict: 0.933±0.005 (0.857±0.006)
+f1-score-strict: 0.926±0.003 (0.851±0.006)
+
+
+
+workspace1/NCBI-disease/bio_clinicalbert/baseline/site-9
+precision-strict: 0.910±0.009 (0.836±0.008)
+recall-strict: 0.918±0.009 (0.843±0.009)
+f1-score-strict: 0.914±0.000 (0.839±0.003)
+
+
+
+workspace1/NCBI-disease/bio_clinicalbert/baseline/site-0
+precision-strict: 0.993±0.000 (0.975±0.002)
+recall-strict: 0.993±0.001 (0.975±0.001)
+f1-score-strict: 0.993±0.001 (0.975±0.001)
+
+
+
+workspace1/NCBI-disease/bio_clinicalbert/baseline/site-10
+precision-strict: 0.913±0.007 (0.840±0.008)
+recall-strict: 0.920±0.006 (0.847±0.006)
+f1-score-strict: 0.916±0.006 (0.844±0.007)
+
+
+
+workspace1/NCBI-disease/bio_clinicalbert/fedavg
+precision-strict: 0.982±0.006 (0.958±0.007)
+recall-strict: 0.981±0.002 (0.957±0.003)
+f1-score-strict: 0.982±0.003 (0.958±0.004)
+
+
+
+workspace1/NCBI-disease/biobert/baseline/site-1
+precision-strict: 0.927±0.003 (0.861±0.010)
+recall-strict: 0.948±0.003 (0.880±0.006)
+f1-score-strict: 0.937±0.001 (0.870±0.008)
+
+
+
+workspace1/NCBI-disease/biobert/baseline/site-2
+precision-strict: 0.934±0.006 (0.872±0.006)
+recall-strict: 0.938±0.004 (0.876±0.005)
+f1-score-strict: 0.936±0.002 (0.874±0.004)
+
+
+
+workspace1/NCBI-disease/biobert/baseline/site-3
+precision-strict: 0.935±0.004 (0.873±0.005)
+recall-strict: 0.934±0.005 (0.872±0.004)
+f1-score-strict: 0.935±0.002 (0.872±0.002)
+
+
+
+workspace1/NCBI-disease/biobert/baseline/site-4
+precision-strict: 0.940±0.006 (0.872±0.006)
+recall-strict: 0.932±0.010 (0.865±0.008)
+f1-score-strict: 0.936±0.003 (0.868±0.002)
+
+
+
+workspace1/NCBI-disease/biobert/baseline/site-5
+precision-strict: 0.938±0.004 (0.875±0.010)
+recall-strict: 0.956±0.005 (0.892±0.004)
+f1-score-strict: 0.947±0.002 (0.884±0.007)
+
+
+
+workspace1/NCBI-disease/biobert/baseline/site-6
+precision-strict: 0.934±0.007 (0.861±0.008)
+recall-strict: 0.944±0.009 (0.870±0.010)
+f1-score-strict: 0.939±0.004 (0.865±0.007)
+
+
+
+workspace1/NCBI-disease/biobert/baseline/site-7
+precision-strict: 0.919±0.003 (0.854±0.000)
+recall-strict: 0.950±0.006 (0.883±0.008)
+f1-score-strict: 0.934±0.002 (0.868±0.004)
+
+
+
+workspace1/NCBI-disease/biobert/baseline/site-8
+precision-strict: 0.932±0.005 (0.861±0.007)
+recall-strict: 0.942±0.009 (0.870±0.005)
+f1-score-strict: 0.937±0.005 (0.866±0.004)
+
+
+
+workspace1/NCBI-disease/biobert/baseline/site-9
+precision-strict: 0.919±0.010 (0.850±0.013)
+recall-strict: 0.941±0.005 (0.870±0.008)
+f1-score-strict: 0.930±0.006 (0.860±0.010)
+
+
+
+workspace1/NCBI-disease/biobert/baseline/site-0
+precision-strict: 0.991±0.003 (0.973±0.002)
+recall-strict: 0.995±0.001 (0.977±0.002)
+f1-score-strict: 0.993±0.001 (0.975±0.001)
+
+
+
+workspace1/NCBI-disease/biobert/baseline/site-10
+precision-strict: 0.930±0.008 (0.863±0.012)
+recall-strict: 0.932±0.002 (0.864±0.005)
+f1-score-strict: 0.931±0.004 (0.863±0.008)
+
+
+
+workspace1/NCBI-disease/biobert/fedavg
+precision-strict: 0.977±0.003 (0.952±0.002)
+recall-strict: 0.989±0.002 (0.964±0.002)
+f1-score-strict: 0.983±0.002 (0.958±0.001)
+
+
+
+workspace1/NCBI-disease/gpt2/fedavg
+precision-strict: 0.881±0.010 (0.837±0.008)
+recall-strict: 0.824±0.002 (0.783±0.003)
+f1-score-strict: 0.852±0.003 (0.809±0.002)
+
+
+
+workspace1/NCBI-disease/gpt2/baseline/site-1
+precision-strict: 0.749±0.041 (0.670±0.039)
+recall-strict: 0.784±0.021 (0.701±0.016)
+f1-score-strict: 0.765±0.012 (0.684±0.013)
+
+
+
+workspace1/NCBI-disease/gpt2/baseline/site-2
+precision-strict: 0.783±0.021 (0.699±0.020)
+recall-strict: 0.755±0.010 (0.674±0.008)
+f1-score-strict: 0.768±0.005 (0.686±0.006)
+
+
+
+workspace1/NCBI-disease/gpt2/baseline/site-3
+precision-strict: 0.767±0.030 (0.681±0.035)
+recall-strict: 0.762±0.009 (0.676±0.002)
+f1-score-strict: 0.764±0.011 (0.678±0.018)
+
+
+
+workspace1/NCBI-disease/gpt2/baseline/site-4
+precision-strict: 0.800±0.023 (0.721±0.025)
+recall-strict: 0.735±0.017 (0.662±0.011)
+f1-score-strict: 0.766±0.011 (0.690±0.011)
+
+
+
+workspace1/NCBI-disease/gpt2/baseline/site-5
+precision-strict: 0.785±0.024 (0.724±0.026)
+recall-strict: 0.767±0.011 (0.708±0.009)
+f1-score-strict: 0.775±0.008 (0.716±0.012)
+
+
+
+workspace1/NCBI-disease/gpt2/baseline/site-6
+precision-strict: 0.777±0.029 (0.696±0.028)
+recall-strict: 0.771±0.026 (0.691±0.024)
+f1-score-strict: 0.773±0.008 (0.693±0.011)
+
+
+
+workspace1/NCBI-disease/gpt2/baseline/site-0
+precision-strict: 0.935±0.002 (0.911±0.002)
+recall-strict: 0.921±0.002 (0.897±0.003)
+f1-score-strict: 0.928±0.002 (0.904±0.002)
+
+
+
+workspace1/NCBI-disease/gpt2/baseline/site-7
+precision-strict: 0.808±0.019 (0.731±0.024)
+recall-strict: 0.719±0.010 (0.650±0.011)
+f1-score-strict: 0.761±0.008 (0.688±0.014)
+
+
+
+workspace1/NCBI-disease/gpt2/baseline/site-8
+precision-strict: 0.814±0.025 (0.720±0.022)
+recall-strict: 0.727±0.014 (0.643±0.013)
+f1-score-strict: 0.768±0.003 (0.679±0.003)
+
+
+
+workspace1/NCBI-disease/gpt2/baseline/site-9
+precision-strict: 0.796±0.011 (0.720±0.012)
+recall-strict: 0.741±0.017 (0.670±0.017)
+f1-score-strict: 0.767±0.014 (0.694±0.015)
+
+
+
+workspace1/NCBI-disease/gpt2/baseline/site-10
+precision-strict: 0.795±0.012 (0.717±0.017)
+recall-strict: 0.736±0.008 (0.664±0.005)
+f1-score-strict: 0.765±0.007 (0.689±0.010)
+
+
+

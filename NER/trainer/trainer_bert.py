@@ -15,6 +15,7 @@ from utils.nereval import classifcation_report as ner_classificaiton_report
 def _shared_train_step(model, trainloader, optimizer, device, scheduler, scaler):
     model.train()
     model.to(device)
+    total_loss = 0
     for train_data, train_label in tqdm(trainloader):
         train_label = train_label.to(device)
         mask = train_data['attention_mask'].squeeze(1).to(device)
@@ -35,6 +36,8 @@ def _shared_train_step(model, trainloader, optimizer, device, scheduler, scaler)
             # nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
             optimizer.step()
         scheduler.step()
+        total_loss += loss.item()
+    return total_loss
         
 
 @torch.no_grad()
@@ -169,10 +172,11 @@ class NER_FedProx_bert(NER_FedProx_base):
         return BertModel(num_labels = self.num_labels, model_name=self.model_name)
     
     def train_by_epoch(self, server_model, model, train_dl, optimizer, scheduler):   
-        mu = 0.5
+        
         def fedprox_train_step(server_model, model, trainloader, optimizer, device, scheduler, scaler):
             model.train()
             model.to(device)
+            total_loss = 0
             for train_data, train_label in tqdm(trainloader):
                 train_label = train_label.to(device)
                 mask = train_data['attention_mask'].squeeze(1).to(device)
@@ -188,10 +192,8 @@ class NER_FedProx_bert(NER_FedProx_base):
                         for w, w_t in zip(server_model.parameters(), model.parameters()):
                             w, w_t = w.to(device), w_t.to(device)
                             w_diff += torch.pow(torch.norm(w-w_t), 2)
-                        loss += mu / 2. * w_diff
+                        loss += self.mu / 2. * w_diff
                         ##################################################################
-                        
-                        
                         
                     scaler.scale(loss).backward()
                     scaler.unscale_(optimizer)
@@ -200,11 +202,25 @@ class NER_FedProx_bert(NER_FedProx_base):
                     scaler.update()
                 else:
                     loss, _ = model(input_id, mask, train_label)
+                    
+                    ################## calculate the proximal term ###################
+                    w_diff = torch.tensor(0., device=device)
+                    for w, w_t in zip(server_model.parameters(), model.parameters()):
+                        w, w_t = w.to(device), w_t.to(device)
+                        w_diff += torch.pow(torch.norm(w-w_t), 2)
+                    loss += self.mu / 2. * w_diff
+                    ##################################################################
+                        
+                    
                     loss.backward()
                     # nn.utils.clip_grad_norm_(model.parameters(), 1.0) ## optional
                     optimizer.step()
+                    
+                total_loss += loss.item()
                 scheduler.step()
-        fedprox_train_step(server_model=server_model, \
+            return total_loss
+                
+        return fedprox_train_step(server_model=server_model, \
                         model=model, \
                         trainloader=train_dl, \
                         optimizer=optimizer, \

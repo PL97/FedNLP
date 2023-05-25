@@ -98,7 +98,11 @@ if __name__ == "__main__":
     if not args['eval']:
         trainer.fit()
     
-    model.load_state_dict(torch.load(f"./{trainer.saved_dir}/best.pt"))
+    try:
+        model.load_state_dict(torch.load(f"./{trainer.saved_dir}/best.pt"))
+    except:
+        print("load final model")
+        model.load_state_dict(torch.load(f"./{trainer.saved_dir}/final.pt"))
     metrics = {split: trainer.inference(model, dls[split], prefix=split) for split in ['train', 'val', 'test']}
     for split in ['train', 'val', 'test']:
         pd.DataFrame(metrics[split]['meta']).to_csv(f"{args['workspace']}/{args['split']}/{split}_prediction.csv")

@@ -138,6 +138,11 @@ class NER_FedAvg_base(FedAlg):
 
 
 class NER_FedProx_base(NER_FedAvg_base):
+    def __init__(self, dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, num_labels, amp, mu, **args):
+        self.ids_to_labels = args['ids_to_labels'] #! parent's __init__ calls generate_model, it is where it calls this attribute
+        super().__init__(dls, client_weights, lrs, max_epoches, aggregation_freq, device, saved_dir, model_name, num_labels, amp, **args)
+        self.mu = mu
+        
     def local_train(self, idx):
         client_model = self.generate_models().to(self.device)
         client_model.load_state_dict(self.client_state_dict[idx])
@@ -145,8 +150,9 @@ class NER_FedProx_base(NER_FedAvg_base):
         client_scheduler = get_linear_schedule_with_warmup(client_optimizer, 
                                             num_warmup_steps = 0,
                                             num_training_steps = len(self.dls[idx]['train']))
-        self.train_by_epoch(self.server_model, client_model, self.dls[idx]['train'], client_optimizer, client_scheduler)
+        loss = self.train_by_epoch(self.server_model, client_model, self.dls[idx]['train'], client_optimizer, client_scheduler)
         self.client_state_dict[idx] = client_model.cpu().state_dict()
+        return loss
     
     
         

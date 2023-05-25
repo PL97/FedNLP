@@ -32,6 +32,7 @@ def parse_args():
     parser.add_argument("--eval", action='store_true', help="evaluate best model")
     parser.add_argument("--seed", type=int, help="radom seed", default=0)
     parser.add_argument("--fedalg", type=str, help="federated learning algorithm", default="fedavg")
+    parser.add_argument("--mu", type=float, help="mu (fedprox)", default=0.1)
     args = parser.parse_args()
     return args
 
@@ -81,17 +82,19 @@ if __name__ == "__main__":
                                         ids_to_labels=stats['ids_to_labels'],  \
                                         amp=True)
         elif args['fedalg'].lower() == "fedprox":
+            saved_dir = os.path.join(saved_dir, str(args['mu']))
             fed_model = NER_FedProx_bert(dls=dls, \
                                         client_weights = [1/num_client]*num_client,  \
                                         lrs = [5e-5]*num_client,  \
                                         max_epoches=args['epochs'],  \
-                                        aggregation_freq=1, \
+                                        aggregation_freq=50, \
                                         device=device,  \
                                         saved_dir = saved_dir, \
                                         model_name=args['model'], \
                                         num_labels=num_labels, \
                                         ids_to_labels=stats['ids_to_labels'],  \
-                                        amp=True)
+                                        amp=True, \
+                                        mu=args['mu'])
         else:
             exit("federated learning algorithm not found (source: fed_main.py)")
                     
@@ -121,6 +124,7 @@ if __name__ == "__main__":
                                     ids_to_labels=stats['ids_to_labels'], \
                                     amp=True)
         elif args['fedalg'].lower() == "fedprox":  
+            saved_dir = os.path.join(saved_dir, str(args['mu']))
             fed_model = NER_FedProx_gpt(dls=dls, \
                                     client_weights = [1/num_client]*num_client,  \
                                     lrs = [5e-5]*num_client,  \
@@ -131,7 +135,8 @@ if __name__ == "__main__":
                                     model_name=args['model'], \
                                     num_labels=num_labels, \
                                     ids_to_labels=stats['ids_to_labels'], \
-                                    amp=True) 
+                                    amp=True,\
+                                    mu=args['mu']) 
         else:
             exit("federated learning algorithm not found (source: fed_main.py)")
          
@@ -161,6 +166,7 @@ if __name__ == "__main__":
                         num_labels=num_labels, \
                         amp=True)
         elif args['fedalg'].lower() == "fedprox": 
+            saved_dir = os.path.join(saved_dir, str(args['mu']))
             fed_model = NER_FedProx_bilstm_crf(
                         dls=dls,
                         client_weights = [1/num_client]*num_client, 
@@ -173,7 +179,8 @@ if __name__ == "__main__":
                         vocab_size=stats['vocab_size'], 
                         ids_to_labels=stats['ids_to_labels'],
                         num_labels=num_labels, \
-                        amp=True)
+                        amp=True, \
+                        mu=args['mu'])
         else:
             exit("federated learning algorithm not found (source: fed_main.py)")
             

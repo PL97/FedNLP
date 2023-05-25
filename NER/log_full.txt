@@ -1,0 +1,1309 @@
+###################biobert-f1-score-site-1#######################
+Dosage: 0.920 ± 0.005
+Strength: 0.975 ± 0.002
+Ade: 0.446 ± 0.034
+Drug: 0.947 ± 0.001
+Route: 0.944 ± 0.004
+Reason: 0.667 ± 0.008
+Duration: 0.825 ± 0.005
+Form: 0.952 ± 0.001
+Frequency: 0.961 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.034	0.005	0.001	0.005	0.001	0.001	0.008	0.004	0.002
+0.005, 0.002, 0.034, 0.001, 0.004, 0.008, 0.005, 0.001, 0.001
+
+
+
+
+###################biobert-f1-score-site-0#######################
+Ade: 0.582 ± 0.028
+Strength: 0.984 ± 0.002
+Route: 0.962 ± 0.002
+Form: 0.962 ± 0.001
+Dosage: 0.946 ± 0.002
+Frequency: 0.976 ± 0.001
+Drug: 0.964 ± 0.001
+Duration: 0.863 ± 0.018
+Reason: 0.722 ± 0.007
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.028	0.002	0.001	0.018	0.001	0.001	0.007	0.002	0.002
+0.028, 0.002, 0.002, 0.001, 0.002, 0.001, 0.001, 0.018, 0.007
+
+
+
+
+###################biobert-f1-score-site-2#######################
+Form: 0.943 ± 0.002
+Reason: 0.661 ± 0.003
+Dosage: 0.918 ± 0.003
+Strength: 0.973 ± 0.002
+Route: 0.947 ± 0.005
+Ade: 0.446 ± 0.014
+Drug: 0.944 ± 0.001
+Duration: 0.824 ± 0.005
+Frequency: 0.957 ± 0.004
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.014	0.003	0.001	0.005	0.002	0.004	0.003	0.005	0.002
+0.002, 0.003, 0.003, 0.002, 0.005, 0.014, 0.001, 0.005, 0.004
+
+
+
+
+###################biobert-f1-score-site-3#######################
+Strength: 0.975 ± 0.001
+Ade: 0.471 ± 0.012
+Drug: 0.946 ± 0.002
+Reason: 0.670 ± 0.003
+Duration: 0.816 ± 0.020
+Frequency: 0.958 ± 0.004
+Form: 0.945 ± 0.004
+Dosage: 0.914 ± 0.002
+Route: 0.940 ± 0.004
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.012	0.002	0.002	0.02	0.004	0.004	0.003	0.004	0.001
+0.001, 0.012, 0.002, 0.003, 0.02, 0.004, 0.004, 0.002, 0.004
+
+
+
+
+###################biobert-f1-score-site-4#######################
+Ade: 0.468 ± 0.031
+Frequency: 0.960 ± 0.003
+Drug: 0.943 ± 0.001
+Strength: 0.975 ± 0.001
+Reason: 0.660 ± 0.007
+Form: 0.942 ± 0.005
+Dosage: 0.922 ± 0.005
+Duration: 0.829 ± 0.006
+Route: 0.943 ± 0.003
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.031	0.005	0.001	0.006	0.005	0.003	0.007	0.003	0.001
+0.031, 0.003, 0.001, 0.001, 0.007, 0.005, 0.005, 0.006, 0.003
+
+
+
+
+###################biobert-f1-score-site-5#######################
+Dosage: 0.919 ± 0.002
+Strength: 0.971 ± 0.001
+Drug: 0.943 ± 0.002
+Route: 0.945 ± 0.002
+Reason: 0.658 ± 0.015
+Form: 0.938 ± 0.002
+Frequency: 0.961 ± 0.001
+Duration: 0.819 ± 0.009
+Ade: 0.406 ± 0.021
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.021	0.002	0.002	0.009	0.002	0.001	0.015	0.002	0.001
+0.002, 0.001, 0.002, 0.002, 0.015, 0.002, 0.001, 0.009, 0.021
+
+
+
+
+###################biobert-f1-score-site-6#######################
+Drug: 0.948 ± 0.002
+Strength: 0.977 ± 0.002
+Dosage: 0.930 ± 0.003
+Frequency: 0.961 ± 0.001
+Reason: 0.662 ± 0.010
+Route: 0.942 ± 0.004
+Ade: 0.391 ± 0.029
+Form: 0.947 ± 0.000
+Duration: 0.806 ± 0.003
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.029	0.003	0.002	0.003	0.0	0.001	0.01	0.004	0.002
+0.002, 0.002, 0.003, 0.001, 0.01, 0.004, 0.029, 0.0, 0.003
+
+
+
+
+###################biobert-f1-score-site-7#######################
+Strength: 0.975 ± 0.001
+Drug: 0.944 ± 0.002
+Ade: 0.462 ± 0.015
+Duration: 0.808 ± 0.010
+Dosage: 0.926 ± 0.002
+Reason: 0.644 ± 0.002
+Form: 0.945 ± 0.001
+Frequency: 0.963 ± 0.001
+Route: 0.950 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.015	0.002	0.002	0.01	0.001	0.001	0.002	0.001	0.001
+0.001, 0.002, 0.015, 0.01, 0.002, 0.002, 0.001, 0.001, 0.001
+
+
+
+
+###################biobert-f1-score-site-8#######################
+Route: 0.942 ± 0.003
+Form: 0.942 ± 0.002
+Dosage: 0.920 ± 0.003
+Drug: 0.944 ± 0.002
+Frequency: 0.959 ± 0.002
+Strength: 0.972 ± 0.001
+Reason: 0.662 ± 0.007
+Ade: 0.480 ± 0.004
+Duration: 0.804 ± 0.008
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.004	0.003	0.002	0.008	0.002	0.002	0.007	0.003	0.001
+0.003, 0.002, 0.003, 0.002, 0.002, 0.001, 0.007, 0.004, 0.008
+
+
+
+
+###################biobert-f1-score-site-9#######################
+Dosage: 0.920 ± 0.006
+Duration: 0.804 ± 0.010
+Ade: 0.443 ± 0.012
+Frequency: 0.957 ± 0.001
+Form: 0.949 ± 0.001
+Strength: 0.973 ± 0.000
+Route: 0.951 ± 0.002
+Drug: 0.947 ± 0.002
+Reason: 0.656 ± 0.003
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.012	0.006	0.002	0.01	0.001	0.001	0.003	0.002	0.0
+0.006, 0.01, 0.012, 0.001, 0.001, 0.0, 0.002, 0.002, 0.003
+
+
+
+
+###################biobert-f1-score-site-10#######################
+Dosage: 0.926 ± 0.002
+Reason: 0.659 ± 0.006
+Duration: 0.816 ± 0.014
+Route: 0.945 ± 0.001
+Ade: 0.416 ± 0.021
+Frequency: 0.959 ± 0.004
+Strength: 0.975 ± 0.002
+Drug: 0.944 ± 0.002
+Form: 0.950 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.021	0.002	0.002	0.014	0.001	0.004	0.006	0.001	0.002
+0.002, 0.006, 0.014, 0.001, 0.021, 0.004, 0.002, 0.002, 0.001
+
+
+
+
+###################biobert-f1-score-fedavg#######################
+Duration: 0.859 ± 0.002
+Drug: 0.958 ± 0.001
+Strength: 0.982 ± 0.001
+Route: 0.958 ± 0.001
+Frequency: 0.966 ± 0.001
+Reason: 0.718 ± 0.007
+Dosage: 0.934 ± 0.004
+Ade: 0.577 ± 0.011
+Form: 0.961 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.011	0.004	0.001	0.002	0.001	0.001	0.007	0.001	0.001
+0.002, 0.001, 0.001, 0.001, 0.001, 0.007, 0.004, 0.011, 0.001
+
+
+
+
+###################biobert-f1-score-fedprox#######################
+Strength: 0.982 ± 0.001
+Drug: 0.959 ± 0.001
+Dosage: 0.935 ± 0.001
+Frequency: 0.967 ± 0.002
+Ade: 0.550 ± 0.016
+Form: 0.958 ± 0.001
+Duration: 0.841 ± 0.010
+Reason: 0.714 ± 0.006
+Route: 0.958 ± 0.002
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.016	0.001	0.001	0.01	0.001	0.002	0.006	0.002	0.001
+0.001, 0.001, 0.001, 0.002, 0.016, 0.001, 0.01, 0.006, 0.002
+
+
+
+
+###################bluebert-f1-score-site-1#######################
+Dosage: 0.924 ± 0.003
+Strength: 0.972 ± 0.003
+Reason: 0.649 ± 0.008
+Route: 0.947 ± 0.002
+Ade: 0.368 ± 0.035
+Drug: 0.943 ± 0.002
+Frequency: 0.957 ± 0.002
+Duration: 0.813 ± 0.017
+Form: 0.950 ± 0.005
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.035	0.003	0.002	0.017	0.005	0.002	0.008	0.002	0.003
+0.003, 0.003, 0.008, 0.002, 0.035, 0.002, 0.002, 0.017, 0.005
+
+
+
+
+###################bluebert-f1-score-site-0#######################
+Drug: 0.961 ± 0.002
+Strength: 0.981 ± 0.003
+Form: 0.963 ± 0.001
+Dosage: 0.942 ± 0.004
+Ade: 0.556 ± 0.031
+Duration: 0.857 ± 0.012
+Frequency: 0.972 ± 0.002
+Reason: 0.722 ± 0.009
+Route: 0.956 ± 0.003
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.031	0.004	0.002	0.012	0.001	0.002	0.009	0.003	0.003
+0.002, 0.003, 0.001, 0.004, 0.031, 0.012, 0.002, 0.009, 0.003
+
+
+
+
+###################bluebert-f1-score-site-2#######################
+Drug: 0.944 ± 0.001
+Form: 0.948 ± 0.001
+Reason: 0.647 ± 0.005
+Dosage: 0.929 ± 0.001
+Frequency: 0.961 ± 0.001
+Strength: 0.973 ± 0.002
+Ade: 0.398 ± 0.041
+Duration: 0.805 ± 0.022
+Route: 0.947 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.041	0.001	0.001	0.022	0.001	0.001	0.005	0.001	0.002
+0.001, 0.001, 0.005, 0.001, 0.001, 0.002, 0.041, 0.022, 0.001
+
+
+
+
+###################bluebert-f1-score-site-3#######################
+Duration: 0.565 ± 0.352
+Drug: 0.771 ± 0.247
+Ade: 0.267 ± 0.189
+Strength: 0.887 ± 0.125
+Form: 0.793 ± 0.223
+Reason: 0.498 ± 0.204
+Dosage: 0.812 ± 0.160
+Frequency: 0.831 ± 0.181
+Route: 0.837 ± 0.145
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.189	0.16	0.247	0.352	0.223	0.181	0.204	0.145	0.125
+0.352, 0.247, 0.189, 0.125, 0.223, 0.204, 0.16, 0.181, 0.145
+
+
+
+
+###################bluebert-f1-score-site-4#######################
+Ade: 0.398 ± 0.023
+Strength: 0.973 ± 0.003
+Route: 0.946 ± 0.001
+Duration: 0.832 ± 0.016
+Frequency: 0.959 ± 0.001
+Form: 0.940 ± 0.005
+Dosage: 0.922 ± 0.006
+Drug: 0.941 ± 0.003
+Reason: 0.643 ± 0.005
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.023	0.006	0.003	0.016	0.005	0.001	0.005	0.001	0.003
+0.023, 0.003, 0.001, 0.016, 0.001, 0.005, 0.006, 0.003, 0.005
+
+
+
+
+###################bluebert-f1-score-site-5#######################
+Duration: 0.800 ± 0.015
+Dosage: 0.913 ± 0.008
+Reason: 0.634 ± 0.016
+Ade: 0.391 ± 0.005
+Form: 0.945 ± 0.003
+Route: 0.945 ± 0.004
+Frequency: 0.957 ± 0.001
+Drug: 0.943 ± 0.002
+Strength: 0.971 ± 0.002
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.005	0.008	0.002	0.015	0.003	0.001	0.016	0.004	0.002
+0.015, 0.008, 0.016, 0.005, 0.003, 0.004, 0.001, 0.002, 0.002
+
+
+
+
+###################bluebert-f1-score-site-6#######################
+Drug: 0.943 ± 0.000
+Duration: 0.821 ± 0.002
+Form: 0.948 ± 0.001
+Route: 0.948 ± 0.002
+Dosage: 0.927 ± 0.003
+Frequency: 0.958 ± 0.002
+Strength: 0.969 ± 0.004
+Reason: 0.672 ± 0.015
+Ade: 0.399 ± 0.002
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.002	0.003	0.0	0.002	0.001	0.002	0.015	0.002	0.004
+0.0, 0.002, 0.001, 0.002, 0.003, 0.002, 0.004, 0.015, 0.002
+
+
+
+
+###################bluebert-f1-score-site-7#######################
+Reason: 0.623 ± 0.009
+Ade: 0.445 ± 0.010
+Duration: 0.825 ± 0.011
+Form: 0.947 ± 0.002
+Dosage: 0.928 ± 0.003
+Drug: 0.945 ± 0.001
+Strength: 0.975 ± 0.001
+Route: 0.947 ± 0.001
+Frequency: 0.955 ± 0.002
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.01	0.003	0.001	0.011	0.002	0.002	0.009	0.001	0.001
+0.009, 0.01, 0.011, 0.002, 0.003, 0.001, 0.001, 0.001, 0.002
+
+
+
+
+###################bluebert-f1-score-site-8#######################
+Strength: 0.970 ± 0.001
+Reason: 0.650 ± 0.006
+Route: 0.934 ± 0.003
+Form: 0.943 ± 0.001
+Frequency: 0.959 ± 0.001
+Duration: 0.809 ± 0.010
+Drug: 0.940 ± 0.001
+Ade: 0.410 ± 0.016
+Dosage: 0.922 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.016	0.001	0.001	0.01	0.001	0.001	0.006	0.003	0.001
+0.001, 0.006, 0.003, 0.001, 0.001, 0.01, 0.001, 0.016, 0.001
+
+
+
+
+###################bluebert-f1-score-site-9#######################
+Strength: 0.970 ± 0.001
+Drug: 0.942 ± 0.001
+Route: 0.947 ± 0.001
+Dosage: 0.921 ± 0.004
+Form: 0.943 ± 0.002
+Duration: 0.787 ± 0.011
+Ade: 0.382 ± 0.001
+Reason: 0.632 ± 0.010
+Frequency: 0.957 ± 0.002
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.001	0.004	0.001	0.011	0.002	0.002	0.01	0.001	0.001
+0.001, 0.001, 0.001, 0.004, 0.002, 0.011, 0.001, 0.01, 0.002
+
+
+
+
+###################bluebert-f1-score-site-10#######################
+Reason: 0.640 ± 0.013
+Dosage: 0.920 ± 0.001
+Route: 0.942 ± 0.002
+Duration: 0.780 ± 0.001
+Ade: 0.370 ± 0.037
+Form: 0.944 ± 0.002
+Strength: 0.969 ± 0.000
+Drug: 0.943 ± 0.000
+Frequency: 0.958 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.037	0.001	0.0	0.001	0.002	0.001	0.013	0.002	0.0
+0.013, 0.001, 0.002, 0.001, 0.037, 0.002, 0.0, 0.0, 0.001
+
+
+
+
+###################bluebert-f1-score-fedavg#######################
+Dosage: 0.939 ± 0.002
+Form: 0.960 ± 0.002
+Frequency: 0.972 ± 0.001
+Strength: 0.984 ± 0.000
+Duration: 0.861 ± 0.004
+Ade: 0.567 ± 0.018
+Reason: 0.694 ± 0.005
+Route: 0.957 ± 0.003
+Drug: 0.955 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.018	0.002	0.001	0.004	0.002	0.001	0.005	0.003	0.0
+0.002, 0.002, 0.001, 0.0, 0.004, 0.018, 0.005, 0.003, 0.001
+
+
+
+
+###################bert-base-uncased-f1-score-site-1#######################
+Drug: 0.937 ± 0.002
+Frequency: 0.959 ± 0.002
+Duration: 0.808 ± 0.024
+Form: 0.949 ± 0.001
+Dosage: 0.921 ± 0.002
+Ade: 0.365 ± 0.011
+Reason: 0.636 ± 0.003
+Strength: 0.975 ± 0.000
+Route: 0.945 ± 0.004
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.011	0.002	0.002	0.024	0.001	0.002	0.003	0.004	0.0
+0.002, 0.002, 0.024, 0.001, 0.002, 0.011, 0.003, 0.0, 0.004
+
+
+
+
+###################bert-base-uncased-f1-score-site-2#######################
+Form: 0.944 ± 0.003
+Route: 0.950 ± 0.001
+Ade: 0.359 ± 0.038
+Reason: 0.637 ± 0.007
+Duration: 0.789 ± 0.015
+Strength: 0.974 ± 0.002
+Dosage: 0.924 ± 0.002
+Drug: 0.938 ± 0.000
+Frequency: 0.960 ± 0.003
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.038	0.002	0.0	0.015	0.003	0.003	0.007	0.001	0.002
+0.003, 0.001, 0.038, 0.007, 0.015, 0.002, 0.002, 0.0, 0.003
+
+
+
+
+###################bert-base-uncased-f1-score-site-0#######################
+Form: 0.961 ± 0.002
+Reason: 0.718 ± 0.006
+Duration: 0.873 ± 0.010
+Frequency: 0.973 ± 0.000
+Route: 0.956 ± 0.001
+Dosage: 0.945 ± 0.003
+Drug: 0.961 ± 0.001
+Strength: 0.985 ± 0.001
+Ade: 0.535 ± 0.004
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.004	0.003	0.001	0.01	0.002	0.0	0.006	0.001	0.001
+0.002, 0.006, 0.01, 0.0, 0.001, 0.003, 0.001, 0.001, 0.004
+
+
+
+
+###################bert-base-uncased-f1-score-site-3#######################
+Frequency: 0.959 ± 0.003
+Dosage: 0.918 ± 0.005
+Strength: 0.971 ± 0.002
+Reason: 0.632 ± 0.005
+Duration: 0.784 ± 0.004
+Form: 0.949 ± 0.002
+Drug: 0.941 ± 0.001
+Route: 0.939 ± 0.002
+Ade: 0.379 ± 0.014
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.014	0.005	0.001	0.004	0.002	0.003	0.005	0.002	0.002
+0.003, 0.005, 0.002, 0.005, 0.004, 0.002, 0.001, 0.002, 0.014
+
+
+
+
+###################bert-base-uncased-f1-score-site-4#######################
+Reason: 0.635 ± 0.005
+Drug: 0.938 ± 0.001
+Strength: 0.972 ± 0.001
+Duration: 0.803 ± 0.014
+Route: 0.948 ± 0.001
+Ade: 0.382 ± 0.025
+Frequency: 0.961 ± 0.003
+Dosage: 0.917 ± 0.002
+Form: 0.942 ± 0.002
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.025	0.002	0.001	0.014	0.002	0.003	0.005	0.001	0.001
+0.005, 0.001, 0.001, 0.014, 0.001, 0.025, 0.003, 0.002, 0.002
+
+
+
+
+###################bert-base-uncased-f1-score-site-5#######################
+Frequency: 0.965 ± 0.002
+Form: 0.940 ± 0.001
+Duration: 0.808 ± 0.018
+Reason: 0.605 ± 0.010
+Strength: 0.970 ± 0.001
+Dosage: 0.913 ± 0.003
+Drug: 0.940 ± 0.002
+Route: 0.942 ± 0.003
+Ade: 0.323 ± 0.030
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.03	0.003	0.002	0.018	0.001	0.002	0.01	0.003	0.001
+0.002, 0.001, 0.018, 0.01, 0.001, 0.003, 0.002, 0.003, 0.03
+
+
+
+
+###################bert-base-uncased-f1-score-site-6#######################
+Drug: 0.939 ± 0.001
+Route: 0.944 ± 0.002
+Strength: 0.970 ± 0.001
+Form: 0.947 ± 0.002
+Ade: 0.329 ± 0.012
+Reason: 0.647 ± 0.007
+Dosage: 0.918 ± 0.005
+Frequency: 0.963 ± 0.002
+Duration: 0.780 ± 0.022
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.012	0.005	0.001	0.022	0.002	0.002	0.007	0.002	0.001
+0.001, 0.002, 0.001, 0.002, 0.012, 0.007, 0.005, 0.002, 0.022
+
+
+
+
+###################bert-base-uncased-f1-score-site-7#######################
+Strength: 0.974 ± 0.001
+Reason: 0.608 ± 0.011
+Drug: 0.939 ± 0.001
+Dosage: 0.916 ± 0.003
+Ade: 0.343 ± 0.018
+Duration: 0.796 ± 0.007
+Route: 0.947 ± 0.004
+Form: 0.948 ± 0.001
+Frequency: 0.957 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.018	0.003	0.001	0.007	0.001	0.001	0.011	0.004	0.001
+0.001, 0.011, 0.001, 0.003, 0.018, 0.007, 0.004, 0.001, 0.001
+
+
+
+
+###################bert-base-uncased-f1-score-site-8#######################
+Reason: 0.639 ± 0.011
+Ade: 0.367 ± 0.029
+Dosage: 0.926 ± 0.004
+Route: 0.939 ± 0.003
+Drug: 0.939 ± 0.001
+Frequency: 0.956 ± 0.002
+Form: 0.942 ± 0.002
+Duration: 0.780 ± 0.011
+Strength: 0.971 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.029	0.004	0.001	0.011	0.002	0.002	0.011	0.003	0.001
+0.011, 0.029, 0.004, 0.003, 0.001, 0.002, 0.002, 0.011, 0.001
+
+
+
+
+###################bert-base-uncased-f1-score-site-9#######################
+Drug: 0.938 ± 0.002
+Strength: 0.969 ± 0.002
+Route: 0.950 ± 0.001
+Reason: 0.611 ± 0.004
+Form: 0.948 ± 0.003
+Dosage: 0.917 ± 0.002
+Ade: 0.362 ± 0.034
+Duration: 0.769 ± 0.016
+Frequency: 0.961 ± 0.002
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.034	0.002	0.002	0.016	0.003	0.002	0.004	0.001	0.002
+0.002, 0.002, 0.001, 0.004, 0.003, 0.002, 0.034, 0.016, 0.002
+
+
+
+
+###################bert-base-uncased-f1-score-site-10#######################
+Strength: 0.973 ± 0.001
+Drug: 0.938 ± 0.002
+Dosage: 0.918 ± 0.002
+Frequency: 0.958 ± 0.000
+Ade: 0.362 ± 0.024
+Route: 0.947 ± 0.002
+Duration: 0.773 ± 0.039
+Form: 0.949 ± 0.002
+Reason: 0.632 ± 0.007
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.024	0.002	0.002	0.039	0.002	0.0	0.007	0.002	0.001
+0.001, 0.002, 0.002, 0.0, 0.024, 0.002, 0.039, 0.002, 0.007
+
+
+
+
+###################bert-base-uncased-f1-score-fedavg#######################
+Ade: 0.557 ± 0.014
+Form: 0.965 ± 0.001
+Duration: 0.861 ± 0.006
+Strength: 0.985 ± 0.001
+Frequency: 0.970 ± 0.001
+Reason: 0.707 ± 0.002
+Dosage: 0.938 ± 0.001
+Drug: 0.954 ± 0.001
+Route: 0.959 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.014	0.001	0.001	0.006	0.001	0.001	0.002	0.001	0.001
+0.014, 0.001, 0.006, 0.001, 0.001, 0.002, 0.001, 0.001, 0.001
+
+
+
+
+###################bert-base-uncased-f1-score-fedprox#######################
+Frequency: 0.970 ± 0.001
+Duration: 0.866 ± 0.013
+Route: 0.957 ± 0.002
+Reason: 0.691 ± 0.012
+Strength: 0.984 ± 0.001
+Ade: 0.507 ± 0.009
+Dosage: 0.930 ± 0.002
+Form: 0.964 ± 0.001
+Drug: 0.953 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.009	0.002	0.001	0.013	0.001	0.001	0.012	0.002	0.001
+0.001, 0.013, 0.002, 0.012, 0.001, 0.009, 0.002, 0.001, 0.001
+
+
+
+
+###################gpt2-f1-score-site-1#######################
+Drug: 0.819 ± 0.003
+Route: 0.927 ± 0.003
+Ade: 0.179 ± 0.036
+Dosage: 0.855 ± 0.008
+Duration: 0.567 ± 0.007
+Reason: 0.514 ± 0.017
+Frequency: 0.944 ± 0.003
+Strength: 0.924 ± 0.002
+Form: 0.940 ± 0.002
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.036	0.008	0.003	0.007	0.002	0.003	0.017	0.003	0.002
+0.003, 0.003, 0.036, 0.008, 0.007, 0.017, 0.003, 0.002, 0.002
+
+
+
+
+###################gpt2-f1-score-site-2#######################
+Ade: 0.126 ± 0.065
+Dosage: 0.848 ± 0.005
+Reason: 0.509 ± 0.018
+Drug: 0.822 ± 0.010
+Duration: 0.600 ± 0.015
+Strength: 0.926 ± 0.004
+Form: 0.938 ± 0.004
+Route: 0.919 ± 0.003
+Frequency: 0.940 ± 0.005
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.065	0.005	0.01	0.015	0.004	0.005	0.018	0.003	0.004
+0.065, 0.005, 0.018, 0.01, 0.015, 0.004, 0.004, 0.003, 0.005
+
+
+
+
+###################gpt2-f1-score-site-3#######################
+Form: 0.935 ± 0.003
+Strength: 0.929 ± 0.002
+Reason: 0.509 ± 0.009
+Duration: 0.622 ± 0.007
+Ade: 0.211 ± 0.026
+Frequency: 0.942 ± 0.000
+Drug: 0.818 ± 0.012
+Dosage: 0.862 ± 0.003
+Route: 0.921 ± 0.002
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.026	0.003	0.012	0.007	0.003	0.0	0.009	0.002	0.002
+0.003, 0.002, 0.009, 0.007, 0.026, 0.0, 0.012, 0.003, 0.002
+
+
+
+
+###################gpt2-f1-score-site-4#######################
+Drug: 0.830 ± 0.004
+Strength: 0.925 ± 0.002
+Dosage: 0.859 ± 0.002
+Route: 0.929 ± 0.006
+Frequency: 0.942 ± 0.002
+Reason: 0.497 ± 0.001
+Form: 0.930 ± 0.005
+Duration: 0.549 ± 0.016
+Ade: 0.195 ± 0.028
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.028	0.002	0.004	0.016	0.005	0.002	0.001	0.006	0.002
+0.004, 0.002, 0.002, 0.006, 0.002, 0.001, 0.005, 0.016, 0.028
+
+
+
+
+###################gpt2-f1-score-site-5#######################
+Ade: 0.179 ± 0.029
+Reason: 0.498 ± 0.010
+Strength: 0.928 ± 0.002
+Form: 0.930 ± 0.004
+Drug: 0.820 ± 0.003
+Route: 0.923 ± 0.001
+Dosage: 0.851 ± 0.002
+Frequency: 0.944 ± 0.001
+Duration: 0.605 ± 0.031
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.029	0.002	0.003	0.031	0.004	0.001	0.01	0.001	0.002
+0.029, 0.01, 0.002, 0.004, 0.003, 0.001, 0.002, 0.001, 0.031
+
+
+
+
+###################gpt2-f1-score-site-0#######################
+Route: 0.946 ± 0.005
+Duration: 0.681 ± 0.010
+Ade: 0.344 ± 0.014
+Dosage: 0.894 ± 0.007
+Reason: 0.590 ± 0.013
+Strength: 0.954 ± 0.001
+Frequency: 0.960 ± 0.004
+Drug: 0.883 ± 0.000
+Form: 0.957 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.014	0.007	0.0	0.01	0.001	0.004	0.013	0.005	0.001
+0.005, 0.01, 0.014, 0.007, 0.013, 0.001, 0.004, 0.0, 0.001
+
+
+
+
+###################gpt2-f1-score-site-6#######################
+Duration: 0.572 ± 0.030
+Strength: 0.922 ± 0.005
+Route: 0.918 ± 0.008
+Ade: 0.121 ± 0.011
+Form: 0.934 ± 0.005
+Dosage: 0.848 ± 0.007
+Drug: 0.814 ± 0.010
+Reason: 0.520 ± 0.003
+Frequency: 0.939 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.011	0.007	0.01	0.03	0.005	0.001	0.003	0.008	0.005
+0.03, 0.005, 0.008, 0.011, 0.005, 0.007, 0.01, 0.003, 0.001
+
+
+
+
+###################gpt2-f1-score-site-7#######################
+Strength: 0.929 ± 0.002
+Dosage: 0.859 ± 0.003
+Form: 0.938 ± 0.004
+Reason: 0.491 ± 0.004
+Frequency: 0.944 ± 0.003
+Duration: 0.597 ± 0.008
+Drug: 0.824 ± 0.002
+Ade: 0.188 ± 0.007
+Route: 0.929 ± 0.003
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.007	0.003	0.002	0.008	0.004	0.003	0.004	0.003	0.002
+0.002, 0.003, 0.004, 0.004, 0.003, 0.008, 0.002, 0.007, 0.003
+
+
+
+
+###################gpt2-f1-score-site-8#######################
+Ade: 0.196 ± 0.034
+Dosage: 0.858 ± 0.004
+Reason: 0.503 ± 0.011
+Drug: 0.816 ± 0.000
+Form: 0.933 ± 0.002
+Frequency: 0.930 ± 0.002
+Strength: 0.928 ± 0.003
+Route: 0.919 ± 0.002
+Duration: 0.610 ± 0.015
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.034	0.004	0.0	0.015	0.002	0.002	0.011	0.002	0.003
+0.034, 0.004, 0.011, 0.0, 0.002, 0.002, 0.003, 0.002, 0.015
+
+
+
+
+###################gpt2-f1-score-site-9#######################
+Duration: 0.552 ± 0.004
+Strength: 0.928 ± 0.003
+Dosage: 0.848 ± 0.006
+Reason: 0.494 ± 0.008
+Frequency: 0.941 ± 0.004
+Drug: 0.827 ± 0.003
+Ade: 0.211 ± 0.015
+Form: 0.935 ± 0.004
+Route: 0.922 ± 0.002
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.015	0.006	0.003	0.004	0.004	0.004	0.008	0.002	0.003
+0.004, 0.003, 0.006, 0.008, 0.004, 0.003, 0.015, 0.004, 0.002
+
+
+
+
+###################gpt2-f1-score-site-10#######################
+Drug: 0.823 ± 0.006
+Duration: 0.537 ± 0.021
+Route: 0.918 ± 0.004
+Ade: 0.221 ± 0.019
+Form: 0.939 ± 0.003
+Strength: 0.926 ± 0.000
+Dosage: 0.855 ± 0.006
+Frequency: 0.942 ± 0.006
+Reason: 0.502 ± 0.025
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.019	0.006	0.006	0.021	0.003	0.006	0.025	0.004	0.0
+0.006, 0.021, 0.004, 0.019, 0.003, 0.0, 0.006, 0.006, 0.025
+
+
+
+
+###################gpt2-f1-score-fedavg#######################
+Strength: 0.947 ± 0.002
+Dosage: 0.887 ± 0.000
+Form: 0.957 ± 0.003
+Route: 0.947 ± 0.001
+Ade: 0.338 ± 0.021
+Duration: 0.682 ± 0.003
+Frequency: 0.962 ± 0.002
+Reason: 0.581 ± 0.006
+Drug: 0.881 ± 0.002
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.021	0.0	0.002	0.003	0.003	0.002	0.006	0.001	0.002
+0.002, 0.0, 0.003, 0.001, 0.021, 0.003, 0.002, 0.006, 0.002
+
+
+
+
+###################gpt2-f1-score-fedprox#######################
+Dosage: 0.879 ± 0.001
+Route: 0.947 ± 0.001
+Duration: 0.667 ± 0.005
+Form: 0.956 ± 0.000
+Ade: 0.344 ± 0.014
+Frequency: 0.961 ± 0.001
+Strength: 0.944 ± 0.001
+Reason: 0.577 ± 0.004
+Drug: 0.878 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.014	0.001	0.001	0.005	0.0	0.001	0.004	0.001	0.001
+0.001, 0.001, 0.005, 0.0, 0.014, 0.001, 0.001, 0.004, 0.001
+
+
+
+
+###################bio_clinicalbert-f1-score-fedavg#######################
+Route: 0.959 ± 0.003
+Drug: 0.957 ± 0.001
+Frequency: 0.966 ± 0.001
+Strength: 0.982 ± 0.001
+Form: 0.960 ± 0.001
+Reason: 0.718 ± 0.005
+Ade: 0.539 ± 0.007
+Dosage: 0.943 ± 0.004
+Duration: 0.875 ± 0.002
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.007	0.004	0.001	0.002	0.001	0.001	0.005	0.003	0.001
+0.003, 0.001, 0.001, 0.001, 0.001, 0.005, 0.007, 0.004, 0.002
+
+
+
+
+###################bio_clinicalbert-f1-score-site-1#######################
+Drug: 0.949 ± 0.001
+Ade: 0.424 ± 0.030
+Frequency: 0.964 ± 0.001
+Strength: 0.973 ± 0.001
+Reason: 0.665 ± 0.011
+Route: 0.948 ± 0.003
+Form: 0.954 ± 0.003
+Dosage: 0.922 ± 0.002
+Duration: 0.825 ± 0.012
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.03	0.002	0.001	0.012	0.003	0.001	0.011	0.003	0.001
+0.001, 0.03, 0.001, 0.001, 0.011, 0.003, 0.003, 0.002, 0.012
+
+
+
+
+###################bio_clinicalbert-f1-score-site-2#######################
+Frequency: 0.963 ± 0.002
+Reason: 0.669 ± 0.001
+Drug: 0.951 ± 0.001
+Form: 0.941 ± 0.003
+Duration: 0.828 ± 0.007
+Route: 0.952 ± 0.002
+Dosage: 0.928 ± 0.002
+Ade: 0.398 ± 0.021
+Strength: 0.975 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.021	0.002	0.001	0.007	0.003	0.002	0.001	0.002	0.001
+0.002, 0.001, 0.001, 0.003, 0.007, 0.002, 0.002, 0.021, 0.001
+
+
+
+
+###################bio_clinicalbert-f1-score-site-0#######################
+Duration: 0.882 ± 0.012
+Dosage: 0.943 ± 0.003
+Frequency: 0.974 ± 0.001
+Ade: 0.565 ± 0.042
+Route: 0.961 ± 0.001
+Drug: 0.963 ± 0.001
+Reason: 0.726 ± 0.005
+Strength: 0.985 ± 0.000
+Form: 0.963 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.042	0.003	0.001	0.012	0.001	0.001	0.005	0.001	0.0
+0.012, 0.003, 0.001, 0.042, 0.001, 0.001, 0.005, 0.0, 0.001
+
+
+
+
+###################bio_clinicalbert-f1-score-site-3#######################
+Route: 0.943 ± 0.003
+Frequency: 0.962 ± 0.006
+Reason: 0.663 ± 0.006
+Strength: 0.975 ± 0.001
+Form: 0.949 ± 0.002
+Ade: 0.444 ± 0.009
+Duration: 0.822 ± 0.004
+Drug: 0.952 ± 0.001
+Dosage: 0.926 ± 0.004
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.009	0.004	0.001	0.004	0.002	0.006	0.006	0.003	0.001
+0.003, 0.006, 0.006, 0.001, 0.002, 0.009, 0.004, 0.001, 0.004
+
+
+
+
+###################bio_clinicalbert-f1-score-site-4#######################
+Reason: 0.663 ± 0.008
+Frequency: 0.961 ± 0.002
+Form: 0.941 ± 0.002
+Route: 0.947 ± 0.003
+Ade: 0.416 ± 0.020
+Dosage: 0.915 ± 0.005
+Strength: 0.970 ± 0.001
+Duration: 0.868 ± 0.011
+Drug: 0.950 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.02	0.005	0.001	0.011	0.002	0.002	0.008	0.003	0.001
+0.008, 0.002, 0.002, 0.003, 0.02, 0.005, 0.001, 0.011, 0.001
+
+
+
+
+###################bio_clinicalbert-f1-score-site-5#######################
+Route: 0.943 ± 0.001
+Dosage: 0.916 ± 0.004
+Strength: 0.973 ± 0.001
+Duration: 0.813 ± 0.014
+Ade: 0.395 ± 0.018
+Drug: 0.951 ± 0.001
+Reason: 0.656 ± 0.009
+Frequency: 0.969 ± 0.002
+Form: 0.941 ± 0.002
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.018	0.004	0.001	0.014	0.002	0.002	0.009	0.001	0.001
+0.001, 0.004, 0.001, 0.014, 0.018, 0.001, 0.009, 0.002, 0.002
+
+
+
+
+###################bio_clinicalbert-f1-score-site-6#######################
+Ade: 0.354 ± 0.012
+Dosage: 0.924 ± 0.001
+Form: 0.946 ± 0.002
+Route: 0.941 ± 0.005
+Strength: 0.974 ± 0.001
+Reason: 0.683 ± 0.004
+Duration: 0.830 ± 0.010
+Drug: 0.954 ± 0.003
+Frequency: 0.963 ± 0.003
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.012	0.001	0.003	0.01	0.002	0.003	0.004	0.005	0.001
+0.012, 0.001, 0.002, 0.005, 0.001, 0.004, 0.01, 0.003, 0.003
+
+
+
+
+###################bio_clinicalbert-f1-score-site-7#######################
+Duration: 0.811 ± 0.012
+Dosage: 0.925 ± 0.001
+Frequency: 0.963 ± 0.002
+Route: 0.949 ± 0.003
+Form: 0.946 ± 0.002
+Ade: 0.406 ± 0.019
+Drug: 0.953 ± 0.001
+Strength: 0.978 ± 0.001
+Reason: 0.652 ± 0.002
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.019	0.001	0.001	0.012	0.002	0.002	0.002	0.003	0.001
+0.012, 0.001, 0.002, 0.003, 0.002, 0.019, 0.001, 0.001, 0.002
+
+
+
+
+###################bio_clinicalbert-f1-score-site-8#######################
+Duration: 0.813 ± 0.004
+Ade: 0.405 ± 0.006
+Route: 0.939 ± 0.001
+Reason: 0.668 ± 0.009
+Form: 0.941 ± 0.003
+Dosage: 0.920 ± 0.003
+Drug: 0.948 ± 0.001
+Frequency: 0.965 ± 0.002
+Strength: 0.974 ± 0.001
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.006	0.003	0.001	0.004	0.003	0.002	0.009	0.001	0.001
+0.004, 0.006, 0.001, 0.009, 0.003, 0.003, 0.001, 0.002, 0.001
+
+
+
+
+###################bio_clinicalbert-f1-score-site-9#######################
+Route: 0.952 ± 0.005
+Form: 0.942 ± 0.003
+Drug: 0.950 ± 0.001
+Duration: 0.825 ± 0.020
+Frequency: 0.964 ± 0.001
+Strength: 0.974 ± 0.001
+Dosage: 0.920 ± 0.002
+Ade: 0.436 ± 0.026
+Reason: 0.646 ± 0.003
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.026	0.002	0.001	0.02	0.003	0.001	0.003	0.005	0.001
+0.005, 0.003, 0.001, 0.02, 0.001, 0.001, 0.002, 0.026, 0.003
+
+
+
+
+###################bio_clinicalbert-f1-score-site-10#######################
+Duration: 0.813 ± 0.012
+Ade: 0.395 ± 0.016
+Drug: 0.950 ± 0.002
+Frequency: 0.964 ± 0.002
+Route: 0.947 ± 0.002
+Strength: 0.977 ± 0.001
+Reason: 0.645 ± 0.002
+Form: 0.949 ± 0.001
+Dosage: 0.928 ± 0.003
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.016	0.003	0.002	0.012	0.001	0.002	0.002	0.002	0.001
+0.012, 0.016, 0.002, 0.002, 0.002, 0.001, 0.002, 0.001, 0.003
+
+
+
+
+###################bio_clinicalbert-f1-score-fedprox#######################
+Duration: 0.874 ± 0.019
+Reason: 0.706 ± 0.002
+Dosage: 0.939 ± 0.002
+Form: 0.958 ± 0.000
+Ade: 0.530 ± 0.002
+Route: 0.957 ± 0.001
+Strength: 0.980 ± 0.002
+Drug: 0.956 ± 0.000
+Frequency: 0.966 ± 0.002
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.002	0.002	0.0	0.019	0.0	0.002	0.002	0.001	0.002
+0.019, 0.002, 0.002, 0.0, 0.002, 0.001, 0.002, 0.0, 0.002
+
+
+
+
+###################bi_lstm_crf-f1-score-site-1#######################
+Reason: 0.476 ± 0.013
+Strength: 0.937 ± 0.003
+Form: 0.921 ± 0.003
+Ade: 0.111 ± 0.020
+Route: 0.930 ± 0.002
+Drug: 0.790 ± 0.003
+Dosage: 0.884 ± 0.004
+Frequency: 0.925 ± 0.006
+Duration: 0.636 ± 0.017
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.02	0.004	0.003	0.017	0.003	0.006	0.013	0.002	0.003
+0.013, 0.003, 0.003, 0.02, 0.002, 0.003, 0.004, 0.006, 0.017
+
+
+
+
+###################bi_lstm_crf-f1-score-site-0#######################
+Strength: 0.977 ± 0.000
+Duration: 0.778 ± 0.003
+Drug: 0.930 ± 0.004
+Reason: 0.647 ± 0.001
+Form: 0.957 ± 0.001
+Route: 0.963 ± 0.000
+Frequency: 0.966 ± 0.001
+Ade: 0.358 ± 0.020
+Dosage: 0.930 ± 0.003
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.02	0.003	0.004	0.003	0.001	0.001	0.001	0.0	0.0
+0.0, 0.003, 0.004, 0.001, 0.001, 0.0, 0.001, 0.02, 0.003
+
+
+
+
+###################bi_lstm_crf-f1-score-site-2#######################
+Duration: 0.642 ± 0.021
+Reason: 0.470 ± 0.035
+Strength: 0.935 ± 0.004
+Dosage: 0.874 ± 0.008
+Ade: 0.094 ± 0.018
+Drug: 0.794 ± 0.005
+Form: 0.913 ± 0.003
+Route: 0.926 ± 0.003
+Frequency: 0.922 ± 0.003
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.018	0.008	0.005	0.021	0.003	0.003	0.035	0.003	0.004
+0.021, 0.035, 0.004, 0.008, 0.018, 0.005, 0.003, 0.003, 0.003
+
+
+
+
+###################bi_lstm_crf-f1-score-site-3#######################
+Reason: 0.458 ± 0.011
+Ade: 0.121 ± 0.025
+Drug: 0.789 ± 0.001
+Route: 0.923 ± 0.003
+Duration: 0.598 ± 0.016
+Dosage: 0.874 ± 0.006
+Strength: 0.937 ± 0.002
+Form: 0.922 ± 0.003
+Frequency: 0.920 ± 0.006
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.025	0.006	0.001	0.016	0.003	0.006	0.011	0.003	0.002
+0.011, 0.025, 0.001, 0.003, 0.016, 0.006, 0.002, 0.003, 0.006
+
+
+
+
+###################bi_lstm_crf-f1-score-site-4#######################
+Ade: 0.087 ± 0.035
+Frequency: 0.925 ± 0.002
+Strength: 0.942 ± 0.001
+Reason: 0.479 ± 0.013
+Form: 0.923 ± 0.002
+Duration: 0.645 ± 0.009
+Dosage: 0.887 ± 0.005
+Route: 0.923 ± 0.003
+Drug: 0.795 ± 0.007
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.035	0.005	0.007	0.009	0.002	0.002	0.013	0.003	0.001
+0.035, 0.002, 0.001, 0.013, 0.002, 0.009, 0.005, 0.003, 0.007
+
+
+
+
+###################bi_lstm_crf-f1-score-site-5#######################
+Route: 0.928 ± 0.002
+Dosage: 0.879 ± 0.008
+Frequency: 0.913 ± 0.002
+Duration: 0.642 ± 0.027
+Form: 0.919 ± 0.003
+Ade: 0.077 ± 0.020
+Drug: 0.783 ± 0.005
+Reason: 0.480 ± 0.011
+Strength: 0.932 ± 0.007
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.02	0.008	0.005	0.027	0.003	0.002	0.011	0.002	0.007
+0.002, 0.008, 0.002, 0.027, 0.003, 0.02, 0.005, 0.011, 0.007
+
+
+
+
+###################bi_lstm_crf-f1-score-site-6#######################
+Drug: 0.795 ± 0.004
+Route: 0.929 ± 0.005
+Reason: 0.482 ± 0.011
+Form: 0.922 ± 0.008
+Strength: 0.942 ± 0.001
+Duration: 0.590 ± 0.010
+Frequency: 0.924 ± 0.000
+Ade: 0.064 ± 0.023
+Dosage: 0.882 ± 0.006
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.023	0.006	0.004	0.01	0.008	0.0	0.011	0.005	0.001
+0.004, 0.005, 0.011, 0.008, 0.001, 0.01, 0.0, 0.023, 0.006
+
+
+
+
+###################bi_lstm_crf-f1-score-site-7#######################
+Form: 0.927 ± 0.008
+Duration: 0.559 ± 0.008
+Drug: 0.788 ± 0.005
+Ade: 0.138 ± 0.019
+Dosage: 0.879 ± 0.013
+Strength: 0.939 ± 0.001
+Reason: 0.461 ± 0.012
+Frequency: 0.916 ± 0.001
+Route: 0.929 ± 0.003
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.019	0.013	0.005	0.008	0.008	0.001	0.012	0.003	0.001
+0.008, 0.008, 0.005, 0.019, 0.013, 0.001, 0.012, 0.001, 0.003
+
+
+
+
+###################bi_lstm_crf-f1-score-site-8#######################
+Dosage: 0.879 ± 0.007
+Drug: 0.784 ± 0.005
+Ade: 0.102 ± 0.018
+Frequency: 0.913 ± 0.004
+Reason: 0.483 ± 0.003
+Strength: 0.936 ± 0.001
+Route: 0.913 ± 0.006
+Duration: 0.632 ± 0.006
+Form: 0.920 ± 0.003
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.018	0.007	0.005	0.006	0.003	0.004	0.003	0.006	0.001
+0.007, 0.005, 0.018, 0.004, 0.003, 0.001, 0.006, 0.006, 0.003
+
+
+
+
+###################bi_lstm_crf-f1-score-site-9#######################
+Reason: 0.471 ± 0.013
+Frequency: 0.920 ± 0.001
+Route: 0.923 ± 0.003
+Form: 0.921 ± 0.001
+Ade: 0.148 ± 0.018
+Duration: 0.618 ± 0.042
+Drug: 0.789 ± 0.002
+Strength: 0.936 ± 0.003
+Dosage: 0.874 ± 0.013
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.018	0.013	0.002	0.042	0.001	0.001	0.013	0.003	0.003
+0.013, 0.001, 0.003, 0.001, 0.018, 0.042, 0.002, 0.003, 0.013
+
+
+
+
+###################bi_lstm_crf-f1-score-site-10#######################
+Form: 0.922 ± 0.006
+Reason: 0.463 ± 0.004
+Duration: 0.561 ± 0.019
+Frequency: 0.922 ± 0.003
+Ade: 0.095 ± 0.014
+Drug: 0.791 ± 0.004
+Dosage: 0.877 ± 0.008
+Route: 0.922 ± 0.003
+Strength: 0.940 ± 0.004
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.014	0.008	0.004	0.019	0.006	0.003	0.004	0.003	0.004
+0.006, 0.004, 0.019, 0.003, 0.014, 0.004, 0.008, 0.003, 0.004
+
+
+
+
+###################bi_lstm_crf-f1-score-fedavg#######################
+Dosage: 0.922 ± 0.002
+Frequency: 0.954 ± 0.003
+Route: 0.951 ± 0.002
+Ade: 0.091 ± 0.014
+Drug: 0.899 ± 0.004
+Form: 0.949 ± 0.004
+Strength: 0.968 ± 0.002
+Reason: 0.565 ± 0.009
+Duration: 0.737 ± 0.004
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.014	0.002	0.004	0.004	0.004	0.003	0.009	0.002	0.002
+0.002, 0.003, 0.002, 0.014, 0.004, 0.004, 0.002, 0.009, 0.004
+
+
+
+
+###################bi_lstm_crf-f1-score-fedprox#######################
+Route: 0.956 ± 0.003
+Frequency: 0.956 ± 0.002
+Dosage: 0.925 ± 0.002
+Reason: 0.595 ± 0.002
+Strength: 0.969 ± 0.002
+Duration: 0.743 ± 0.010
+Drug: 0.895 ± 0.003
+Form: 0.952 ± 0.002
+Ade: 0.228 ± 0.016
+Ade	Dosage	Drug	Duration	Form	Frequency	Reason	Route	Strength
+0.016	0.002	0.003	0.01	0.002	0.002	0.002	0.003	0.002
+0.003, 0.002, 0.002, 0.002, 0.002, 0.01, 0.003, 0.002, 0.016
+
+
+
+

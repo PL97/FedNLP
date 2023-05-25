@@ -19,7 +19,7 @@ module load parallel
 cd /home/jusun/peng0347/FedNLP/RE
 export PATH=/home/jusun/peng0347/miniconda3/bin:$PATH
 # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/jusun/peng0347/miniconda3/lib/
-sh ./bash_scripts/run.sh $1 $2 $3 $4
+sh ./bash_scripts/run.sh site-0 $1 $2 $3 $4 $5
 
 
 # conda env create -f environment.yml
