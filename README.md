@@ -90,14 +90,3 @@ cd FedNLP/RE
 
  ./bash_scripts/fed.sh fedavg euadr 10 bluebert 50  ## arg1: FL algorithm; arg2: dataset; arg3: total data splits; arg4: model; arg5: total epochs
 ```
-
-## How to cite this work
-
-```bibtex
-@misc{FedNLP,
-    author={Le Peng},
-    title={FedNLP: Federated Learning for Biomedical Text Mining},
-    howpublished={\url{https://github.com/PL97/FedNLP.git}},
-    year={2023}
-}
-```
