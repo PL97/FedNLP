@@ -49,8 +49,8 @@ sh ./bash_scripts/fed.sh $1 $2 $3 $4 $5 $6 $7 $8
 
 ## example
 # sbatch simulate_fed.slurm fedprox 2018_n2c2 2 bluebert 20 1 1
-# sbatch simulate_fed.slurm fedprox feature_shift 10 biobert 100 1 1 0.1
-# sbatch simulate_fed.slurm fedprox 2018_n2c2 2 bio_clinicalbert 20 1 1
+# sbatch simulate_fed.slurm fedprox 2018_n2c2 10 biobert 100 1 1 0.1
+# sbatch simulate_fed.slurm fedprox 2018_n2c2 10 bio_clinicalbert 20 1 1
 # sbatch simulate_fed.slurm fedprox 2018_n2c2 2 bert-base-uncased 20 1 1
 # sbatch simulate_fed.slurm fedprox 2018_n2c2 2 gpt2 20 1 1
 # sbatch simulate_fed.slurm fedprox 2018_n2c2 2 bi_lstm_crf 20 1 1

@@ -82,7 +82,6 @@ if __name__ == "__main__":
                                         ids_to_labels=stats['ids_to_labels'],  \
                                         amp=True)
         elif args['fedalg'].lower() == "fedprox":
-            saved_dir = os.path.join(saved_dir, str(args['mu']))
             fed_model = NER_FedProx_bert(dls=dls, \
                                         client_weights = [1/num_client]*num_client,  \
                                         lrs = [5e-5]*num_client,  \
