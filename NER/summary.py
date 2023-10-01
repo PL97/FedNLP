@@ -157,7 +157,10 @@ def summarize_fedalg_effect():
     
     for ws in workspaces:
         for pd, d, f in os.walk(ws):
-            if "fedprox" not in pd:
+            if "feature_shift" not in pd and "2018_n2c2" not in pd:
+                    continue
+            
+            if "site-0" not in pd: ## can replace this with fedprox
                     continue
             if "evaluation.json" in f:
                 
@@ -189,14 +192,15 @@ def summarize_fedalg_effect():
             for metric in ret_dict[dataset][model].keys():
                 if metric != "f1-score":
                     continue
-                for method in ret_dict[dataset][model][metric].keys():
-                
-                    print("###################{}-{}-{}-{}#######################".format(dataset, model, metric, method))
-                    metric_list = ret_dict[dataset][model][metric][method]['lenient']
-                    print(metric_list)
-                    print("{:.3f}±{:.3f}".format(np.mean(metric_list), np.std(metric_list)))
-                    # print(ret_dict[model][metric]['strict'])
-                    print("\n\n\n")
+                for match in ['lenient', 'strict']:
+                    for method in ret_dict[dataset][model][metric].keys():
+                    
+                        print("###################{}-{}-{}-{}-{}#######################".format(match, dataset, model, metric, method))
+                        metric_list = ret_dict[dataset][model][metric][method][match]
+                        print(metric_list)
+                        print("{:.3f}±{:.3f}".format(np.mean(metric_list), np.std(metric_list)))
+                        # print(ret_dict[model][metric]['strict'])
+                        print("\n\n\n")
                 
 def summarize_2018_n2c2():
     ret_dict = defaultdict(lambda:defaultdict(lambda:defaultdict(lambda:defaultdict(lambda: defaultdict(lambda: [])))))
@@ -254,8 +258,69 @@ def summarize_2018_n2c2():
                 print("\t".join(format_out_mean.values()))
                 print(", ".join(format_out_std.values()))
                 print("\n\n\n")
+
+
+def summarize_2018_n2c2_fedprox():
+    ret_dict = defaultdict(lambda:defaultdict(lambda:defaultdict(lambda:defaultdict(lambda: defaultdict(lambda: [])))))
+    workspaces = ['workspace1', 'workspace2', 'workspace3']
+    
+    for ws in workspaces:
+        for pd, d, f in os.walk(ws):
+            
+            if "fedprox" not in pd:
+                    continue
+            if "evaluation.json" in f:
+                
+                print(pd)
+
+                model = pd.split("/")[-2] if pd.split("/")[-2] != "baseline" else pd.split("/")[-3]
+                method = pd.split("/")[-1]
+
+                json_path = os.path.join(pd, "evaluation.json")
+                my_json = json.load(open(json_path))
+                tmp_dict = parse_json_full(my_json)
+                
+                ## calculate the mean of selected metrics
+                for metric in ['precision', 'recall', 'f1-score']:
+                    vals = defaultdict(lambda: [])
+                    for mode in ['lenient', 'strict']:
+                        for entity, v in tmp_dict[mode][metric].items():
+                            
+                            ret_dict[model][metric][method][mode][entity].append(v)
+                            
+                # print("\n\n")
+
+    ## format output
+    for model in ret_dict.keys():
+        for metric in ret_dict[model].keys():
+            
+            if metric != "f1-score":
+                continue
+            for method in ret_dict[model][metric].keys():
+                print("###################{}-{}-{}#######################".format(model, metric, method))
+                format_out_mean = dict()
+                format_out_std = dict()
+                for entity, v in ret_dict[model][metric][method]['lenient'].items():
+            
+                    
+                    metric_list = ret_dict[model][metric][method]['lenient'][entity]
+                    # print(metric_list)
+                    print("{}: {:.3f}±{:.3f}".format(entity, np.mean(metric_list), np.std(metric_list)))
+                    # print(ret_dict[model][metric]['strict'])
+                    
+                    format_out_mean[entity] = str(round(np.mean(metric_list), 3))
+                    format_out_std[entity] = str(round(np.std(metric_list), 3))
+                
+                format_out_mean = dict(sorted(format_out_mean.items(), key=lambda x:x[0]))
+                format_out_mean = dict(sorted(format_out_std.items(), key=lambda x:x[0]))
+                    
+                print("\t".join(format_out_mean.keys()))
+                print("\t".join(format_out_mean.values()))
+                print(", ".join(format_out_std.values()))
+                print("\n\n\n")
             
 if __name__ == "__main__":
-    summarize_feature_shift_effect()
-    # summarize_fedalg_effect()
+    # summarize_feature_shift_effect()
+    summarize_fedalg_effect()
     # summarize_2018_n2c2()
+    # summarize_2018_n2c2_fedprox()

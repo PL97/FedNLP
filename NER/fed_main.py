@@ -33,6 +33,8 @@ def parse_args():
     parser.add_argument("--seed", type=int, help="radom seed", default=0)
     parser.add_argument("--fedalg", type=str, help="federated learning algorithm", default="fedavg")
     parser.add_argument("--mu", type=float, help="mu (fedprox)", default=0.1)
+    parser.add_argument("--train_from_scratch", action='store_true', help="train the model from scratch")
+    parser.add_argument("--test_file", type=str, help="batchsize of train/val/test loader", default="test")
     args = parser.parse_args()
     return args
 
@@ -57,7 +59,8 @@ if __name__ == "__main__":
 
     df_combined = pd.read_csv(os.path.join(f"./data/{args['ds']}", "combined.csv"))
     num_labels = len(set(" ".join(df_combined.labels.tolist()).split(" ")))
-    df_test = pd.read_csv(os.path.join(f"./data/{args['ds']}", "test.csv"))
+    print(args['test_file'])
+    df_test = pd.read_csv(os.path.join(f"./data/{args['ds']}", f"{args['test_file']}.csv"))
     if "bert" in args['model'].lower():
         ## need to define tokenizer here
         tokenizer = BertModel(num_labels = num_labels, model_name=args['model']).tokenizer
@@ -96,8 +99,8 @@ if __name__ == "__main__":
                                         mu=args['mu'])
         else:
             exit("federated learning algorithm not found (source: fed_main.py)")
-                    
-        fed_model.fit()
+        if not args['eval']:      
+            fed_model.fit()
     
     elif "gpt" in args['model'].lower():
         ## need to define tokenizer here
@@ -138,8 +141,8 @@ if __name__ == "__main__":
                                     mu=args['mu']) 
         else:
             exit("federated learning algorithm not found (source: fed_main.py)")
-         
-        fed_model.fit()
+        if not args['eval']:
+            fed_model.fit()
         
     elif args['model'].lower() == "bi_lstm_crf":
         for idx in range(num_client):
@@ -182,13 +185,15 @@ if __name__ == "__main__":
                         mu=args['mu'])
         else:
             exit("federated learning algorithm not found (source: fed_main.py)")
-            
-        fed_model.fit()
+        if not args['eval']: 
+            fed_model.fit()
     
     else:
         exit("cannot find the model (source: main.py)")
     
+    fed_model.server_model.load_state_dict(torch.load(f"./{args['workspace']}/global/best.pt"))
     metrics = {split: fed_model.inference(dls[0][split], split) for split in ['test']}
+    print(metrics)
     for split in ['test']:
         pd.DataFrame(metrics[split]['meta']).to_csv(f"{args['workspace']}/{split}_prediction.csv")
         metrics[split].pop('meta')

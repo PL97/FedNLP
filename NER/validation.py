@@ -57,7 +57,7 @@ if __name__ == "__main__":
         model = BertModel(num_labels = num_labels, model_name=args['model'])
         ## prepare dataloader
         dls, stats = get_bert_data(df_train=df_train, df_val=df_val, bs=args['batch_size'], tokenizer=model.tokenizer, df_test=df_test, df_combined=df_combined)
-    elif "gpu" in args['model'].lower():
+    elif "gpt" in args['model'].lower():
         ## prepare model
         model = GPTModel(num_labels = num_labels, model_name=args['model'])
         ## prepare dataloader
