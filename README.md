@@ -94,10 +94,12 @@ cd FedNLP/RE
 ## How to cite this work
 
 ```bibtex
-@misc{FedNLP,
-    author={Le Peng},
-    title={FedNLP: Federated Learning for Biomedical Text Mining},
-    howpublished={\url{https://github.com/PL97/FedNLP.git}},
-    year={2023}
+@inproceedings{
+peng2023a,
+title={A Systematic Evaluation of Federated Learning on Biomedical Natural Language Processing},
+author={Le Peng and sicheng zhou and jiandong chen and Rui Zhang and Ziyue Xu and Ju Sun},
+booktitle={International Workshop on Federated Learning for Distributed Data Mining},
+year={2023},
+url={https://openreview.net/forum?id=pLEQFXACNA}
 }
 ```
