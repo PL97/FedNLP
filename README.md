@@ -1,21 +1,22 @@
 ## FedNLP
 
-Git repo for paper "Federated Learning for Biomedical Text Mining"
+Git repo for paper "An In-Depth Evaluation of Federated Learning on Biomedical Natural Language Processing"
 
 ## First stable release
 
 ### What we have :star2: 
 
-- support models with various architectures including BERT, GPT, and BILSTM-CRF
-- simulate federated learning using FedAvg
-- log the result using tensorboard
-- auxiliary bash script to download models from hugging face, run batch python script for fast prototype
+- [x] support models with various architectures including BERT, GPT, and BILSTM-CRF
+- [x] simulate federated learning using FedAvg
+- [x] log the result using tensorboard
+- [x] auxiliary bash script to download models from hugging face, run batch python script for fast prototype
+- [x] simulate distribution shift in federated learning
+- [x] study the impact of federated learning under different federation scales
+- [x] study the impact of different federated learning algorithms
 
 ### What is expected to see in the next release :rocket: 
+- [ ] comparison with LLM
 
-- [ ] simulate distribution shift in federated learning
-- [ ] study the impact of federated learning under different federation scales
-- [ ] study the impact of different federated learning algorithms
 
 
 ## Overview
