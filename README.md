@@ -1,6 +1,6 @@
 ## FedNLP
 
-Git repo for paper "An In-Depth Evaluation of Federated Learning on Biomedical Natural Language Processing"
+Offical git repo of paper "An In-Depth Evaluation of Federated Learning on Biomedical Natural Language Processing for Information Extraction"
 
 ## First stable release
 
